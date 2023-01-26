@@ -1,10 +1,575 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+{% load static %}
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Главная</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&subset=cyrillic-ext" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
+    <title>4747</title>
 </head>
 <body>
-Главная страница
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container _container">
+                <div class="header__bloc">
+                    <a href="" class="header__logo">
+                        <img src="{% static 'shop/foto/logo-footer.png' %}">
+                    </a>
+                    <div class="header__contact">
+                        <search class="search">  
+                            <div class="search_form">    
+                                <input type="text" class="search-input" placeholder="Поиск...">
+                                <button type="submit"><img src="./foto/magnifier 1.png" alt=""></button>
+                            </div>
+                        </search>
+                        <div class="location"><p>г. Сосновый Бор,<br>Ленинградская обл.</p></div>
+                        <div class="contact-tel">
+                            <img src="./foto/phone-call 8.png" alt="tel">
+                            <a href="tel:+79040795091" class="tel">8 904 646 64 64</a>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <nav class="header__menu menu">
+                <div class="nav-menu _container">
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <a href="" class="menu__link">КАТАЛОГ</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="" class="menu__link">СОБЫТИЯ</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="" class="menu__link">СКИДКИ</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="" class="menu__link">ДОСТАВКА</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="" class="menu__link">ЗАКАЗАТЬ ЗВОНОК</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="" class="menu__link">КОНТАКТЫ</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="" class="menu__link">КОРЗИНА</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>    
+            
+        </header>
+
+        <div class="portfolio-wrap">
+            <div class="portfolio-item">
+            <div class="portfolio-item-wrap">
+            <a href="">
+            <img src="./foto/9.jpg">
+            <div class="portfolio-item-inner">
+            <div class="portfolio-heading">
+            <h3>ГОТОВЫЕ СЕТЫ</h3>
+            </div>
+            <ul>
+            <li><a href="">Для нее</li></a>
+            <li><a href="">для него</li></a>
+            <li><a href="">Гендер пати</li></a>
+            <li><a href="">Детские</li></a>
+            </ul>
+            </div>
+            </a>
+            </div>
+            </div>
+            
+            <div class="portfolio-item">
+            <div class="portfolio-item-wrap">
+            <a href="">
+            <img src="./foto/7.jpg">
+            <div class="portfolio-item-inner">
+            <div class="portfolio-heading">
+            <h3>ФОТОЗОНЫ</h3>
+            </div>
+            <ul>
+            <li><a href="">Свадебные</li></a>
+            <li><a href="">День рождения</li></a>
+            <li><a href="">Тематические</li></a>
+            <li><a href="">Детские</li></a>
+            </ul>
+            </div>
+            </a>
+            </div>
+            </div>
+            
+            <div class="portfolio-item">
+            <div class="portfolio-item-wrap">
+            <a href="">
+            <img src="./foto/2 (2).jpg">
+            <div class="portfolio-item-inner">
+            <div class="portfolio-heading">
+            <h3>14 ФЕВРАЛЯ</h3>
+            </div>
+            <ul>
+            <li><a href="">Наборы на 14 ФЕВРАЛЯ</li></a>
+            <li><a href="">Сердца</li></a>
+            <li><a href="">КОРОБКА-СЮРПРИЗ</li></a>
+            <li><a href="">Фотозона 14 ФЕВРАЛЯ</li></a>
+            </ul>
+            </div>
+            </a>
+            </div>
+            </div>
+        </div>
+
+
+
+        <section class="head-bloc _container">
+            <div class="title"><h3>НОВИНКИ</h3></div>
+            <div class="head-button">
+                <a href="" class="border-button">Весь каталог</a>
+            </div>
+        </section>
+
+        <div class="Card _container">
+            <div class="card">
+                <div class="card__header"><a href="47sharov.ru">
+                    <div class="card__image"><img src="./foto/2ZZ_9_E6xTeRXMCk3VEZWO1UYbnvfM9FqAkO_PBZC-Lsd4LJyG_UvoWhG4KemCGLDkc4IqsuN6zIKIFLzmdZQFZO.jpg" alt=""></img></div>
+                </a></div>
+                <div class="card__body">
+                    <div class="card__title">Сет 5 шаров</div>
+                    <div class="card__price">458 руб.</div>
+                    <div class="tooltip"><img src="./foto/h2o 1.png" alt="">
+                        <span class="tooltiptext">Шарик обрабатывается изнутри специальным безопасным и экологически нейтральным составом Hi-Float (Хай-Флоат), который увеличивает срок полёта до 2-х дней и более! Только для латексных шаров.</span>
+                    </div>
+                    <div class="tooltip"><img src="./foto/He 1.png" alt="">
+                        <span class="tooltiptext">Шарик надувается безопасным инертным газом гелием.</span>
+                    </div>
+                </div>
+                <div class="card-footer-wrapper">
+                    <div class="card__footer">
+                        <div class="card__pcs">
+                            <div class="pcs__calc">
+                                <div class="pcs__calc-minus"><img src="./foto/minuss.png" alt=""></img></div>
+                                <div class="pcs__calc-imput">1</div>
+                                <div class="pcs__calc-plus"><img src="./foto/plus.png" alt=""></img></div>
+                            </div>
+                            <div class="favorites-cart">
+                                <a href="47sharov.ru"><img src="./foto/favorites.png" alt="favorites"></img></a>
+                                <a href="47sharov.ru"><img src="./foto/cart.png" alt="cart"></img></a>
+                            </div>    
+                        </div>
+                       
+                    </div>
+                    <a href="47sharov.ru" class="flip-btn">Подробно</a>
+                </div> 
+            </div>
+        </div>
+
+        <section class="head-bloc _container">
+            <div class="title"><h3>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h3></div>
+            <div class="head-button">
+                <a href="" class="border-button">Весь каталог</a>
+            </div>
+        </section>
+
+    <section class="card-long _container">
+        <div class="card-mini-gellery">
+            <!DOCTYPE html>
+            <html>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+            body {
+            font-family: Arial;
+            margin: 0;
+            }
+
+            * {
+            box-sizing: border-box;
+            }
+
+            img {
+            vertical-align: middle;
+            }
+
+            /* Position the image container (needed to position the left and right arrows) */
+            .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            }
+
+            /* Hide the images by default */
+            .mySlides {
+            display: none;
+            }
+
+            /* Add a pointer when hovering over the thumbnail images */
+            .cursor {
+            cursor: pointer;
+            }
+
+            /* Next & previous buttons */
+            .prev,
+            .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover,
+            .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            /* Number text (1/3 etc) */
+            .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+            }
+
+            /* Container for image text */
+            .caption-container {
+            text-align: center;
+            background-color: #222;
+            padding: 2px 16px;
+            color: white;
+            }
+
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+
+            /* Six columns side by side */
+            .column {
+            float: left;
+            width: 16.66%;
+            }
+
+            /* Add a transparency effect for thumnbail images */
+            .demo {
+            opacity: 0.6;
+            }
+
+            .active,
+            .demo:hover {
+            opacity: 1;
+            }
+            </style>
+            <body>
+
+            <h2 style="text-align:center">Slideshow Gallery</h2>
+
+            <div class="container">
+            <div class="mySlides">
+                <div class="numbertext">1 / 3</div>
+                <img src="./foto/zBmewe1.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">2 / 3</div>
+                <img src="./foto/zBmewe2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">3 / 3</div>
+                <img src="./foto/zBmewe3.jpg" style="width:100%">
+            </div>
+                   
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                <img class="demo cursor" src="./foto/zBmewe1.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                </div>
+                <div class="column">
+                <img class="demo cursor" src="./foto/zBmewe2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                </div>
+                <div class="column">
+                <img class="demo cursor" src="./foto/zBmewe3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                </div>
+                
+            </div>
+            </div>
+
+            <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            captionText.innerHTML = dots[slideIndex-1].alt;
+            }
+            </script>
+                
+            </body>
+            </html>
+        </div>
+        <div class="card-nav">
+            <div class="card-nav-title"><h2>Шар леденец 45 см</h2></div>
+            <div class="card-nav-text"><h4>Фольгированный шар, размер 45 см<br>Наполнение - гелий</h4></div>
+            <div class="card-nav-price">800 руб. - 1 шт</div>
+            <div class="card-nav-font">
+                <img src="./foto/owl 1.png" alt="">
+                <div class="font-text">Индивидуальная надпись  с любым<br>текстом и шрифтом по запросу</div>
+            </div>
+            <div class="card-nav-gift">
+                <img src="./foto/gift5 1.png" alt="">
+                <div class="gift-text">Бесплатная доставка от 1000р<br>по г. Сосновый бор и области</div>
+            </div>
+            <div class="tooltip"><img src="./foto/h2o 1.png" alt="">
+                <span class="tooltiptext">Шарик обрабатывается изнутри специальным безопасным и экологически нейтральным составом Hi-Float (Хай-Флоат), который увеличивает срок полёта до 2-х дней и более! Только для латексных шаров.</span>
+            </div>
+            <div class="tooltip"><img src="./foto/He 1.png" alt="">
+                <span class="tooltiptext">Шарик надувается безопасным инертным газом гелием.</span>
+            </div>
+            <div class="card-nav-pcs">
+                <div class="pcs__calc">
+                    <div class="pcs__calc-minus"><img src="./foto/minuss.png" alt=""></img></div>
+                    <div class="pcs__calc-imput">1</div>
+                    <div class="pcs__calc-plus"><img src="./foto/plus.png" alt=""></img></div>
+                </div>
+            </div>
+            <div class="card-nav-action">
+                <a href=""><button class="button-1">+Корзина</button></a>
+                <a href=""><button class="button-1">+Избранное</button></a>
+                
+            </div>
+        </div>
+    </section>
+
+    <div class="way-box _container">
+        <div class="category_path"><a href="">Главная</a></div>
+        <div class="categories_path">
+            <div class="category_path">
+                <img src="./foto/right-arrow.png" alt="">
+                <a href="">Девочкам</a>
+            </div>
+        </div>
+        <div class="categories_path">
+            <div class="category_path">
+                <img src="./foto/right-arrow.png" alt="">
+                <a href="">8 Марта</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sections__categories">
+        <div class="categories_bloc _container">
+            <div class="categories_bloc_1">
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+            </div>    
+            <div class="categories_bloc_1">
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+            </div> 
+        </div>
+        <div class="categories_bloc _container">
+            <div class="categories_bloc_1">
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+            </div>    
+            <div class="categories_bloc_1">
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+                <div class="categories_card">
+                    <a href=""><img src="./foto/korobka.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        
+    
+
+
+
+    <div class="title_discounts _container"><h3>Доставка и скидки:</h3></div>    
+
+
+    <div class="discounts">
+        <div class="discounts_box _container">
+            <div class="discounts_card">
+                <img src="./foto/discount1.png" alt="">
+                <div class="discounts_card_title">Бесплатная доставка<br>от 1000 р</div>
+                <div class="discounts_card_text">Сосновый бор и лен область,<br>а так же ребровка</div>
+            </div>
+            <div class="discounts_card">
+                <img src="./foto/discount2.png" alt="">
+                <div class="discounts_card_title">Приведи друга</div>
+                <div class="discounts_card_text">Получи скидку 200р на следующий заказ</div>
+            </div>
+            <div class="discounts_card">
+                <img src="./foto/discount3.png" alt="">
+                <div class="discounts_card_title">Скидка 3 %<br>на 1 заказ</div>
+                <div class="discounts_card_text">Для новых клиентов</div>
+            </div>
+        </div>
+    </div>   
+    
+    
+    <div class="module-pagination _container">
+        <div class="pagination_load"><a href="">Показать еще</a></div>
+        <div class="pagination_box">
+            <div class="flex-prev"><a href=""><img src="./foto/arrow-l.png" alt=""></a></div>
+            <div class="numb"><a href="">1</a></div>
+            <div class="numb-on"><a href="">2</a></div>
+            <div class="numb"><a href="">3</a></div>
+            <div class="flex-next"><a href=""><img src="./foto/arrow-r.png" alt=""></a></div>
+        </div>
+    </div>
+
+
+        
+    </div>
+
+    <div class="containers _container">
+        <form action="action_page" class="action_page">
+      
+          <label for="fname">Ваше имя</label>
+          <input type="text" class="hfhfhf" id="fname" name="firstname" placeholder="Имя..">
+      
+          <label for="lname">Ваш номер телефона</label>
+          <input type="text" class="hfhfhf" id="lname" name="lastname" placeholder="Телефон..">
+      
+          <!-- <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+          </select> -->
+      
+          <label for="subject">Subject</label>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+      
+          <input type="submit" class="hfhfhf" value="Submit">
+      
+        </form>
+      </div>
+    
+
+
+    <div class="Footer">
+        <div class="footer _container">
+            <div class="footer__body">
+                <div class="info">
+                    <div class="name">ИНФОРМАЦИЯ:</div>
+                    <a href="47sharov.ru">Доставка и оплата</a>
+                    <a href="47sharov.ru">Как купить</a>
+                    <a href="47sharov.ru">Скидки</a>
+                    <a href="47sharov.ru">Услуги</a>
+                    <a href="47sharov.ru">Заказать звонок</a>
+                </div>
+                <div class="catalog">
+                    <div class="head-button">
+                        <a href="47sharov.ru" class="border-button">Весь каталог</a>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="we">МЫ В СОЦСЕТЯХ:</div>
+                    <div class="icons">
+                        <a href="47sharov.ru"><img src="./foto/instagram.png" alt="instagram"></img></a>
+                        <a href="47sharov.ru"><img src="./foto/vk.png" alt="vk"></img></a>
+                        <a href="47sharov.ru"><img src="./foto/whatsapp.png" alt="whatsapp"></img></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__back">
+                <a href="47sharov.ru" class="footer-button">ДЛЯ НЕЕ</a>
+                <a href="47sharov.ru" class="footer-button">ДЛЯ НЕГО</a>
+                <a href="47sharov.ru" class="footer-button">ВЫПИСКА</a>
+                <a href="47sharov.ru" class="footer-button">Gender party</a>
+                <a href="47sharov.ru" class="footer-button">КОРОБКА-СЮРПРИЗ</a>
+                <a href="47sharov.ru" class="footer-button">ФОТОЗОНЫ</a>
+                <a href="47sharov.ru" class="footer-button">ДЕВОЧКАМ</a>
+                <a href="47sharov.ru" class="footer-button">МАЛЬЧИКАМ</a>
+                <a href="47sharov.ru" class="footer-button">АКСЕССУАРЫ</a>
+                <a href="47sharov.ru" class="footer-button">ШРИФТ</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    </div>
+     
+    </div>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>
+</html>    
