@@ -9,6 +9,7 @@
 a {
     text-decoration: none;
 }
+
 ul,
 ol,
 li {
@@ -59,6 +60,213 @@ body {
     left: 0;
     object-fit: cover;
 }
+.element-animation {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.element-animation.element-show {
+  opacity: 1;
+  transition: all 1.5s;
+  transform: translateY(0%);
+}
+/*------------------------------hedera---------*/
+.menu__icona{
+  display: none;
+}
+.headera{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: rgb(252, 167, 167);
+}
+.header__containera{
+  max-width: 1200px;
+  margin: 0px auto;
+  display: flex;
+  padding: 0px 30px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+.header__logoa{
+  border-radius: 50%;
+  background-color: #fff;
+  position: relative;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+}
+.menu__lista > li {
+  position: relative;
+  margin: 0px 0px 0px 20px;
+}
+.menu__linka{
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+}
+.menu__linka:hover{
+  text-decoration: underline;
+}
+.menu__sub-lista{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  padding: 15px;
+  min-width: 200px;
+}
+.menu__sub-lista li{
+  margin: 0px 0px 10px 0px;
+}
+.menu__sub-lista li:last-child{
+  margin: 0;
+}
+.menu__sub-linka{
+  color: rgb(255, 255, 255);
+}
+.menu__sub-linka:hover{
+  text-decoration: underline;
+}
+.menu__arrow{
+  display: none;
+}
+/*---------------------------------------*/
+body._lock {
+  overflow: hidden;
+}
+body._pc .menu__lista > li:hover .menu__sub-lista {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, 0px);
+  pointer-events: all;
+}
+body._touch .menu__lista > li{
+  display: flex;
+  align-items: center;
+}
+body._touch .menu__linka{
+  flex: 1 1 auto;
+}
+body._touch .menu__arrow {
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0px 0px 0px 5px;
+  transition: transform 0.3s ease 0s;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid rgb(255, 255, 255);
+}
+body._touch .menu__lista > li._active .menu__sub-lista {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, 0px);
+  pointer-events: all;
+}
+body._touch .menu__lista > li._active .menu__arrow{
+  transform: rotate(-180deg);
+}
+/*---------------------------------------*/
+@media (min-width: 767px) {
+  .menu__lista{
+    display: flex;
+    align-items: center;
+  }
+  .menu__lista > li{
+    padding: 10px 0;
+  }
+  .menu__sub-lista{
+    transform: translate(0px 10%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease 0s;
+  }
+}
+@media (max-width: 767px) {
+  .menu__icona {
+    z-index: 5;
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+  }
+  .menu__icona span,
+  .menu__icona::before,
+  .menu__icona::after {
+    left: 0;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    transition: all 0.3s ease 0s;
+    background-color: #fff;
+  }
+  .menu__icona::before,
+  .menu__icona::after {
+    content: "";
+  }
+  .menu__icona::before{
+    top: 0;
+  }
+  .menu__icona::after{
+    bottom: 0;
+  }
+  .menu__icona span {
+    top: 50%;
+    transform: scale(1) translate(0px, -50%);
+  }
+  .menu__bodya {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(3, 3, 3);
+    padding: 100px 30px 30px 30px;
+    transition: left 0.3s ease 0s;
+    overflow: auto;
+  }
+  .menu__bodya._active{
+    left: 0;
+  }
+  .menu__bodya::before{
+    content: "";
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 70px;
+    background-color: rgb(126, 0, 0);
+    z-index: 2;
+  }
+  .menu__lista > li {
+    flex-wrap: wrap;
+    margin: 0px 0px 30px 0px;
+  }
+  .menu__lista > li:last-child {
+    margin-bottom: 0;
+  }
+  .menu__lista > li._active .menu__sub-lista{
+    display: block;
+  }
+  .menu__linka {
+    font-size: 24px;
+  }
+  .menu__sub-lista{
+    position: relative;
+    background-color: #fff;
+    flex: 1 1 100%;
+    margin: 20px 0px 0px 0px;
+    display: none;
+  }
+  .menu__sub-linka{
+    font-size: 20px;
+    color: #000;
+  }
+}
 /*------------------------------heder---------*/
 .header__bloc{
     display: flex;
@@ -66,6 +274,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 3px 0;
+
+    margin-top: 300px;
 }
 .header__logo{
     width: 18%;
@@ -134,7 +344,7 @@ button:before {
 /*------------------------------heder--nav-------*/
 .header__menu menu{
     display: flex;
-    width: 100%;
+    width: 100%;  
 }
 .menu {
     background-color: rgb(5, 5, 5);
@@ -149,6 +359,101 @@ button:before {
 }  
 .menu__link{
     color: rgb(255, 255, 255);
+}
+
+
+/* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(122, 122, 122);
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100%;
+  left: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Mega Menu header, if needed */
+.dropdown-content .header {
+  background: rgb(2, 2, 2);
+  padding: 16px;
+  color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Create three equal columns that floats next to each other */
+.column-col {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  background-color: #ccc;
+  height: 250px;
+}
+
+/* Style links inside the columns */
+.column-col a {
+  float: none;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a background color on hover */
+.column-col a:hover {
+  background-color: #ddd;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 /*----------------------------------------section head-bloc-------*/
 .head-bloc{
@@ -210,46 +515,6 @@ button:before {
   .border-button:hover {
     background: rgba(126, 126, 126, 0.336);
   }
-  /*----------------------------------------section new-------*/
-.new{
-    display: flex;
-}
-.card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 135px;
-    height: 236px;
-    background-color: rgba(116, 115, 115, 0.103);
-}
-.card:hover {
-    box-shadow: 0 0 10px #030303;
-}
-.card__image{
-    max-width: 120px;
-    max-height: 120px;
-    overflow: hidden;
-}
-.card__image img{
-    width: 100%;
-}
-.card__image:hover img{
-    transform: scale(1.1);
-    transition: 3s;
-}
-.card__body
-.card__title
-.card__price
-.card__footer
-.card__pcs
-.pcs__calc
-.pcs__calc-minus
-.pcs__calc-minus img
-.pcs__calc-imput
-.pcs__calc-plus
-.pcs__calc-plus img
-.card__bascet
 /*----------------------------------------карточка-------*/
 .new{
     display: flex;
@@ -569,7 +834,6 @@ button:before {
   justify-content: space-around;
   margin-top: 30px;
   margin-bottom: 30px;
-  
 }
 .discounts_card{
   display: flex;
