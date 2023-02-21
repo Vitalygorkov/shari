@@ -36,6 +36,9 @@ body {
     font-family: Montserrat;
     font-weight: 500;
 }
+body._lock{
+  overflow: hidden; /*недает скролить весь сайт при открытой меню*/
+}
 .wrapper {
     min-height: 100%;
     overflow: hidden;
@@ -70,18 +73,15 @@ body {
   transform: translateY(0%);
 }
 /*------------------------------hedera---------*/
-.menu__icona{
-  display: none;
-}
 .headera{
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
-  background-color: rgb(252, 167, 167);
+  background-color: #000000;
 }
-.header__containera{
+.headera__container{
   max-width: 1200px;
   margin: 0px auto;
   display: flex;
@@ -90,7 +90,7 @@ body {
   justify-content: space-between;
   min-height: 70px;
 }
-.header__logoa{
+.headera__logo{
   border-radius: 50%;
   background-color: #fff;
   position: relative;
@@ -98,12 +98,15 @@ body {
   width: 40px;
   height: 40px;
 }
+.menu__icona{
+  display: none;
+}
 .menu__lista > li {
   position: relative;
   margin: 0px 0px 0px 20px;
 }
 .menu__linka{
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   font-size: 18px;
 }
 .menu__linka:hover{
@@ -113,43 +116,40 @@ body {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: rgb(0, 0, 0);
+  background-color: #050505;
   padding: 15px;
   min-width: 200px;
 }
 .menu__sub-lista li{
   margin: 0px 0px 10px 0px;
 }
-.menu__sub-lista li:last-child{
+.menu__sub-lista li:last-child {
   margin: 0;
 }
 .menu__sub-linka{
-  color: rgb(255, 255, 255);
+  color: #ffffff;
 }
 .menu__sub-linka:hover{
   text-decoration: underline;
 }
-.menu__arrow{
+.menu__arrowa{
   display: none;
 }
 /*---------------------------------------*/
-body._lock {
-  overflow: hidden;
-}
 body._pc .menu__lista > li:hover .menu__sub-lista {
   opacity: 1;
   visibility: visible;
   transform: translate(0px, 0px);
   pointer-events: all;
 }
-body._touch .menu__lista > li{
+body._touch .menu__lista > li {
   display: flex;
   align-items: center;
 }
-body._touch .menu__linka{
+body._touch .menu__linka {
   flex: 1 1 auto;
 }
-body._touch .menu__arrow {
+body._touch .menu__arrowa {
   display: block;
   width: 0;
   height: 0;
@@ -157,7 +157,7 @@ body._touch .menu__arrow {
   transition: transform 0.3s ease 0s;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 10px solid rgb(255, 255, 255);
+  border-top: 10px solid #fff;
 }
 body._touch .menu__lista > li._active .menu__sub-lista {
   opacity: 1;
@@ -165,108 +165,121 @@ body._touch .menu__lista > li._active .menu__sub-lista {
   transform: translate(0px, 0px);
   pointer-events: all;
 }
-body._touch .menu__lista > li._active .menu__arrow{
+body._touch .menu__lista > li._active .menu__arrowa {
   transform: rotate(-180deg);
 }
 /*---------------------------------------*/
 @media (min-width: 767px) {
   .menu__lista{
-    display: flex;
-    align-items: center;
+      display: flex;
+      align-items: center;
   }
-  .menu__lista > li{
-    padding: 10px 0;
+  .menu__lista > li {
+      padding: 10px 0;
   }
   .menu__sub-lista{
-    transform: translate(0px 10%);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.3s ease 0s;
+      transform: translate(0px, 10%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.3s ease 0s;
   }
 }
 @media (max-width: 767px) {
   .menu__icona {
-    z-index: 5;
-    display: block;
-    position: relative;
-    width: 30px;
-    height: 18px;
-    cursor: pointer;
+      z-index: 5;
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 18px;
+      cursor: pointer;
   }
   .menu__icona span,
   .menu__icona::before,
   .menu__icona::after {
-    left: 0;
-    position: absolute;
-    height: 10%;
-    width: 100%;
-    transition: all 0.3s ease 0s;
-    background-color: #fff;
+      left: 0;
+      position: absolute;
+      height: 10%;
+      width: 100%;
+      transition: all 0.3s ease 0s;
+      background-color: #fff;
   }
   .menu__icona::before,
   .menu__icona::after {
-    content: "";
+      content: "";
   }
   .menu__icona::before{
-    top: 0;
+      top: 0;
   }
   .menu__icona::after{
-    bottom: 0;
+      bottom: 0;
   }
   .menu__icona span {
-    top: 50%;
-    transform: scale(1) translate(0px, -50%);
+      top: 50%;
+      transform: scale(1) translate(0px, -50%);
   }
-  .menu__bodya {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(3, 3, 3);
-    padding: 100px 30px 30px 30px;
-    transition: left 0.3s ease 0s;
-    overflow: auto;
+  .menu__icona._active span {
+      transform: scale(0) translate(0px, -50%);
   }
-  .menu__bodya._active{
-    left: 0;
+  .menu__icona._active::before {
+      top: 50%;
+      transform: rotate(-45deg) translate(0px, -50%);
+  }
+  .menu__icona._active::after {
+      bottom: 50%;
+      transform: rotate(45deg) translate(0px, 50%);
+  }
+  .menu__bodya{
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: #000000b6;
+      padding: 100px 30px 30px 30px;
+      transition: left 0.3s ease 0s;
+      overflow: auto;  /*можно скролить меню шторку*/
+  }
+  .menu__bodya._active {
+      left: 0;
   }
   .menu__bodya::before{
-    content: "";
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    height: 70px;
-    background-color: rgb(126, 0, 0);
-    z-index: 2;
+      content: "";
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 70px;
+      background-color: #34e3e9;
+      z-index: 2;
   }
   .menu__lista > li {
-    flex-wrap: wrap;
-    margin: 0px 0px 30px 0px;
+      flex-wrap: wrap;
+      margin: 0px 0px 20px 0px;
   }
   .menu__lista > li:last-child {
-    margin-bottom: 0;
+      margin-bottom: 0;
   }
   .menu__lista > li._active .menu__sub-lista{
-    display: block;
+      display: block;
   }
   .menu__linka {
-    font-size: 24px;
+      font-size: 24px;
   }
-  .menu__sub-lista{
-    position: relative;
-    background-color: #fff;
-    flex: 1 1 100%;
-    margin: 20px 0px 0px 0px;
-    display: none;
+  .menu__sub-lista {
+      position: relative;
+      background-color: #fff;
+      flex: 1 1 100%;
+      margin: 15px 0px 0px 0px;
+      display: none;
   }
-  .menu__sub-linka{
-    font-size: 20px;
-    color: #000;
+  .menu__sub-linka {
+      font-size: 20px;
+      color: #000;
   }
 }
+/*---------------------------------------*/
+
 /*------------------------------heder---------*/
 .header__bloc{
     display: flex;
@@ -885,7 +898,6 @@ button:before {
   align-items: center;
   justify-content: space-between;
   min-width: 150px;
-  
 }
 .flex-prev{
   display: flex;
@@ -933,7 +945,6 @@ button:before {
   cursor: pointer;
 }
 /*----------------------------------------блок с услугами -------*/
-
 .portfolio-wrap {
    max-width: 1120px;
    margin: 0 auto;
@@ -1055,39 +1066,7 @@ button:before {
    }
 }
 /*----------------------------------------форма обратной св-------*/
-/* Style inputs with type="text", select elements and textareas */
-.hfhfhf[type=text], select, textarea {
-  width: 100%; /* Full width */
-  padding: 10px; /* Some padding */ 
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 10px; /* Bottom margin */
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-}
 
-/* Style the submit button with a specific background color etc */
-.hfhfhf[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* When moving the mouse over the submit button, add a darker green color */
-.hfhfhf[type=submit]:hover {
-  background-color: #45a049;
-}
-
-/* Add a background color and some padding around the form */
-.containers {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
 
 /*----------------------------------------футер-------*/
 .Footer{

@@ -12,46 +12,35 @@
 <body>
     <div class="wrapper">
         <header class="headera">
-            <div class="header__containera">
-                <a href="" class="header__logoa"></a>
-                <div class="header__menua menua">
+            <div class="headera__container">
+                <a href="" class="headera__logo"></a>
+                <div class="header__menu menua">
                     <div class="menu__icona">
                         <span></span>
                     </div>
+                    
                     <nav class="menu__bodya">
                         <ul class="menu__lista">
-                            <li><a data-goto=".head-bloc" href="#" class="menu__linka">раздел 1 карточка</a></li>
-                            <li><a data-goto=".sections__categories" href="#" class="menu__linka">раздел 2 категории</a></li>
-                            <li><a data-goto=".footer" href="#" class="menu__linka">раздел 3 контакт</a></li>
+                            <li><a href="" class="menu__linka">Раздел 1</a></li>
+                            <li><a href="" class="menu__linka">Раздел 2</a></li>
+                            <li><a href="" class="menu__linka">Раздел 3</a></li>
                             <li>
                                 <a href="" class="menu__linka">страница 1</a>
-                                <span class="menu__arrow"></span>
+                                <span class="menu__arrowa"></span>
                                 <ul class="menu__sub-lista">
                                     <li>
-                                        <a href="" class="menu__sub-linka">раздел страница 1</a>
+                                        <a href="" class="menu__sub-linka">раздел страницы 1</a>
                                     </li>
                                     <li>
-                                        <a href="" class="menu__sub-linka">раздел страница 2</a>
+                                        <a href="" class="menu__sub-linka">раздел страницы 2</a>
                                     </li>
                                     <li>
-                                        <a href="" class="menu__sub-linka">раздел страница 3</a>
+                                        <a href="" class="menu__sub-linka">раздел страницы 3</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="" class="menu__linka">страница 2</a>
-                                <span class="menu__arrow"></span>
-                                <ul class="menu__sub-lista">
-                                    <li>
-                                        <a href="" class="menu__sub-linka">раздел страница 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">раздел страница 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">раздел страница 3</a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </nav>
@@ -173,7 +162,7 @@
             
         </header>
 
-        <div class="portfolio-wrap">
+        <!--<div class="portfolio-wrap">
             <div class="portfolio-item">
             <div class="portfolio-item-wrap">
             <a href="">
@@ -230,7 +219,7 @@
             </a>
             </div>
             </div>
-        </div>
+        </div>-->
         <div class="portfolio-item">
             <div class="portfolio-item-wrap">
             <a href="">
@@ -268,10 +257,13 @@
                     <div class="card__title">Сет 5 шаров</div>
                     <div class="card__price">458 руб.</div>
                     <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
-                        <span class="tooltiptext">Шарик обрабатывается изнутри специальным безопасным и экологически нейтральным составом Hi-Float (Хай-Флоат), который увеличивает срок полёта до 2-х дней и более! Только для латексных шаров.</span>
+                        <span class="tooltiptext">Обработка для увеличения времени полета</span>
                     </div>
                     <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
-                        <span class="tooltiptext">Шарик надувается безопасным инертным газом гелием.</span>
+                        <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
+                    </div>
+                    <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
+                        <span class="tooltiptext">Шар наполняется воздухом</span>
                     </div>
                 </div>
                 <div class="card-footer-wrapper">
@@ -493,10 +485,13 @@
                 <div class="gift-text">Бесплатная доставка от 1000р<br>по г. Сосновый бор и области</div>
             </div>
             <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
-                <span class="tooltiptext">Шарик обрабатывается изнутри специальным безопасным и экологически нейтральным составом Hi-Float (Хай-Флоат), который увеличивает срок полёта до 2-х дней и более! Только для латексных шаров.</span>
+                <span class="tooltiptext">Обработка для увеличения времени полета</span>
             </div>
             <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
-                <span class="tooltiptext">Шарик надувается безопасным инертным газом гелием.</span>
+                <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
+            </div>
+            <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
+                <span class="tooltiptext">Шар наполняется воздухом</span>
             </div>
             <div class="card-nav-pcs">
                 <div class="pcs__calc">
@@ -584,11 +579,8 @@
     
     
         
-    
 
-
-
-    <div class="title_discounts _container"><h3>Доставка и скидки:</h3></div>    
+    <div class="title_discounts _container"><h3>АКЦИИ :</h3></div>    
 
 
     <div class="discounts">
@@ -600,12 +592,12 @@
             </div>
             <div class="discounts_card">
                 <img src="{% static 'shop/foto/discount2.png' %}" alt="">
-                <div class="discounts_card_title">Приведи друга</div>
-                <div class="discounts_card_text">Получи скидку 200р на следующий заказ</div>
+                <div class="discounts_card_title">Скидка</div>
+                <div class="discounts_card_text">Получи скидку за отметку</div>
             </div>
             <div class="discounts_card">
                 <img src="{% static 'shop/foto/discount3.png' %}" alt="">
-                <div class="discounts_card_title">Скидка 3 %<br>на 1 заказ</div>
+                <div class="discounts_card_title">Скидка 3 %<br>на первый заказ</div>
                 <div class="discounts_card_text">Для новых клиентов</div>
             </div>
         </div>
@@ -624,33 +616,17 @@
     </div>
 
 
-        
-    </div>
+     <div class="watsap">
+        <div class="watsap-form _container">
+            <section class="head-bloc _container">
+                <div class="title"><h3>СВЯЗАТЬСЯ С НАМИ</h3></div>
+                <div class="head-button"> 
+                    <a href="https://wa.me/+79040795091?text=Хочу сделать заказ шаров" class="border-button">WhatsApp</a>
+                </div>
+            </section>
+        </div>
+     </div>   
 
-    <div class="containers _container">
-        <form action="action_page" class="action_page">
-      
-          <label for="fname">Ваше имя</label>
-          <input type="text" class="hfhfhf" id="fname" name="firstname" placeholder="Имя..">
-      
-          <label for="lname">Ваш номер телефона</label>
-          <input type="text" class="hfhfhf" id="lname" name="lastname" placeholder="Телефон..">
-      
-          <!-- <label for="country">Country</label>
-          <select id="country" name="country">
-            <option value="australia">Australia</option>
-            <option value="canada">Canada</option>
-            <option value="usa">USA</option>
-          </select> -->
-      
-          <label for="subject">Subject</label>
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
-      
-          <input type="submit" class="hfhfhf" value="Submit">
-      
-        </form>
-      </div>
-    
 
 
     <div class="Footer">
