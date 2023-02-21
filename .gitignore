@@ -1,3 +1,4 @@
 /venv/
 /mysite/mysite/settings.py
 /mysite/db.sqlite3
+mysite/mysite/__pycache__/urls.cpython-39.pyc
