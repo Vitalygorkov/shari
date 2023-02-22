@@ -9,7 +9,6 @@
 a {
     text-decoration: none;
 }
-
 ul,
 ol,
 li {
@@ -85,18 +84,25 @@ body._lock{
   max-width: 1200px;
   margin: 0px auto;
   display: flex;
-  padding: 0px 30px;
+  padding: 0px 20px;
   align-items: center;
   justify-content: space-between;
   min-height: 70px;
 }
 .headera__logo{
-  border-radius: 50%;
-  background-color: #fff;
+  /*border-radius: 50%;
+  background-color: #fff;*/
   position: relative;
   z-index: 5;
-  width: 40px;
-  height: 40px;
+  /*width: 40px;
+  height: 40px;*/
+  width: 100%;
+  max-width: 250px;
+}
+.headera__logo img{
+  width: 50%;
+  min-width: 200px;
+  max-width: 300px;
 }
 .menu__icona{
   display: none;
@@ -107,7 +113,7 @@ body._lock{
 }
 .menu__linka{
   color: #ffffff;
-  font-size: 18px;
+  font-size: 15px;
 }
 .menu__linka:hover{
   text-decoration: underline;
@@ -235,7 +241,7 @@ body._touch .menu__lista > li._active .menu__arrowa {
       left: -100%;
       width: 100%;
       height: 100%;
-      background-color: #000000b6;
+      background-color: #000000cc;
       padding: 100px 30px 30px 30px;
       transition: left 0.3s ease 0s;
       overflow: auto;  /*можно скролить меню шторку*/
@@ -250,7 +256,7 @@ body._touch .menu__lista > li._active .menu__arrowa {
       top: 0;
       left: 0;
       height: 70px;
-      background-color: #34e3e9;
+      background-color: #000000;
       z-index: 2;
   }
   .menu__lista > li {
@@ -284,22 +290,15 @@ body._touch .menu__lista > li._active .menu__arrowa {
 .header__bloc{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 3px 0;
-
-    margin-top: 300px;
-}
-.header__logo{
-    width: 18%;
-}
-.header__logo img{
-    width: 100%;
+    margin-top: 75px;
 }
 .header__contact{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 * {box-sizing: border-box;}
@@ -339,134 +338,14 @@ button:before {
 .location{
     font-size: 14px;
     margin: 0 35px;
-}
-.contact-tel{
     display: flex;
     flex-direction: row;
-}
-.contact-tel img{
-    width: 20px;
-    height: 20px;
-}
-.tel{
-    display: flex;
     align-items: center;
-    color: #000;
-    margin-left: 5px;
 }
-/*------------------------------heder--nav-------*/
-.header__menu menu{
-    display: flex;
-    width: 100%;  
-}
-.menu {
-    background-color: rgb(5, 5, 5);
-    height: 30px;
-}
-.menu__list{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 30px;
-}  
-.menu__link{
-    color: rgb(255, 255, 255);
-}
-
-
-/* Navbar container */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: Arial;
-}
-
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: rgb(122, 122, 122);
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  width: 100%;
-  left: 0;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Mega Menu header, if needed */
-.dropdown-content .header {
-  background: rgb(2, 2, 2);
-  padding: 16px;
-  color: white;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Create three equal columns that floats next to each other */
-.column-col {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  background-color: #ccc;
-  height: 250px;
-}
-
-/* Style links inside the columns */
-.column-col a {
-  float: none;
-  color: black;
-  padding: 10px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a background color on hover */
-.column-col a:hover {
-  background-color: #ddd;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.location img{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 /*----------------------------------------section head-bloc-------*/
 .head-bloc{
