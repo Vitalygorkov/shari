@@ -9,6 +9,10 @@
 a {
     text-decoration: none;
 }
+.Blockdsd{
+  color: rgb(119, 69, 255);
+  background-color: red;
+}
 ul,
 ol,
 li {
@@ -47,7 +51,6 @@ body._lock{
 ._container {
     width: 85%; /* дописал котя */
     max-width: 1280px;
-    padding: 0px 15px;
     margin: 0px auto;
     box-sizing: content-box;
 }
@@ -122,7 +125,7 @@ body._lock{
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #050505;
+  background-color: #0000009c;
   padding: 15px;
   min-width: 200px;
 }
@@ -274,7 +277,7 @@ body._touch .menu__lista > li._active .menu__arrowa {
   }
   .menu__sub-lista {
       position: relative;
-      background-color: #fff;
+      background-color: #00000000;
       flex: 1 1 100%;
       margin: 15px 0px 0px 0px;
       display: none;
@@ -285,7 +288,6 @@ body._touch .menu__lista > li._active .menu__arrowa {
   }
 }
 /*---------------------------------------*/
-
 /*------------------------------heder---------*/
 .header__bloc{
     display: flex;
@@ -408,6 +410,12 @@ button:before {
     background: rgba(126, 126, 126, 0.336);
   }
 /*----------------------------------------карточка-------*/
+.Card_big{
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: center;
+}
 .new{
     display: flex;
 }
@@ -430,6 +438,9 @@ button:before {
     max-width: 165px;
     max-height: 180px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .card__image img{
     width: 100%;
@@ -437,6 +448,14 @@ button:before {
 .card__image:hover img{
     transform: scale(1.1);
     transition: 3s;
+}
+.card__title{
+  font-size: 14px;
+  margin-bottom: 5px;
+  width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card__footer{
     display: flex;
@@ -533,13 +552,20 @@ button:before {
 .card__body img{
   width: 50%;
 }
-
 /* Контейнер подсказок */
+.tooltips{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .tooltip {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
 }
-
 /* Текст подсказки */
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -550,23 +576,24 @@ button:before {
   padding: 5px 0;
   border-radius: 6px;
   font-size: 10px;
-
   /* Расположите текст подсказки */
   position: absolute;
   z-index: 1;
   bottom: 125%;
   left: 50%;
   margin-left: -90px;
-
   /* Исчезают в подсказке */
   opacity: 0;
   transition: opacity 0.3s;
 }
-
 /* Отображение текста подсказки при наведении курсора мыши на контейнер подсказки */
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+.tooltip-tex{
+  margin-left: 10px;
+  font-size: 14px;
 }
 /*----------------------------------------развернутая кард лонг-------*/
 .card-long{
@@ -606,6 +633,10 @@ button:before {
 .card-nav-font img{
     margin-right: 20px;
 }
+.font-text{
+  font-family: Caveat;
+  font-size: 24px;
+}
 .card-nav-gift{
     display: flex;
     flex-direction: row;
@@ -624,6 +655,7 @@ button:before {
 .card-nav-action{
     display: flex;
     justify-content: space-around;
+    margin-bottom: 20px;
 }
 .button-1 {
     color: #232323;
@@ -944,9 +976,19 @@ button:before {
       flex-basis: 33.333333333%;
    }
 }
-/*----------------------------------------форма обратной св-------*/
-
-
+/*----------------------------------индивидшрифт------individual-------*/
+.individual{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-family: Caveat;
+  font-weight: 800;
+  font-size: 24px;
+}
+.individual-image img{
+  width: 70%;
+}
 /*----------------------------------------футер-------*/
 .Footer{
     background-color: rgb(192, 184, 192);
@@ -1117,6 +1159,127 @@ button:before {
     font-size: 10px;
   }
 }
+/*-----------------card-long-------ballon--------карта развернутая----*/
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+  max-width: 500px;
+  max-height: 500px;
+  }
+  /* Hide the images by default */
+  .mySlides {
+  display: none;
+  }
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+  cursor: pointer;
+  }
+  /* Next & previous buttons */
+  .prev,
+  .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  }
+  /* Position the "next button" to the right */
+  .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+  }
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  }
+  /* Number text (1/3 etc) */
+  .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  }
+  /* Container for image text */
+  .caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+  }
+  .row:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+  /* Six columns side by side */
+  .column {
+  float: left;
+  width: 16.66%;
+  }
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+  opacity: 0.6;
+  }
+  .active,
+  .demo:hover {
+  opacity: 1;
+  }
+  /*-----------------cart----------корзина----*/
+.cart-image{
+  width: 175px;
+  height: 175px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-image img{
+  width: 100%;
+}
+.cart-blok{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(3, 3, 3, 0.4);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+  padding: 10px 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.cart-pcs__calc{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cart-name{
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.total-price{
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+  font-weight: 600;
+  
+}
+.total-price-name{
+  margin-right: 50px;
+}
+
 /*----------------------------------------media-------*/
 @media (max-width: 1030px){
     .location{
@@ -1247,6 +1410,35 @@ button:before {
     .card-nav{
       margin-left: 0px;
     }
+}
+@media (max-width: 393px){
+  .card{
+    width: 142px;
+    height: 310px;
+    margin: 5px 5px;
+  }
+  .card__image{
+    max-width: 165px;
+    max-height: 160px;
+}
+.card__title{
+  font-size: 12px;
+  margin-bottom: 4px;
+  width: 141px;
+}
+.pcs__calc{
+    width: 100%;  
+}
+.pcs__calc-imput{
+    font-size: 20px;
+}
+.tooltips{
+  display: flex;
+  flex-direction: row;
+}
+.card-footer-wrapper{
+  width: 136px;
+}
 }
 @media (max-width: 330px){
     ._container {

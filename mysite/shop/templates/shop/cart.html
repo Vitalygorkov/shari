@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
+
+cart
+<section class="cart">
+    <div class="cart-body _container">
+        <div class="cart-name"><h3>КОРЗИНА</h3></div> 
+        <div class="cart-blok">
+            <div class="cart-image"><img src="{% static 'shop/foto/2 (2).jpg' %}" alt=""></div>
+            <div class="cart-title">Сет 5 шаров</div>
+            <div class="cart-price">458 руб.</div>
+            <div class="cart-pcs__calc">
+                <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
+                <div class="pcs__calc-imput">1</div>
+                <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
+            </div>
+            <div class="cart-sum">458 руб.</div>
+            <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
+        </div>
+    </div>
+</section>
+
+<section class="head-bloc _container">
+    <div class="total-price">
+        <div class="total-price-name">Итого:</div>
+        <div class="total-price-sum">1500 руб.</div>
+    </div>
+    <div class="head-button">
+        <a href="" class="border-button">Оформить заказ</a>
+    </div>
+</section>
+
+{% endblock %}
+
+
+<!--<script src="{% static 'shop/script.js' %}"></script>-->
