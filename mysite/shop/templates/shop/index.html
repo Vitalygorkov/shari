@@ -1,9 +1,13 @@
 <!doctype html>
 {% load static %}
+{% load mptt_tags %}
 
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&subset=cyrillic-ext" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
@@ -22,54 +26,20 @@
                     <nav class="menu__bodya">
                         <ul class="menu__lista">
                             <li><a href="" class="menu__linka">Главная</a></li>
+                            {% recursetree categories %}
                             <li>
-                                <a href="" class="menu__linka">Готовые наборы</a>
+                                <a href="{{ node.get_absolute_url }}" class="menu__linka">{{ node.name }}</a>
+                                {% if not node.is_leaf_node %}
                                 <span class="menu__arrowa"></span>
+                                {% endif %}
+                                {% if not node.is_leaf_node %}
                                 <ul class="menu__sub-lista">
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Для него</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Для нее</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Для детей</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Фотозоны</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Гендерпати</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Выписка</a>
-                                    </li>
+                                    {{ children }}
+
                                 </ul>
+                                {% endif %}
                             </li>
-                            <li>
-                                <a href="" class="menu__linka">Шары поштучно</a>
-                                <span class="menu__arrowa"></span>
-                                <ul class="menu__sub-lista">
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Фольгированные</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Латексные</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Ходячие</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Аксессуары для праздника</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Латексные</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Ходячие</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            {% endrecursetree %}
                             <li><a href="" class="menu__linka">Акции</a></li>
                             <li><a href="https://wa.me/+79040795091?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>
                             <li><a href="" class="menu__linka"><img src="{% static 'shop/foto/mask-izbranoe.png' %}" alt=""></a></li>
@@ -97,64 +67,6 @@
             </div>
         </header>
 
-        <!--<div class="portfolio-wrap">
-            <div class="portfolio-item">
-            <div class="portfolio-item-wrap">
-            <a href="">
-            <img src="{% static 'shop/foto/9.jpg' %}">
-            <div class="portfolio-item-inner">
-            <div class="portfolio-heading">
-            <h3>ГОТОВЫЕ СЕТЫ</h3>
-            </div>
-            <ul>
-            <li><a href="">Для нее</li></a>
-            <li><a href="">для него</li></a>
-            <li><a href="">Гендер пати</li></a>
-            <li><a href="">Детские</li></a>
-            </ul>
-            </div>
-            </a>
-            </div>
-            </div>
-            
-            <div class="portfolio-item">
-            <div class="portfolio-item-wrap">
-            <a href="">
-            <img src="{% static 'shop/foto/7.jpg' %}">
-            <div class="portfolio-item-inner">
-            <div class="portfolio-heading">
-            <h3>ФОТОЗОНЫ</h3>
-            </div>
-            <ul>
-            <li><a href="">Свадебные</li></a>
-            <li><a href="">День рождения</li></a>
-            <li><a href="">Тематические</li></a>
-            <li><a href="">Детские</li></a>
-            </ul>
-            </div>
-            </a>
-            </div>
-            </div>
-            
-            <div class="portfolio-item">
-            <div class="portfolio-item-wrap">
-            <a href="">
-            <img src="{% static 'shop/foto/2 (2).jpg' %}">
-            <div class="portfolio-item-inner">
-            <div class="portfolio-heading">
-            <h3>14 ФЕВРАЛЯ</h3>
-            </div>
-            <ul>
-            <li><a href="">Наборы на 14 ФЕВРАЛЯ</li></a>
-            <li><a href="">Сердца</li></a>
-            <li><a href="">КОРОБКА-СЮРПРИЗ</li></a>
-            <li><a href="">Фотозона 14 ФЕВРАЛЯ</li></a>
-            </ul>
-            </div>
-            </a>
-            </div>
-            </div>
-        </div>-->
         <div class="portfolio-item">
             <div class="portfolio-item-wrap">
             <a href="">
@@ -175,7 +87,6 @@
         </div>
 
 
-
         <section class="head-bloc _container">
             <div class="title"><h3>НОВИНКИ</h3></div>
             <div class="head-button">
@@ -184,6 +95,64 @@
         </section>
 
         <div class="Card_big element-animation _container">
+            {% if products_list %}
+            {% for product in products_list %}
+
+            {{ product.name }}
+            {{ product.image }}
+            <!-- <a href="{{ product.slug }}">ссылка</a> -->
+            {{ product.price }}
+            {{ product.helium|yesno:"Да,Нет" }} |  
+            {{ product.processing|yesno:"Да,Нет" }}
+            
+
+            <div class="card">
+                <div class="card__header"><a href="{{ product.slug }}">
+                    <div class="card__image"><img src="/media/{{ product.image }}" alt=""></img></div>
+                </a></div>
+                <div class="card__body">
+                    <div class="card__title">{{ product.name }}</div>
+                    <div class="card__price">{{ product.price }} руб.</div>
+                    <div class="tooltips">
+                        <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
+                            <span class="tooltiptext">Обработка для увеличения времени полета</span>
+                        </div>
+                        <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
+                            <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
+                        </div>
+                        <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
+                            <span class="tooltiptext">Шар наполняется воздухом</span>
+                        </div>
+                    </div>    
+                </div>
+                <div class="card-footer-wrapper">
+                    <div class="card__footer">
+                        <div class="card__pcs">
+                            <div class="pcs__calc">
+                                <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
+                                <div class="pcs__calc-imput">1</div>
+                                <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
+                            </div>
+                            <div class="favorites-cart">
+                                <a href="47sharov.ru"><img src="{% static 'shop/foto/favorites.png' %}" alt="favorites"></img></a>
+                                <a href="47sharov.ru"><img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img></a>
+                            </div>    
+                        </div>
+                       
+                    </div>
+                    <a href="47sharov.ru" class="flip-btn">Подробно</a>
+                </div> 
+            </div>
+
+
+
+
+
+            {% endfor %}
+            {% endif %}
+       
+
+        <p></p>
             <div class="card">
                 <div class="card__header"><a href="47sharov.ru">
                     <div class="card__image"><img src="{% static 'shop/foto/2ZZ_9_E6xTeRXMCk3VEZWO1UYbnvfM9FqAkO_PBZC-Lsd4LJyG_UvoWhG4KemCGLDkc4IqsuN6zIKIFLzmdZQFZO.jpg' %}" alt=""></img></div>
@@ -228,221 +197,7 @@
             </div>
         </section>
 
-    <section class="card-long _container">
-        <div class="card-mini-gellery">
-            <!DOCTYPE html>
-            <html>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style>
-            body {
-            font-family: Arial;
-            margin: 0;
-            }
-
-            * {
-            box-sizing: border-box;
-            }
-
-            img {
-            vertical-align: middle;
-            }
-
-            /* Position the image container (needed to position the left and right arrows) */
-            .container {
-            position: relative;
-            width: 500px;
-            height: 500px;
-            }
-
-            /* Hide the images by default */
-            .mySlides {
-            display: none;
-            }
-
-            /* Add a pointer when hovering over the thumbnail images */
-            .cursor {
-            cursor: pointer;
-            }
-
-            /* Next & previous buttons */
-            .prev,
-            .next {
-            cursor: pointer;
-            position: absolute;
-            top: 40%;
-            width: auto;
-            padding: 16px;
-            margin-top: -50px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            -webkit-user-select: none;
-            }
-
-            /* Position the "next button" to the right */
-            .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-            }
-
-            /* On hover, add a black background color with a little bit see-through */
-            .prev:hover,
-            .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-            }
-
-            /* Number text (1/3 etc) */
-            .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-            }
-
-            /* Container for image text */
-            .caption-container {
-            text-align: center;
-            background-color: #222;
-            padding: 2px 16px;
-            color: white;
-            }
-
-            .row:after {
-            content: "";
-            display: table;
-            clear: both;
-            }
-
-            /* Six columns side by side */
-            .column {
-            float: left;
-            width: 16.66%;
-            }
-
-            /* Add a transparency effect for thumnbail images */
-            .demo {
-            opacity: 0.6;
-            }
-
-            .active,
-            .demo:hover {
-            opacity: 1;
-            }
-            </style>
-            <body>
-
-            <h2 style="text-align:center">Slideshow Gallery</h2>
-
-            <div class="container">
-            <div class="mySlides">
-                <div class="numbertext">1 / 3</div>
-                <img src="{% static 'shop/foto/zBmewe1.jpg' %}" style="width:100%">
-            </div>
-
-            <div class="mySlides">
-                <div class="numbertext">2 / 3</div>
-                <img src="{% static 'shop/foto/zBmewe2.jpg' %}" style="width:100%">
-            </div>
-
-            <div class="mySlides">
-                <div class="numbertext">3 / 3</div>
-                <img src="{% static 'shop/foto/zBmewe3.jpg' %}" style="width:100%">
-            </div>
-                   
-            <a class="prev" onclick="plusSlides(-1)">❮</a>
-            <a class="next" onclick="plusSlides(1)">❯</a>
-
-            <div class="caption-container">
-                <p id="caption"></p>
-            </div>
-
-            <div class="row">
-                <div class="column">
-                <img class="demo cursor" src="{% static 'shop/foto/zBmewe1.jpg' %}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
-                </div>
-                <div class="column">
-                <img class="demo cursor" src="{% static 'shop/foto/zBmewe2.jpg' %}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
-                </div>
-                <div class="column">
-                <img class="demo cursor" src="{% static 'shop/foto/zBmewe3.jpg' %}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-                </div>
-                
-            </div>
-            </div>
-
-            <script>
-            var slideIndex = 1;
-            showSlides(slideIndex);
-
-            function plusSlides(n) {
-            showSlides(slideIndex += n);
-            }
-
-            function currentSlide(n) {
-            showSlides(slideIndex = n);
-            }
-
-            function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            var captionText = document.getElementById("caption");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-            captionText.innerHTML = dots[slideIndex-1].alt;
-            }
-            </script>
-                
-            </body>
-            </html>
-        </div>
-        <div class="card-nav">
-            <div class="card-nav-title"><h2>Шар леденец 45 см</h2></div>
-            <div class="card-nav-text"><h4>Фольгированный шар, размер 45 см<br>Наполнение - гелий</h4></div>
-            <div class="card-nav-price">800 руб. - 1 шт</div>
-            <div class="card-nav-font">
-                <img src="{% static 'shop/foto/owl 1.png' %}" alt="">
-                <div class="font-text">Индивидуальная надпись  с любым<br>текстом и шрифтом по запросу</div>
-            </div>
-            <div class="card-nav-gift">
-                <img src="{% static 'shop/foto/gift5 1.png' %}" alt="">
-                <div class="gift-text">Бесплатная доставка от 1000р<br>по г. Сосновый бор и области</div>
-            </div>
-            <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
-                <span class="tooltiptext">Обработка для увеличения времени полета</span>
-            </div>
-            <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
-                <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
-            </div>
-            <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
-                <span class="tooltiptext">Шар наполняется воздухом</span>
-            </div>
-            <div class="card-nav-pcs">
-                <div class="pcs__calc">
-                    <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
-                    <div class="pcs__calc-imput">1</div>
-                    <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
-                </div>
-            </div>
-            <div class="card-nav-action">
-                <a href=""><button class="button-1">+Корзина</button></a>
-                <a href=""><button class="button-1">+Избранное</button></a>
-                
-            </div>
-        </div>
-    </section>
-
+    
     <div class="way-box _container">
         <div class="category_path"><a href="">Главная</a></div>
         <div class="categories_path">
@@ -511,12 +266,15 @@
         </div>
     </div>
 
-    
-    
-        
 
+    <div class="individual element-animation _container">
+        <div class="individual-text">ИНДИВИДУАЛЬНАЯ НАДПИСЬ<br><br>НА ШАРЕ И КОРОБКЕ</div>
+        <div class="individual-image"><img src="{% static 'shop/foto/pen.png' %}" alt=""></div>
+    </div>
+
+
+    
     <div class="title_discounts _container"><h3>АКЦИИ :</h3></div>    
-
 
     <div class="discounts">
         <div class="discounts_box element-animation _container">

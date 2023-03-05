@@ -99,6 +99,7 @@ class Balloon(Product):
                                               null=True)  # размер см
     helium = models.BooleanField("Гелий да/нет", default=False, blank=True)  # "Гелий да/нет" по дефолту нет.
     processing = models.BooleanField("Обработка да/нет", default=False, blank=True)  # "Обработка да/нет" по дефолту нет.
+    air = models.BooleanField("Воздух да/нет", default=False, blank=True)  # "Воздух да/нет" по дефолту нет.
 
     class Meta:
         verbose_name = 'Шар'

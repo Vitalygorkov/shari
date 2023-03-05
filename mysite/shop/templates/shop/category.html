@@ -1,0 +1,67 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+Страница категорий
+
+
+
+<!-- блок с карточками -->
+<div class="Card_big element-animation _container">
+{% if products_list %}
+{% for product in products_list %}
+
+<!-- {{ product.name }}
+{{ product.image }}
+<!-- <a href="{{ product.slug }}">ссылка</a> -->
+<!-- {{ product.price }}
+{{ product.helium|yesno:"Да,Нет" }} |  
+{{ product.processing|yesno:"Да,Нет" }} --> 
+
+
+<div class="card">
+    <div class="card__header"><a href="{{ product.slug }}">
+        <div class="card__image"><img src="/media/{{ product.image }}" alt=""></img></div>
+    </a></div>
+    <div class="card__body">
+        <div class="card__title">{{ product.name }}</div>
+        <div class="card__price">{{ product.price }} руб.</div>
+        <div class="tooltips">
+            <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
+                <span class="tooltiptext">Обработка для увеличения времени полета</span>
+            </div>
+            <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
+                <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
+            </div>
+            <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
+                <span class="tooltiptext">Шар наполняется воздухом</span>
+            </div>
+        </div>    
+    </div>
+    <div class="card-footer-wrapper">
+        <div class="card__footer">
+            <div class="card__pcs">
+                <div class="pcs__calc">
+                    <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
+                    <div class="pcs__calc-imput">1</div>
+                    <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
+                </div>
+                <div class="favorites-cart">
+                    <a href="47sharov.ru"><img src="{% static 'shop/foto/favorites.png' %}" alt="favorites"></img></a>
+                    <a href="47sharov.ru"><img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img></a>
+                </div>    
+            </div>
+           
+        </div>
+        <a href="47sharov.ru" class="flip-btn">Подробно</a>
+    </div> 
+</div>
+
+
+
+{% endfor %}
+{% endif %}
+</div>
+<!-- Закончился блок с карточками -->
+
+
+{% endblock %}

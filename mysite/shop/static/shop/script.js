@@ -93,3 +93,6 @@ function onEntry(entry) {
     observer.observe(elm);
   }
 /*появление при скроле карточки товара*/
+
+/*-----------------card-long-------ballon--------карта развернутая----*/
+        
