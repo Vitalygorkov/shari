@@ -71,7 +71,7 @@ body._lock{
 }
 .element-animation.element-show {
   opacity: 1;
-  transition: all 1.5s;
+  transition: all 1s;
   transform: translateY(0%);
 }
 /*------------------------------hedera---------*/
@@ -695,7 +695,8 @@ button:before {
     color: #000;
 }
 .way-box img{
-    width: 30%;
+    width: 100%;
+    max-width: 20px;
 }
 .category_path{
     padding: 5px;

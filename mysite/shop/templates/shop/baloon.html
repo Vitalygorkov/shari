@@ -13,7 +13,7 @@ helium = models.BooleanField("Гелий да/нет", default=False, blank=True
 processing = models.BooleanField("Обработка да/нет", default=False, blank=True)  # "Обработка да/нет" по дефолту нет.
 air = models.BooleanField("Воздух да/нет", default=False, blank=True)  # "Воздух да/нет" по дефолту нет.
 
-product_balloon.image
+product_balloon.name
 -->
 
 
@@ -24,32 +24,34 @@ product_balloon.image
 baloon
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<section class="card-long _container">
+
+    <div class="way-box _container">
+        <div class="category_path"><a href="/shop/">Главная</a></div>
+        <div class="categories_path">
+            <div class="category_path">
+                <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+                <a href="/{{ last_category.url }}">{{ last_category.name }}</a>
+            </div>
+        </div>
+        <div class="categories_path">
+            <div class="category_path">
+                <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+                <a href="{{ product_balloon.url }}">{{ product_balloon.name }}</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section class="card-long _container">
     <div class="card-mini-gellery">
-        
-        <h2 style="text-align:center">Slideshow Gallery</h2>
 
         <div class="container">
-            {% for img in product.prodimg.all %}
+            {% for img in product_balloon.prodimg.all %}
             <div class="mySlides">
             <img src="{{ img.image.url }}" alt="продукт" style="width:100%">
             </div>
             {% endfor %}
-
-<!--            <div class="mySlides">-->
-<!--                <div class="numbertext">1 / 3</div>-->
-<!--                <img src="{% static 'shop/foto/zBmewe1.jpg' %}" style="width:100%">-->
-<!--            </div>-->
-
-<!--            <div class="mySlides">-->
-<!--                <div class="numbertext">2 / 3</div>-->
-<!--                <img src="{% static 'shop/foto/zBmewe2.jpg' %}" style="width:100%">-->
-<!--            </div>-->
-
-<!--            <div class="mySlides">-->
-<!--                <div class="numbertext">3 / 3</div>-->
-<!--                <img src="{% static 'shop/foto/zBmewe3.jpg' %}" style="width:100%">-->
-<!--            </div>-->
 
             <a class="prev" onclick="plusSlides(-1)">❮</a>
             <a class="next" onclick="plusSlides(1)">❯</a>
@@ -59,17 +61,14 @@ baloon
             </div>
 
             <div class="row">
-                {% for img in product.prodimg.all %}
+                {% if product_balloon %}
+                {% for img in product_balloon.prodimg.all %}
                 <div class="column">
-                <img class="demo cursor" src="{{ img.image.url }}" style="width:100%" onclick="currentSlide({{ forloop.counter }})" alt="The Woods">
+                <img class="demo cursor" src="{{ img.image.url }}" style="width:100%" onclick="currentSlide({{ forloop.counter }})" alt="Изображение">
                 </div>
                 {% endfor %}
-<!--                <div class="column">-->
-<!--                <img class="demo cursor" src="{% static 'shop/foto/zBmewe2.jpg' %}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">-->
-<!--                </div>-->
-<!--                <div class="column">-->
-<!--                <img class="demo cursor" src="{% static 'shop/foto/zBmewe3.jpg' %}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">-->
-<!--                </div>-->
+                {% endif %}
+
 
             </div>
         </div>
@@ -110,7 +109,7 @@ baloon
             
     </div>
     <div class="card-nav">
-        <div class="card-nav-title"><h2>Шар леденец 45 см</h2></div>
+        <div class="card-nav-title"><h2>{{ product_balloon.name }}</h2></div>
         <div class="card-nav-text"><h4>Фольгированный шар, размер 45 см<br>Наполнение - гелий</h4></div>
         <div class="card-nav-price">800 руб. - 1 шт</div>
         <div class="card-nav-font">
@@ -147,12 +146,6 @@ baloon
         </div>
     </div>
 </section>
-
-
-
-
-
-
 <script src="{% static 'shop/script.js' %}"></script>
 
 {% endblock %}

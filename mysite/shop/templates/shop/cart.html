@@ -4,13 +4,32 @@
 <link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
 
 cart
+<div class="way-box _container">
+    <div class="category_path"><a href="/shop">Главная</a></div>
+    <div class="categories_path">
+        <div class="category_path">
+            <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+            <a href="{{ last_category.url }}">{{ last_category.name }} </a>
+        </div>
+    </div>
+    <div class="categories_path">
+<!--        <div class="category_path">-->
+<!--            <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">-->
+<!--            <a href="{{ product.url }}">{{ product.name }}</a>-->
+<!--        </div>-->
+    </div>
+</div>
+
+
 <section class="cart">
     <div class="cart-body _container">
         <div class="cart-name"><h3>КОРЗИНА</h3></div> 
+        {% if products_list %}
+        {% for product in products_list %}
         <div class="cart-blok">
-            <div class="cart-image"><img src="{% static 'shop/foto/2 (2).jpg' %}" alt=""></div>
-            <div class="cart-title">Сет 5 шаров</div>
-            <div class="cart-price">458 руб.</div>
+            <div class="cart-image"><img src="/media/{{ product.image }}" alt=""></div>
+            <div class="cart-title">{{ product.name }}</div>
+            <div class="cart-price">{{ product.price }} руб.</div>
             <div class="cart-pcs__calc">
                 <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
                 <div class="pcs__calc-imput">1</div>
@@ -19,6 +38,8 @@ cart
             <div class="cart-sum">458 руб.</div>
             <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
         </div>
+        {% endfor %}
+        {% endif %}
     </div>
 </section>
 

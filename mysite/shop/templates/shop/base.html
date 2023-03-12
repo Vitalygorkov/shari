@@ -4,9 +4,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&subset=cyrillic-ext" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&subset=cyrillic-ext" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <title>4747</title>
 </head>
 <body>
@@ -22,11 +24,16 @@
 
                     <nav class="menu__bodya">
                         <ul class="menu__lista">
-                            <li><a href="" class="menu__linka">Главная</a></li>
+                            <li><a href="/shop" class="menu__linka">Главная</a></li>
                             {% if categories %}
                             {% recursetree categories %}
                             <li>
-                                <a href="{{ node.get_absolute_url }}" class="menu__linka">{{ node.name }}</a>
+                                <a href="{{ node.get_absolute_url }}" class="menu__linka">
+<!--                                   <a onclick="window.scrollTo({ top: 500, behavior: 'smooth'});"> -->
+                                       {{ node.name }}
+<!--                                   </a>-->
+
+                                </a>
                                 {% if not node.is_leaf_node %}
                                 <span class="menu__arrowa"></span>
                                 {% endif %}
@@ -37,7 +44,7 @@
                                 </ul>
                                 {% endif %}
                             </li>
-                            {% endrecursetree %}\
+                            {% endrecursetree %}
                             {% endif %}
                             <!-- <li>
                                 <a href="" class="menu__linka">Готовые наборы</a>
@@ -89,8 +96,8 @@
                             </li> -->
                             <li><a href="" class="menu__linka">Акции</a></li>
                             <li><a href="https://wa.me/+79040795091?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>
-                            <li><a href="" class="menu__linka"><img src="{% static 'shop/foto/mask-izbranoe.png' %}" alt=""></a></li>
-                            <li><a href="" class="menu__linka"><img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></a></li>
+                            <li><a href="/favorites" class="menu__linka"><img src="{% static 'shop/foto/mask-izbranoe.png' %}" alt=""></a></li>
+                            <li><a href="/cart" class="menu__linka"><img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -124,6 +131,17 @@
 
 {% block content %}
 {% endblock %}
+
+<div class="watsap">
+    <div class="watsap-form _container">
+        <section class="head-bloc _container">
+            <div class="title"><h3>СВЯЗАТЬСЯ С НАМИ</h3></div>
+            <div class="head-button">
+                <a href="https://wa.me/+79141291291?text=Хочу сделать заказ шаров" class="border-button">WhatsApp</a>
+            </div>
+        </section>
+    </div>
+</div>
 
 <div class="Footer">
         <div class="footer _container">
