@@ -1,372 +1,85 @@
-<!doctype html>
+{% extends 'shop/base.html' %}
 {% load static %}
 {% load mptt_tags %}
+{% block content %}
 
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&subset=cyrillic-ext" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
-    <title>4747</title>
-</head>
-<body>
-    <div class="wrapper">
-        <header class="headera">
-            <div class="headera__container">
-                <a href="" class="headera__logo"><img src="{% static 'shop/foto/logo-kikimora.jpg' %}" alt=""></a>
-                <div class="header__menu menua">
-                    <div class="menu__icona">
-                        <span></span>
-                    </div>
-                    
-                    <nav class="menu__bodya">
-                        <ul class="menu__lista">
-                            <li><a href="" class="menu__linka">Главная</a></li>
-                            {% recursetree categories %}
-                            <li>
-                                <a href="{{ node.get_absolute_url }}" class="menu__linka">{{ node.name }}</a>
-                                {% if not node.is_leaf_node %}
-                                <span class="menu__arrowa"></span>
-                                {% endif %}
-                                {% if not node.is_leaf_node %}
-                                <ul class="menu__sub-lista">
-                                    {{ children }}
-
-                                </ul>
-                                {% endif %}
-                            </li>
-                            {% endrecursetree %}
-                            <li><a href="" class="menu__linka">Акции</a></li>
-                            <li><a href="https://wa.me/+79040795091?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>
-                            <li><a href="" class="menu__linka"><img src="{% static 'shop/foto/mask-izbranoe.png' %}" alt=""></a></li>
-                            <li><a href="" class="menu__linka"><img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-
-        <header class="header">
-            <div class="header__container _container">
-                <div class="header__bloc">
-                    <search class="search">  
-                        <div class="search_form">    
-                            <input type="text" class="search-input" placeholder="Поиск...">
-                            <button type="submit"><img src="{% static 'shop/foto/magnifier 1.png' %}" alt=""></button>
-                        </div>
-                    </search>
-                    <div class="location">
-                        <img src="{% static 'shop/foto/mesto-sosnov-bor 1.png' %}" alt="">
-                        <p>г. Сосновый Бор, Ленинградская обл.</p>
-                    </div>   
-                </div>
-            </div>
-        </header>
-
-        <div class="portfolio-item">
-            <div class="portfolio-item-wrap">
-            <a href="">
-            <img src="{% static 'shop/foto/proverca.jpg' %}">
-            <div class="portfolio-item-inner">
-            <div class="portfolio-heading">
-            <h3>14 ФЕВРАЛЯ</h3>
-            </div>
-            <ul>
-            <li><a href="">Наборы на 14 ФЕВРАЛЯ</li></a>
-            <li><a href="">Сердца</li></a>
-            <li><a href="">КОРОБКА-СЮРПРИЗ</li></a>
-            <li><a href="">Фотозона 14 ФЕВРАЛЯ</li></a>
-            </ul>
-            </div>
-            </a>
-            </div>
-        </div>
-
-
-        <section class="head-bloc _container">
-            <div class="title"><h3>НОВИНКИ</h3></div>
-            <div class="head-button">
-                <a href="" class="border-button">Весь каталог</a>
-            </div>
-        </section>
-
-        <div class="Card_big element-animation _container">
-            {% if products_list %}
-            {% for product in products_list %}
-
-            {{ product.name }}
-            {{ product.image }}
-            <!-- <a href="{{ product.slug }}">ссылка</a> -->
-            {{ product.price }}
-            {{ product.helium|yesno:"Да,Нет" }} |  
-            {{ product.processing|yesno:"Да,Нет" }}
-            
-
-            <div class="card">
-                <div class="card__header"><a href="{{ product.slug }}">
-                    <div class="card__image"><img src="/media/{{ product.image }}" alt=""></img></div>
-                </a></div>
-                <div class="card__body">
-                    <div class="card__title">{{ product.name }}</div>
-                    <div class="card__price">{{ product.price }} руб.</div>
-                    <div class="tooltips">
-                        <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
-                            <span class="tooltiptext">Обработка для увеличения времени полета</span>
-                        </div>
-                        <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
-                            <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
-                        </div>
-                        <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
-                            <span class="tooltiptext">Шар наполняется воздухом</span>
-                        </div>
-                    </div>    
-                </div>
-                <div class="card-footer-wrapper">
-                    <div class="card__footer">
-                        <div class="card__pcs">
-                            <div class="pcs__calc">
-                                <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
-                                <div class="pcs__calc-imput">1</div>
-                                <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
-                            </div>
-                            <div class="favorites-cart">
-                                <a href="47sharov.ru"><img src="{% static 'shop/foto/favorites.png' %}" alt="favorites"></img></a>
-                                <a href="47sharov.ru"><img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img></a>
-                            </div>    
-                        </div>
-                       
-                    </div>
-                    <a href="47sharov.ru" class="flip-btn">Подробно</a>
-                </div> 
-            </div>
-
-
-
-
-
-            {% endfor %}
-            {% endif %}
-       
-
-        <p></p>
-            <div class="card">
-                <div class="card__header"><a href="47sharov.ru">
-                    <div class="card__image"><img src="{% static 'shop/foto/2ZZ_9_E6xTeRXMCk3VEZWO1UYbnvfM9FqAkO_PBZC-Lsd4LJyG_UvoWhG4KemCGLDkc4IqsuN6zIKIFLzmdZQFZO.jpg' %}" alt=""></img></div>
-                </a></div>
-                <div class="card__body">
-                    <div class="card__title">Сет 5 шаров</div>
-                    <div class="card__price">458 руб.</div>
-                    <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
-                        <span class="tooltiptext">Обработка для увеличения времени полета</span>
-                    </div>
-                    <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
-                        <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
-                    </div>
-                    <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
-                        <span class="tooltiptext">Шар наполняется воздухом</span>
-                    </div>
-                </div>
-                <div class="card-footer-wrapper">
-                    <div class="card__footer">
-                        <div class="card__pcs">
-                            <div class="pcs__calc">
-                                <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
-                                <div class="pcs__calc-imput">1</div>
-                                <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
-                            </div>
-                            <div class="favorites-cart">
-                                <a href="47sharov.ru"><img src="{% static 'shop/foto/favorites.png' %}" alt="favorites"></img></a>
-                                <a href="47sharov.ru"><img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img></a>
-                            </div>    
-                        </div>
-                       
-                    </div>
-                    <a href="47sharov.ru" class="flip-btn">Подробно</a>
-                </div> 
-            </div>
-        </div>
-
-        <section class="head-bloc _container">
-            <div class="title"><h3>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h3></div>
-            <div class="head-button">
-                <a href="" class="border-button">Весь каталог</a>
-            </div>
-        </section>
-
-    
-    <div class="way-box _container">
-        <div class="category_path"><a href="">Главная</a></div>
-        <div class="categories_path">
-            <div class="category_path">
-                <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
-                <a href="">Девочкам</a>
-            </div>
-        </div>
-        <div class="categories_path">
-            <div class="category_path">
-                <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
-                <a href="">8 Марта</a>
-            </div>
-        </div>
+<div class="portfolio-item">
+    <div class="portfolio-item-wrap">
+    <a href="">
+    <img src="{% static 'shop/foto/proverca.jpg' %}">
+    <div class="portfolio-item-inner">
+    <div class="portfolio-heading">
+    <h3>14 ФЕВРАЛЯ</h3>
     </div>
+    <ul>
+    <li><a href="/nabor">Готовые наборы</li></a>
+    <li><a href="">Сердца</li></a>
+    <li><a href="">КОРОБКА-СЮРПРИЗ</li></a>
+    <li><a href="">Фотозона 14 ФЕВРАЛЯ</li></a>
+    </ul>
+    </div>
+    </a>
+    </div>
+</div>
 
+<section class="head-bloc _container">
+    <div class="title"><h3>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h3></div>
+    <div class="head-button">
+        <a href="" class="border-button">Весь каталог</a>
+    </div>
+</section>
 
-    <div class="sections__categories element-animation">
-        <div class="categories_bloc _container">
+<div class="sections__categories element-animation">
+    <div class="categories_bloc _container">
             <div class="categories_bloc_1">
+                {% if categories %}
+                {% for category in categories %}
                 <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
+
+                         <a href="/{{ category.url }}">{{ category.name }}</a>
+
                 </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-            </div>    
-            <div class="categories_bloc_1">
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-            </div> 
-        </div>
-        <div class="categories_bloc _container">
-            <div class="categories_bloc_1">
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-            </div>    
-            <div class="categories_bloc_1">
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
-                <div class="categories_card">
-                    <a href=""><img src="{% static 'shop/foto/korobka.jpg' %}" alt=""></a>
-                </div>
+                {% endfor %}
+                {% endif %}
             </div>
-        </div>
     </div>
+</div>
 
-
-    <div class="individual element-animation _container">
-        <div class="individual-text">ИНДИВИДУАЛЬНАЯ НАДПИСЬ<br><br>НА ШАРЕ И КОРОБКЕ</div>
-        <div class="individual-image"><img src="{% static 'shop/foto/pen.png' %}" alt=""></div>
-    </div>
-
-
+<div class="individual element-animation _container">
+    <div class="individual-text">ИНДИВИДУАЛЬНАЯ НАДПИСЬ<br><br>НА ШАРЕ И КОРОБКЕ</div>
+    <div class="individual-image"><img src="{% static 'shop/foto/pen.png' %}" alt=""></div>
+</div>
     
-    <div class="title_discounts _container"><h3>АКЦИИ :</h3></div>    
+<div class="title_discounts _container"><h3>АКЦИИ :</h3></div>
 
-    <div class="discounts">
-        <div class="discounts_box element-animation _container">
-            <div class="discounts_card">
-                <img src="{% static 'shop/foto/discount1.png' %}" alt="">
-                <div class="discounts_card_title">Бесплатная доставка<br>от 1000 р</div>
-                <div class="discounts_card_text">Сосновый бор и лен область,<br>а так же ребровка</div>
-            </div>
-            <div class="discounts_card">
-                <img src="{% static 'shop/foto/discount2.png' %}" alt="">
-                <div class="discounts_card_title">Скидка</div>
-                <div class="discounts_card_text">Получи скидку за отметку</div>
-            </div>
-            <div class="discounts_card">
-                <img src="{% static 'shop/foto/discount3.png' %}" alt="">
-                <div class="discounts_card_title">Скидка 3 %<br>на первый заказ</div>
-                <div class="discounts_card_text">Для новых клиентов</div>
-            </div>
+<div class="discounts">
+    <div class="discounts_box element-animation _container">
+        <div class="discounts_card">
+            <img src="{% static 'shop/foto/discount1.png' %}" alt="">
+            <div class="discounts_card_title">Бесплатная доставка<br>от 1000 р</div>
+            <div class="discounts_card_text">Сосновый бор и лен область,<br>а так же ребровка</div>
         </div>
-    </div>   
-    
-    
-    <div class="module-pagination _container">
-        <div class="pagination_load"><a href="">Показать еще</a></div>
-        <div class="pagination_box">
-            <div class="flex-prev"><a href=""><img src="{% static 'shop/foto/arrow-l.png' %}" alt=""></a></div>
-            <div class="numb"><a href="">1</a></div>
-            <div class="numb-on"><a href="">2</a></div>
-            <div class="numb"><a href="">3</a></div>
-            <div class="flex-next"><a href=""><img src="{% static 'shop/foto/arrow-r.png' %}" alt=""></a></div>
+        <div class="discounts_card">
+            <img src="{% static 'shop/foto/discount2.png' %}" alt="">
+            <div class="discounts_card_title">Скидка</div>
+            <div class="discounts_card_text">Получи скидку за отметку</div>
+        </div>
+        <div class="discounts_card">
+            <img src="{% static 'shop/foto/discount3.png' %}" alt="">
+            <div class="discounts_card_title">Скидка 3 %<br>на первый заказ</div>
+            <div class="discounts_card_text">Для новых клиентов</div>
         </div>
     </div>
+</div>
 
-
-     <div class="watsap">
-        <div class="watsap-form _container">
-            <section class="head-bloc _container">
-                <div class="title"><h3>СВЯЗАТЬСЯ С НАМИ</h3></div>
-                <div class="head-button"> 
-                    <a href="https://wa.me/+79040795091?text=Хочу сделать заказ шаров" class="border-button">WhatsApp</a>
-                </div>
-            </section>
-        </div>
-     </div>   
-
-
-
-    <div class="Footer">
-        <div class="footer _container">
-            <div class="footer__body">
-                <div class="info">
-                    <div class="name">ИНФОРМАЦИЯ:</div>
-                    <a href="47sharov.ru">Доставка и оплата</a>
-                    <a href="47sharov.ru">Как купить</a>
-                    <a href="47sharov.ru">Скидки</a>
-                    <a href="47sharov.ru">Услуги</a>
-                    <a href="47sharov.ru">Заказать звонок</a>
-                </div>
-                <div class="catalog">
-                    <div class="head-button">
-                        <a href="47sharov.ru" class="border-button">Весь каталог</a>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="we">МЫ В СОЦСЕТЯХ:</div>
-                    <div class="icons">
-                        <a href="47sharov.ru"><img src="{% static 'shop/foto/instagram.png' %}" alt="instagram"></img></a>
-                        <a href="47sharov.ru"><img src="{% static 'shop/foto/vk.png' %}" alt="vk"></img></a>
-                        <a href="47sharov.ru"><img src="{% static 'shop/foto/whatsapp.png' %}" alt="whatsapp"></img></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__back">
-                <a href="47sharov.ru" class="footer-button">ДЛЯ НЕЕ</a>
-                <a href="47sharov.ru" class="footer-button">ДЛЯ НЕГО</a>
-                <a href="47sharov.ru" class="footer-button">ВЫПИСКА</a>
-                <a href="47sharov.ru" class="footer-button">Gender party</a>
-                <a href="47sharov.ru" class="footer-button">КОРОБКА-СЮРПРИЗ</a>
-                <a href="47sharov.ru" class="footer-button">ФОТОЗОНЫ</a>
-                <a href="47sharov.ru" class="footer-button">ДЕВОЧКАМ</a>
-                <a href="47sharov.ru" class="footer-button">МАЛЬЧИКАМ</a>
-                <a href="47sharov.ru" class="footer-button">АКСЕССУАРЫ</a>
-                <a href="47sharov.ru" class="footer-button">ШРИФТ</a>
-            </div>
-        </div>
+<div class="module-pagination _container">
+    <div class="pagination_load"><a href="">Показать еще</a></div>
+    <div class="pagination_box">
+        <div class="flex-prev"><a href=""><img src="{% static 'shop/foto/arrow-l.png' %}" alt=""></a></div>
+        <div class="numb"><a href="">1</a></div>
+        <div class="numb-on"><a href="">2</a></div>
+        <div class="numb"><a href="">3</a></div>
+        <div class="flex-next"><a href=""><img src="{% static 'shop/foto/arrow-r.png' %}" alt=""></a></div>
     </div>
-
-        
-        
-    </div>
-     
-    </div>
-    <script src="{% static 'shop/script.js' %}"></script>
-</body>
-</html>    
+</div>
+{% endblock %}

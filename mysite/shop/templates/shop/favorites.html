@@ -1,40 +1,37 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
-Страница категорий
+<link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
 
+favorites
 
-
-<!-- блок с карточками -->
 <div class="Card_big _container">
 
-
-<div class="way-box _container">
-    <div class="category_path"><a href="/shop">Главная</a></div>
-    <div class="categories_path">
-        <div class="category_path">
-            <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
-            <a href="{{ last_category.url }}">{{ last_category.name }} </a>
+    <div class="way-box _container">
+        <div class="category_path"><a href="/shop">Главная</a></div>
+        <div class="categories_path">
+            <div class="category_path">
+                <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+                <a href="{{ last_category.url }}">{{ last_category.name }} </a>
+            </div>
+        </div>
+        <div class="categories_path">
+    <!--        <div class="category_path">-->
+    <!--            <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">-->
+    <!--            <a href="{{ product.url }}">{{ product.name }}</a>-->
+    <!--        </div>-->
         </div>
     </div>
-    <div class="categories_path">
-<!--        <div class="category_path">-->
-<!--            <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">-->
-<!--            <a href="{{ product.url }}">{{ product.name }}</a>-->
-<!--        </div>-->
-    </div>
-</div>
 
 
 {% if products_list %}
 {% for product in products_list %}
-
 <div class="card element-animation">
     <div class="card__header"><a href="{{ product.slug }}">
         <div class="card__image"><img src="/media/{{ product.image }}" alt=""></img></div>
     </a></div>
     <div class="card__body">
-        <a href="{{ product.slug }}"><div class="card__title">{{ product.name }}</div></a>
+        <div class="card__title">{{ product.name }}</div>
         <div class="card__price">{{ product.price }} руб.</div>
         <div class="tooltips">
             <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
@@ -64,36 +61,15 @@
             </div>
            
         </div>
-        <a href="{{ product.slug }}" class="flip-btn">Подробно</a>
+        <a href="47sharov.ru" class="flip-btn">Подробно</a>
     </div> 
 </div>
-
 {% endfor %}
 {% endif %}
-
-<div class="module-pagination _container">
-    <div class="pagination_load"><a href="">Показать еще</a></div>
-    <div class="pagination_box">
-        <div class="flex-prev"><a href=""><img src="{% static 'shop/foto/arrow-l.png' %}" alt=""></a></div>
-        <div class="numb"><a href="">1</a></div>
-        <div class="numb-on"><a href="">2</a></div>
-        <div class="numb"><a href="">3</a></div>
-        <div class="flex-next"><a href=""><img src="{% static 'shop/foto/arrow-r.png' %}" alt=""></a></div>
-    </div>
 </div>
 
-</div>
-<!-- Закончился блок с карточками -->
-<script>
-setTimeout(() => {
-
-window.scrollBy({
-    top: 150,
-    behavior: "smooth"
-});
-
-}, 300);
-
-</script>
 
 {% endblock %}
+
+
+<!--<script src="{% static 'shop/script.js' %}"></script>-->
