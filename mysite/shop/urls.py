@@ -8,7 +8,7 @@ from . import views
 
 urlpatterns = [
     # path('baloon/', views.baloon, name='baloon'),
-    path('shop/', views.index, name='index'),
+    path('', views.index, name='index'),
     # path('/favicon.ico/', favicon_view),
     path('cart/', views.cart, name='cart'),
     path('favorites/', views.favorites, name='favorites'),
