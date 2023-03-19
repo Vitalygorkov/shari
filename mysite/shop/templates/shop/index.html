@@ -22,87 +22,26 @@
     </div>
 </div>
 
-<section class="head-bloc _container">
+<!-- <section class="head-bloc _container">
     <div class="title"><h3>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h3></div>
     <div class="head-button">
         <a href="" class="border-button">Весь каталог</a>
     </div>
-</section>
+</section> -->
 
-<div class="sections__categories element-animation">
-    <div class="categories_bloc _container">
-            <div class="categories_bloc_1">
+<div class="sections__categories"> 
+        <div class="categories_bloc-title _container">ГОТОВЫЕ НАБОРЫ:</div>
+            <div class="categories_bloc _container">
                 {% if categories %}
                 {% for category in categories %}
-                <div class="categories_card">
-
-                         <a href="/{{ category.url }}">{{ category.name }}</a>
-
+                <div class="categories_card element-animation">
+                    <a href="/{{ category.url }}"><div class="categories_card-name1">{{ category.name }}</div>
+                    <div class="categories_card-name2">{{ category.description }}</div>
+                         </a>
                 </div>
                 {% endfor %}
                 {% endif %}
             </div>
-    </div>
-</div>
-
-<div class="sections__categories element-animation">
-    <div class="categories_bloc-title _container">ГОТОВЫЕ НАБОРЫ:</div>
-    <div class="categories_bloc _container">
-        <div class="categories_card">
-            <div class="categories_card-name1">ДЛЯ НЕЁ</div>
-            <div class="categories_card-name2">Для самых красивых</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">ДЛЯ НЕГО</div>
-            <div class="categories_card-name2">Для самых сильных</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name2">Для</div>
-            <div class="categories_card-name1">ДЕТЕЙ</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">ФОТОЗОНЫ</div>
-            <div class="categories_card-name2">Для любого повода</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">Gender</div>
-            <div class="categories_card-name2">party</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">ВЫПИСКА</div>
-            <div class="categories_card-name2">Для новорожденных</div>
-        </div>    
-    </div>
-</div>
-
-<div class="sections__categories element-animation">
-    <div class="categories_bloc-title _container">ШАРЫ ПОШТУЧНО:</div>
-    <div class="categories_bloc _container">
-        <div class="categories_card">
-            <div class="categories_card-name1">ДЛЯ НЕЁ</div>
-            <div class="categories_card-name2">Для самых красивых</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">ДЛЯ НЕГО</div>
-            <div class="categories_card-name2">Для самых сильных</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name2">Для</div>
-            <div class="categories_card-name1">ДЕТЕЙ</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">ФОТОЗОНЫ</div>
-            <div class="categories_card-name2">Для любого повода</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">Gender</div>
-            <div class="categories_card-name2">party</div>
-        </div>
-        <div class="categories_card">
-            <div class="categories_card-name1">ВЫПИСКА</div>
-            <div class="categories_card-name2">Для новорожденных</div>
-        </div>    
-    </div>
 </div>
 
 
@@ -118,7 +57,7 @@
         <div class="discounts_card">
             <img src="{% static 'shop/foto/discount1.png' %}" alt="">
             <div class="discounts_card_title">Бесплатная доставка<br>от 1000 р</div>
-            <div class="discounts_card_text">Сосновый бор и лен область,<br>а так же ребровка</div>
+            <div class="discounts_card_text">Сосновый бор и Лен область</div>
         </div>
         <div class="discounts_card">
             <img src="{% static 'shop/foto/discount2.png' %}" alt="">
