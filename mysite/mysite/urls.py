@@ -20,6 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     # path('shop/', include('shop.urls')),
     path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path("", include("shop.urls")),
 ]
 

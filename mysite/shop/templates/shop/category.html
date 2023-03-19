@@ -37,15 +37,21 @@
         <a href="{{ product.slug }}"><div class="card__title">{{ product.name }}</div></a>
         <div class="card__price">{{ product.price }} руб.</div>
         <div class="tooltips">
+            {% if product.processing %}
             <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
                 <span class="tooltiptext">Обработка для увеличения времени полета</span>
             </div>
+            {% endif %}
+            {% if product.helium %}
             <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
                 <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
             </div>
+            {% endif %}
+            {% if product.air %}
             <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
                 <span class="tooltiptext">Шар наполняется воздухом</span>
             </div>
+            {% endif %}
         </div>    
     </div>
 
