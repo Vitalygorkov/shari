@@ -60,7 +60,7 @@ def category(request, category_slug):
         print(e)
         print('Ошибка поиска текущей категории ')
 
-    products_list = Product.objects.filter(category__in=branch_categories)
+    products_list = Balloon.objects.filter(category__in=branch_categories)
     print(products_list)
     categories = Category.objects.all()
     # template = loader.get_template('shop/category.html')

@@ -27,7 +27,7 @@ favorites
 {% if products_list %}
 {% for product in products_list %}
 <div class="card element-animation">
-    <div class="card__header"><a href="{{ product.slug }}">
+    <div class="card__header"><a href="/{{ product.slug }}">
         <div class="card__image"><img src="/media/{{ product.image }}" alt=""></img></div>
     </a></div>
     <div class="card__body">
@@ -55,13 +55,13 @@ favorites
                     <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
                 </div>
                 <div class="favorites-cart">
-                    <a href="47sharov.ru"><img src="{% static 'shop/foto/favorites.png' %}" alt="favorites"></img></a>
-                    <a href="47sharov.ru"><img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img></a>
+                    <a href=""><img src="{% static 'shop/foto/favorites.png' %}" alt="favorites"></img></a>
+                    <a href=""><img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img></a>
                 </div>    
             </div>
            
         </div>
-        <a href="47sharov.ru" class="flip-btn">Подробно</a>
+        <a href="" class="flip-btn">Подробно</a>
     </div> 
 </div>
 {% endfor %}

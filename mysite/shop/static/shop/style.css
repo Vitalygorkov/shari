@@ -456,6 +456,7 @@ button:before {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #000;
 }
 .card__footer{
     display: flex;
@@ -710,26 +711,26 @@ button:before {
     box-shadow: 0 0 5px #4b4b4b;
 }
 /*----------------------------------------категории карточки-------*/
+.categories_bloc-title{
+  margin-bottom: 20px;
+}
 .sections__categories{
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .categories_bloc{
   display: flex;
   flex-direction: row;
-}
-.categories_bloc_1{
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-  margin-bottom: 20px;
+  flex-flow: wrap;
+  justify-content: center;
 }
 .categories_card{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 100%;
+  width: 155px;
+  height: 155px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   margin: 10px;
   transition: box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -739,6 +740,13 @@ button:before {
 }
 .categories_card img{
   width: 100%;
+}
+.categories_card-name2{
+  font-family: Caveat;
+  margin-top: 5px;
+}
+.categories_card-name1{
+  margin-top: 5px;
 }
 /*----------------------------------------тайтл доставка и скидки-------*/
 .title_discounts{
@@ -1167,9 +1175,25 @@ button:before {
   max-width: 500px;
   max-height: 500px;
   }
+  .mySlides-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    max-height: 500px;
+    overflow: hidden;
+  }
   /* Hide the images by default */
   .mySlides {
   display: none;
+  }
+  .image-min{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80px;
+    max-height: 80px;
+    overflow: hidden;
   }
   /* Add a pointer when hovering over the thumbnail images */
   .cursor {
@@ -1349,16 +1373,13 @@ button:before {
         font-size: 14px;
     }
     .categories_bloc{
-      flex-direction: column;
+      
     }
     .categories_card{
-      width: 200px;
-      height: 100%;
-      margin: 10px;
+      
     }
     .categories_bloc_1{
-      width: 100%;
-      margin-bottom: 10px;
+      
     }
     .card-nav{
       margin-left: 15px;
@@ -1366,10 +1387,6 @@ button:before {
 }
 @media (max-width: 550px){
 }
-
-
-
-
 @media (max-width: 430px){
     ._container {
         width: 97%;
@@ -1441,6 +1458,14 @@ button:before {
   width: 136px;
 }
 }
+@media (max-width: 375px){
+  .categories_card{
+    width: 130px;
+    height: 130px;
+    margin: 7px;
+  }
+}
+
 @media (max-width: 330px){
     ._container {
         width: 95%;
@@ -1466,4 +1491,11 @@ button:before {
     .menu__list{
         font-size: 12px;
     }
+}
+@media (max-width: 320px){
+  .categories_card{
+    width: 120px;
+    height: 120px;
+    margin: 5px;
+  }
 }

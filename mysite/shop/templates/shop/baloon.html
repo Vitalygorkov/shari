@@ -49,7 +49,9 @@ baloon
         <div class="container">
             {% for img in product_balloon.prodimg.all %}
             <div class="mySlides">
-            <img src="{{ img.image.url }}" alt="продукт" style="width:100%">
+                <div class="mySlides-cont">
+                    <img src="{{ img.image.url }}" alt="продукт" style="width:100%">
+                </div>
             </div>
             {% endfor %}
 
@@ -64,7 +66,9 @@ baloon
                 {% if product_balloon %}
                 {% for img in product_balloon.prodimg.all %}
                 <div class="column">
-                <img class="demo cursor" src="{{ img.image.url }}" style="width:100%" onclick="currentSlide({{ forloop.counter }})" alt="Изображение">
+                    <div class="image-min">
+                        <img class="demo cursor" src="{{ img.image.url }}" style="width:100%" onclick="currentSlide({{ forloop.counter }})" alt="Изображение">
+                    </div>
                 </div>
                 {% endfor %}
                 {% endif %}
@@ -110,28 +114,36 @@ baloon
     </div>
     <div class="card-nav">
         <div class="card-nav-title"><h2>{{ product_balloon.name }}</h2></div>
-        <div class="card-nav-text"><h4>Фольгированный шар, размер 45 см<br>Наполнение - гелий</h4></div>
-        <div class="card-nav-price">800 руб. - 1 шт</div>
+        <div class="card-nav-text">{{ product_balloon.description | safe }}</div>
+        <div class="card-nav-price">{{ product_balloon.price }} руб.</div>
+        {% if product_balloon.inscription %}
         <div class="card-nav-font">
             <img src="{% static 'shop/foto/owl 1.png' %}" alt="">
             <div class="font-text">Индивидуальная надпись  с любым<br>текстом и шрифтом по запросу</div>
         </div>
+        {% endif %}
         <div class="card-nav-gift">
             <img src="{% static 'shop/foto/gift5 1.png' %}" alt="">
             <div class="gift-text">Бесплатная доставка от 1000р<br>по г. Сосновый бор и области</div>
         </div>
+        {% if product_balloon.processing %}
         <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
             <span class="tooltiptext">Обработка для увеличения времени полета</span>
             <div class="tooltip-tex">Обработка для увеличения времени полета</div>
         </div>
+        {% endif %}
+        {% if product_balloon.helium %}
         <div class="tooltip"><img src="{% static 'shop/foto/He 1.png' %}" alt="">
             <span class="tooltiptext">Шар наполняется безопасным инертным газом гелием</span>
             <div class="tooltip-tex">Шар наполняется безопасным инертным газом гелием</div>
         </div>
+        {% endif %}
+        {% if product_balloon.air %}
         <div class="tooltip"><img src="{% static 'shop/foto/oblako.png' %}" alt="">
             <span class="tooltiptext">Шар наполняется воздухом</span>
             <div class="tooltip-tex">Шар наполняется воздухом</div>
         </div>
+        {% endif %}
         <div class="card-nav-pcs">
             <div class="pcs__calc">
                 <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
