@@ -9,13 +9,11 @@
     <img src="{% static 'shop/foto/proverca.jpg' %}">
     <div class="portfolio-item-inner">
     <div class="portfolio-heading">
-    <h3>14 ФЕВРАЛЯ</h3>
+    <h3>НАШИ ШАРЫ:</h3>
     </div>
     <ul>
     <li><a href="/nabor">Готовые наборы</li></a>
-    <li><a href="">Сердца</li></a>
-    <li><a href="">КОРОБКА-СЮРПРИЗ</li></a>
-    <li><a href="">Фотозона 14 ФЕВРАЛЯ</li></a>
+    <li><a href="/poshtychno">Шары поштучно</li></a>
     </ul>
     </div>
     </a>
@@ -36,7 +34,7 @@
                 {% for category in categories %}
                 <div class="categories_card element-animation">
                     <a href="/{{ category.url }}"><div class="categories_card-name1">{{ category.name }}</div>
-                    <div class="categories_card-name2">{{ category.description }}</div>
+                    <!-- <div class="categories_card-name2">{{ category.description }}</div> -->
                          </a>
                 </div>
                 {% endfor %}
@@ -50,7 +48,7 @@
     <div class="individual-image"><img src="{% static 'shop/foto/pen.png' %}" alt=""></div>
 </div>
     
-<div class="title_discounts _container"><h3>АКЦИИ :</h3></div>
+<div class="title_discounts _container"><a href="#top" id="bottom"><h3>АКЦИИ :</h3></a></div>
 
 <div class="discounts">
     <div class="discounts_box element-animation _container">
