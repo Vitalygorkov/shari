@@ -119,12 +119,12 @@ baloon
         {% if product_balloon.inscription %}
         <div class="card-nav-font">
             <img src="{% static 'shop/foto/owl 1.png' %}" alt="">
-            <div class="font-text">Индивидуальная надпись  с любым<br>текстом и шрифтом по запросу</div>
+            <div class="font-text">Добавим индивидуальную надпись<br>на шаре и коробке</div>
         </div>
         {% endif %}
         <div class="card-nav-gift">
             <img src="{% static 'shop/foto/gift5 1.png' %}" alt="">
-            <div class="gift-text">Бесплатная доставка от 1000р<br>по г. Сосновый бор и области</div>
+            <div class="gift-text">Бесплатная доставка от 1000р<br>по Сосновому бору</div>
         </div>
         {% if product_balloon.processing %}
         <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
@@ -151,13 +151,18 @@ baloon
                 <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
             </div>
         </div>
+        
         <div class="card-nav-action">
-            <a href=""><button class="button-1">+Корзина</button></a>
-            <a href=""><button class="button-1">+Избранное</button></a>
-            
+            <!-- <a href=""><button class="button-1">+Корзина</button></a>
+            <a href=""><button class="button-1">+Избранное</button></a> -->
+            <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров {{ product_balloon.name }} {{ product_balloon.price }} руб. ?img src={{ img.image.url }} "><button class="button-Whatsapp">Оформить заказ в Whatsapp</button></a>
         </div>
+        
     </div>
 </section>
 <script src="{% static 'shop/script.js' %}"></script>
 
 {% endblock %}
+
+
+            

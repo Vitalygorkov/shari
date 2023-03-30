@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&subset=cyrillic-ext" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    <title>4747</title>
+    <title>Kikimora Balloon шары Сосновый Бор</title>
 </head>
 <body>
 
@@ -94,8 +94,9 @@
                                     </li>
                                 </ul>
                             </li> -->
-                            <li><a href="" class="menu__linka">Акции</a></li>
-                            <li><a href="https://wa.me/+79040795091?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>
+                            <li><a href="#bottom" id="top" class="menu__linka">Акции</a></li>
+                            
+                            <li><a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>
                             <li><a href="/favorites" class="menu__linka"><img src="{% static 'shop/foto/mask-izbranoe.png' %}" alt=""></a></li>
                             <li><a href="/cart" class="menu__linka"><img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></a></li>
                         </ul>
@@ -137,7 +138,7 @@
         <section class="head-bloc _container">
             <div class="title"><h3>СВЯЗАТЬСЯ С НАМИ</h3></div>
             <div class="head-button">
-                <a href="https://wa.me/+79141291291?text=Хочу сделать заказ шаров" class="border-button">WhatsApp</a>
+                <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров" class="border-button">WhatsApp</a>
             </div>
         </section>
     </div>
@@ -160,26 +161,19 @@
                 <div class="contact">
                     <div class="we">МЫ В СОЦСЕТЯХ:</div>
                     <div class="icons">
-                        <a href=""><img src="{% static 'shop/foto/instagram.png' %}" alt="instagram"></img></a>
-                        <a href=""><img src="{% static 'shop/foto/vk.png' %}" alt="vk"></img></a>
-                        <a href=""><img src="{% static 'shop/foto/whatsapp.png' %}" alt="whatsapp"></img></a>
+                        <a href="https://instagram.com/kikimora.balloon?igshid=YmMyMTA2M2Y="><img src="{% static 'shop/foto/instagram.png' %}" alt="instagram"></img></a>
+                        <a href="https://vk.com/kikimora.balloon"><img src="{% static 'shop/foto/vk.png' %}" alt="vk"></img></a>
+                        <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров"><img src="{% static 'shop/foto/whatsapp.png' %}" alt="whatsapp"></img></a>
                     </div>
                 </div>
             </div>
+            {% if categories %}
             <div class="footer__back">
-                <a href="" class="footer-button">ДЛЯ НЕЕ</a>
-                <a href="" class="footer-button">ДЛЯ НЕГО</a>
-                <a href="" class="footer-button">ДЛЯ ДЕТЕЙ</a>
-                <a href="" class="footer-button">ФОТОЗОНЫ</a>
-                <a href="" class="footer-button">ГЕНДЕРПАТИ</a>
-                <a href="" class="footer-button">ВЫПИСКА</a>
-                <a href="" class="footer-button">ФОЛЬГИРОВАННЫЕ</a>
-                <a href="" class="footer-button">ЛАТЕКСНЫЕ</a>
-                <a href="" class="footer-button">ХОДЯЧИЕ</a>
-                <a href="" class="footer-button">АКСЕССУАРЫ</a>
-                <a href="" class="footer-button">БАБЛС-ШАРЫ</a>
-                <a href="" class="footer-button">ШАРЫ-ЦИФРЫ</a>
+                {% for category in categories %}
+                <a href="/{{ category.url }}" class="footer-button">{{ category.name }}</a>
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
 

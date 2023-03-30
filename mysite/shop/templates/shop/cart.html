@@ -27,15 +27,17 @@ cart
         {% if products_list %}
         {% for product in products_list %}
         <div class="cart-blok">
-            <div class="cart-image"><img src="/media/{{ product.image }}" alt=""></div>
-            <div class="cart-title">{{ product.name }}</div>
-            <div class="cart-price">{{ product.price }} руб.</div>
+            <div class="cart-image"><a href=""><img src="/media/{{ product.image }}" alt=""></a></div>
+            <div class="conteiner-cart">
+                <div class="cart-title">{{ product.name }}</div>
+                <div class="cart-price">{{ product.price }} руб.</div>
+            </div>    
             <div class="cart-pcs__calc">
                 <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
                 <div class="pcs__calc-imput">1</div>
                 <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
             </div>
-            <div class="cart-sum">458 руб.</div>
+            <div class="cart-sum">4584 руб.</div>
             <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
         </div>
         {% endfor %}

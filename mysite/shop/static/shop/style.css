@@ -686,6 +686,35 @@ button:before {
 .button-1:hover:before {
     transform: translate(4px, 4px);
 }
+
+/*-----------------временная-кнопка-вотсапа-вместо избранного-и-корзины-------*/
+.button-Whatsapp {
+  color: #232323;
+  background: transparent;
+  border: 1px solid #232323;
+  position: relative;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 17px 20px 30px 39px;
+  transition: .2s ease-in-out;
+  cursor: pointer;
+  width: 100%;
+}
+.button-Whatsapp:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 100%;
+  height: 100%;
+  background: #d4d4d4;
+  z-index: -1;
+  transition: .25s ease;
+  transform: translate(0, 0);
+}
+.button-Whatsapp:hover:before {
+  transform: translate(4px, 4px);
+}
 /*----------------------------------------путь-------*/
 .way-box{
     display: flex;
@@ -1292,6 +1321,8 @@ button:before {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 175px;
+  min-width: 175px;
 }
 .cart-image img{
   width: 100%;
@@ -1330,7 +1361,32 @@ button:before {
 .total-price-name{
   margin-right: 50px;
 }
-
+.cart-title{
+  max-width: 230px;
+  margin-right: 10px;
+  margin-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+}
+.cart-price{
+  margin-right: 5px;
+  margin-top: 20px;
+}
+.cart-sum{
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.conteiner-cart{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 /*----------------------------------------media-------*/
 @media (max-width: 1030px){
     .location{
@@ -1401,6 +1457,48 @@ button:before {
     .card-nav{
       margin-left: 15px;
     }
+    .cart-blok{
+      height: 150px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .cart-image{
+      width: 135px;
+      height: 135px;
+      min-width: 135px;
+      min-height: 135px;
+    }
+    .cart-title{
+      font-size: 16px;
+      max-width: 170px;
+    }
+    .cart-price{
+      font-size: 18px;
+    }
+    .cart-sum{
+      font-size: 18px;
+    }
+    .cart-pcs__calc{
+      width: 90px;
+      min-width: 90px;
+    }
+    .cart-pcs__calc img{
+      width: 100%;
+    }
+    .btn-delete{
+      width: 50px;
+      min-width: 50px;
+    }
+    .btn-delete img{
+      width: 100%;
+    }
+
+}
+@media (max-width: 590px){
+  .cart-title{
+    font-size: 16px;
+    max-width: 120px;
+  }
 }
 @media (max-width: 550px){
   .discounts{
@@ -1415,6 +1513,35 @@ button:before {
   }
   .discounts_card_text{
     font-size: 12px;
+  }
+  .cart-image{
+    width: 110px;
+    height: 110px;
+    min-width: 110px;
+    min-height: 110px;
+  }
+  .cart-blok{
+    height: 130px;
+    padding: 5px;
+  }
+  .cart-title {
+    font-size: 14px;
+    max-width: 100px;
+  }
+  .cart-sum {
+    font-size: 16px;
+  }
+  .btn-delete {
+    width: 40px;
+    min-width: 40px;
+  }
+  .cart-pcs__calc {
+    width: 80px;
+    min-width: 80px;
+  }
+  .btn-delete {
+    width: 30px;
+    min-width: 30px;
   }
 }
 @media (max-width: 430px){
@@ -1485,6 +1612,36 @@ button:before {
       padding-left: 5px;
       margin: 5px;
     }
+    .cart-price {
+      font-size: 14px;
+    }
+    .cart-sum {
+      font-size: 14px;
+    }
+    .pcs__calc-imput {
+      font-size: 18px;
+    }
+    .cart-image {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      min-height: 80px;
+    }
+    .cart-blok {
+      height: 95px;
+    }
+    .total-price {
+      flex-direction: column;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .total-price-name {
+      margin-bottom: 10px;
+    }
+    .head-bloc {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
 }
 @media (max-width: 393px){
   .card{
@@ -1521,6 +1678,29 @@ button:before {
     height: 130px;
     margin: 7px;
   }
+  .cart-title {
+    font-size: 12px;
+    max-width: 90px;
+  }
+  .cart-pcs__calc {
+    width: 70px;
+    min-width: 70px;
+  }
+  .cart-sum {
+    font-size: 12px;
+  }
+  .cart-blok {
+    padding: 1px;
+  }
+  .cart-image {
+    width: 50px;
+    height: 70px;
+    min-width: 50px;
+    min-height: 70px;
+  }
+  .cart-image {
+    min-width: 50 px;
+}
 }
 @media (max-width: 330px){
     ._container {
