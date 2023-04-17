@@ -21,7 +21,8 @@ product_balloon.name
 {% load static %}
 {% block content %}
 <!-- <link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/> -->
-baloon
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -50,7 +51,9 @@ baloon
             {% for img in product_balloon.prodimg.all %}
             <div class="mySlides">
                 <div class="mySlides-cont">
+                    <a href="{{ img.image.url }}" data-fancybox="gallery" data-caption="изображение">
                     <img src="{{ img.image.url }}" alt="продукт" style="width:100%">
+                    </a>
                 </div>
             </div>
             {% endfor %}
@@ -68,6 +71,7 @@ baloon
                 <div class="column">
                     <div class="image-min">
                         <img class="demo cursor" src="{{ img.image.url }}" style="width:100%" onclick="currentSlide({{ forloop.counter }})" alt="Изображение">
+                        </a>
                     </div>
                 </div>
                 {% endfor %}
@@ -155,12 +159,19 @@ baloon
         <div class="card-nav-action">
             <!-- <a href=""><button class="button-1">+Корзина</button></a>
             <a href=""><button class="button-1">+Избранное</button></a> -->
-            <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров {{ product_balloon.name }} {{ product_balloon.price }} руб. ?img src={{ img.image.url }} "><button class="button-Whatsapp">Оформить заказ в Whatsapp</button></a>
+            <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров, "><button class="button-Whatsapp">Оформить заказ в Whatsapp</button></a>
         </div>
         
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>Fancybox.bind('[data-fancybox="gallery"]', {
+  // Your custom options
+});
+</script>
 <script src="{% static 'shop/script.js' %}"></script>
+
+
 
 {% endblock %}
 

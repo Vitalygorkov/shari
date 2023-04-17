@@ -3,22 +3,22 @@
 {% load mptt_tags %}
 {% block content %}
 
-<div class="portfolio-item">
-    <div class="portfolio-item-wrap">
-    <a href="">
-    <img src="{% static 'shop/foto/proverca.jpg' %}">
-    <div class="portfolio-item-inner">
-    <div class="portfolio-heading">
-    <h3>НАШИ ШАРЫ:</h3>
-    </div>
-    <ul>
-    <li><a href="/nabor">Готовые наборы</li></a>
-    <li><a href="/poshtychno">Шары поштучно</li></a>
-    </ul>
-    </div>
-    </a>
-    </div>
-</div>
+<!--<div class="portfolio-item">-->
+<!--    <div class="portfolio-item-wrap">-->
+<!--    <a href="">-->
+<!--    <img src="{% static 'shop/foto/proverca.jpg' %}">-->
+<!--    <div class="portfolio-item-inner">-->
+<!--    <div class="portfolio-heading">-->
+<!--    <h3>НАШИ ШАРЫ:</h3>-->
+<!--    </div>-->
+<!--    <ul>-->
+<!--    <li><a href="/nabor">Готовые наборы</li></a>-->
+<!--    <li><a href="/poshtychno">Шары поштучно</li></a>-->
+<!--    </ul>-->
+<!--    </div>-->
+<!--    </a>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- <section class="head-bloc _container">
     <div class="title"><h3>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h3></div>
@@ -30,16 +30,30 @@
 <div class="sections__categories"> 
         <div class="categories_bloc-title _container">ГОТОВЫЕ НАБОРЫ:</div>
             <div class="categories_bloc _container">
-                {% if categories %}
-                {% for category in categories %}
-                <div class="categories_card element-animation">
-                    <a href="/{{ category.url }}"><div class="categories_card-name1">{{ category.name }}</div>
-                    <!-- <div class="categories_card-name2">{{ category.description }}</div> -->
-                         </a>
-                </div>
+                {% if categories1 %}
+                {% for category in categories1 %}
+                            <div class="categories_card element-animation">
+                                <a href="/{{ category.url }}"><div class="categories_card-name1">{{ category.name }}</div>
+                                     </a>
+                            </div>
                 {% endfor %}
                 {% endif %}
             </div>
+    <br>
+    <br>
+    <div class="categories_bloc-title _container">ШАРЫ ПОШТУЧНО:</div>
+                <div class="categories_bloc _container">
+                {% if categories2 %}
+                {% for category in categories2 %}
+                            <div class="categories_card element-animation">
+                                <a href="/{{ category.url }}"><div class="categories_card-name1">{{ category.name }}</div>
+                                     </a>
+                            </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+
 </div>
 
 

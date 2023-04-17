@@ -56,7 +56,7 @@ class Product(models.Model):
     description = models.TextField('Описание', blank=True)
     price = models.IntegerField('Цена', blank=True, null=True)  # цена
     color = models.ForeignKey(Color, verbose_name="Цвет", on_delete=models.SET_NULL, null=True, blank=True)
-    category = models.ManyToManyField('Category', blank=True, verbose_name="Категории")
+    category = models.ManyToManyField('Category', verbose_name="Категории")
     slug = models.SlugField(max_length=250,unique=True, db_index=True, verbose_name='URL')
     availability = models.BooleanField("Наличие", default=False, blank=True) # Наличие по дефолту нет.
     # whom = TreeForeignKey(Category, on_delete=models.DO_NOTHING, blank=True,null=True,related_name='cat_product')
@@ -85,8 +85,9 @@ class Product(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        if self.category:
-            return f'/{self.category.url}/{self.slug}'
+        print(self.category.all())
+        if self.category.all():
+            return f'/{self.category.all()[0].url}/{self.slug}'
         else:
             return f'/none-cateory/{self.slug}'
 

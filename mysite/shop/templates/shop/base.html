@@ -96,7 +96,8 @@
                             </li> -->
                             <li><a href="#bottom" id="top" class="menu__linka">Акции</a></li>
                             
-                            <li><a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>
+<!--                            <li><a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>-->
+                            <li><a href="https://vk.com/kikimora.balloon" class="menu__linka">Мы в ВК</a></li>
                             <li><a href="/favorites" class="menu__linka"><img src="{% static 'shop/foto/mask-izbranoe.png' %}" alt=""></a></li>
                             <li><a href="/cart" class="menu__linka"><img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></a></li>
                         </ul>
@@ -110,8 +111,10 @@
                 <div class="header__bloc">
                     <search class="search">
                         <div class="search_form">
-                            <input type="text" class="search-input" placeholder="Поиск...">
+                            <form method="GET" action="{% url 'search' %}"  id="searchform">
+                            <input type="text" name="q" value="{{ request.GET.q }}" class="search-input" placeholder="Поиск...">
                             <button type="submit"><img src="{% static 'shop/foto/magnifier 1.png' %}" alt=""></button>
+                            </form>
                         </div>
                     </search>
                     <div class="location">
@@ -161,7 +164,7 @@
                 <div class="contact">
                     <div class="we">МЫ В СОЦСЕТЯХ:</div>
                     <div class="icons">
-                        <a href="https://instagram.com/kikimora.balloon?igshid=YmMyMTA2M2Y="><img src="{% static 'shop/foto/instagram.png' %}" alt="instagram"></img></a>
+<!--                        <a href="https://instagram.com/kikimora.balloon?igshid=YmMyMTA2M2Y="><img src="{% static 'shop/foto/instagram.png' %}" alt="instagram"></img></a>-->
                         <a href="https://vk.com/kikimora.balloon"><img src="{% static 'shop/foto/vk.png' %}" alt="vk"></img></a>
                         <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров"><img src="{% static 'shop/foto/whatsapp.png' %}" alt="whatsapp"></img></a>
                     </div>

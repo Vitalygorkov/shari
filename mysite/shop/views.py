@@ -4,14 +4,19 @@ from django.template import loader
 from .models import Category, Product, Balloon
 
 
+
 def index(request):
     # latest_question_list = Question.objects.order_by('-pub_date')[:5]
     products_list = Balloon.objects.all()
     categories = Category.objects.all()
+    categories1 = Category.objects.filter(parent='1')
+    categories2 = Category.objects.filter(parent='2')
     template = loader.get_template('shop/index.html')
     context = {
         'products_list': products_list,
         'categories': categories,
+        'categories1': categories1,
+        'categories2': categories2,
     }
     return HttpResponse(template.render( context, request))
 
@@ -46,6 +51,26 @@ def favorites(request):
     }
     return HttpResponse(template.render( context, request))
 
+def search(request):
+    # def get_queryset(self):
+    #     query = self.request.GET.get('q')
+    #     if query:
+    #         return Balloon.objects.filter(title__icontains=query)
+    #     else:
+    #         return Balloon.objects.all()
+    query = request.GET.get('q')
+    if query:
+        products_list = Balloon.objects.filter(name__icontains=query)
+    else:
+        products_list = Balloon.objects.all()
+
+    categories = Category.objects.all()
+    template = loader.get_template('shop/search.html')
+    context = {
+        'products_list': products_list,
+        'categories': categories,
+    }
+    return HttpResponse(template.render( context, request))
 
 def category(request, category_slug):
     # Category.objects.filter(url=category_slug)

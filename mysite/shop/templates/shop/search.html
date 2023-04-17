@@ -1,9 +1,6 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
-
-favorites
 
 <div class="Card_big _container">
 
@@ -12,7 +9,7 @@ favorites
         <div class="categories_path">
             <div class="category_path">
                 <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
-                <a href="{{ last_category.url }}">Избранное</a>
+                <a href="{{ last_category.url }}">Поиск</a>
             </div>
         </div>
         <div class="categories_path">
@@ -28,11 +25,11 @@ favorites
 {% for product in products_list %}
 
 <div class="card element-animation">
-    <div class="card__header"><a href="{{ product.slug }}">
+    <div class="card__header"><a href="{{ product.get_absolute_url }}">
         <div class="card__image"><img src="/media/{{ product.image }}" alt=""></img></div>
     </a></div>
     <div class="card__body">
-        <a href="{{ product.slug }}"><div class="card__title">{{ product.name }}</div></a>
+        <a href="{{ product.get_absolute_url }}"><div class="card__title">{{ product.name }}</div></a>
         <div class="card__price">{{ product.price }} руб.</div>
         <div class="tooltips">
             {% if product.processing %}
@@ -68,7 +65,7 @@ favorites
             </div>
 
         </div>
-        <a href="{{ product.slug }}" class="flip-btn">Подробно</a>
+        <a href="{{ product.get_absolute_url }}" class="flip-btn">Подробно</a>
     </div>
 </div>
 
@@ -80,5 +77,3 @@ favorites
 
 {% endblock %}
 
-
-<!--<script src="{% static 'shop/script.js' %}"></script>-->

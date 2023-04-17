@@ -11,6 +11,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     # path('/favicon.ico/', favicon_view),
     path('cart/', views.cart, name='cart'),
+    path('search/', views.search, name='search'),
     path('favorites/', views.favorites, name='favorites'),
     path('<category_slug>/', views.category, name='category'),
     path('<category_slug>/<product_slug>/', views.show_product, name='product'),
