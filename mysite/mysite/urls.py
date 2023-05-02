@@ -16,9 +16,35 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers, serializers, viewsets
+from shop.models import Balloon, Category, Color, Photo_product
+
+class BalloonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Balloon
+        fields = "__all__"
+        #fields = ['name', 'image', 'short_description', 'description', 'price', 'color','category', 'slug', 'availability']
+class BalloonViewSet(viewsets.ModelViewSet):
+    queryset = Balloon.objects.all()
+    serializer_class = BalloonSerializer
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = "__all__"
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+router = routers.DefaultRouter()
+router.register(r'balloons', BalloonViewSet)
+router.register(r'categories', CategoryViewSet)
 
 urlpatterns = [
     # path('shop/', include('shop.urls')),
+    path('api/', include(router.urls)),
+    #path('v1', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path("", include("shop.urls")),
