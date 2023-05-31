@@ -77,13 +77,29 @@
 {% endif %}
 
 <div class="module-pagination _container">
-    <div class="pagination_load"><a href="">Показать еще</a></div>
+<!--    <div class="pagination_load"><a href="">Показать еще</a></div>-->
     <div class="pagination_box">
-        <div class="flex-prev"><a href=""><img src="{% static 'shop/foto/arrow-l.png' %}" alt=""></a></div>
-        <div class="numb"><a href="">1</a></div>
-        <div class="numb-on"><a href="">2</a></div>
-        <div class="numb"><a href="">3</a></div>
-        <div class="flex-next"><a href=""><img src="{% static 'shop/foto/arrow-r.png' %}" alt=""></a></div>
+        {% if products_list.has_previous %}
+        <a href="/{{ last_category.url }}/?page={{ products_list.previous_page_number }}">
+        <div class="flex-prev"><img src="{% static 'shop/foto/arrow-l.png' %}" alt=""></div>
+        </a>
+        {% endif %}
+        {% for page_number in products_list.paginator.page_range %}
+        {% if page_number == products_list.number %}
+        <a href="/{{ last_category.url }}/?page={{ page_number }}">
+        <div class="numb-on">{{ page_number }}</div>
+        </a>
+        {% else %}
+        <a href="/{{ last_category.url }}/?page={{ page_number }}">
+        <div class="numb">{{ page_number }}</div>
+        </a>
+        {% endif %}
+        {% endfor %}
+        {% if products_list.has_next %}
+        <a href="/{{ last_category.url }}/?page={{ products_list.next_page_number }}">
+        <div class="flex-next"><img src="{% static 'shop/foto/arrow-r.png' %}" alt=""></div>
+        </a>
+        {% endif %}
     </div>
 </div>
 

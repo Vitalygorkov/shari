@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Category, Product, Balloon
+from django.core.paginator import Paginator
 
 
 
@@ -61,13 +62,19 @@ def search(request):
     query = request.GET.get('q')
     if query:
         products_list = Balloon.objects.filter(name__icontains=query)
+        paginator = Paginator(products_list, 20)
     else:
         products_list = Balloon.objects.all()
+        paginator = Paginator(products_list, 20)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     categories = Category.objects.all()
+
     template = loader.get_template('shop/search.html')
     context = {
-        'products_list': products_list,
+        'products_list': page_obj,
         'categories': categories,
     }
     return HttpResponse(template.render( context, request))
@@ -86,16 +93,25 @@ def category(request, category_slug):
         print('Ошибка поиска текущей категории ')
 
     products_list = Balloon.objects.filter(category__in=branch_categories)
-    print(products_list)
+    paginator = Paginator(products_list, 30)
+    page_number = request.GET.get('page', '1')
+    page_obj = paginator.get_page(page_number)
+
     categories = Category.objects.all()
     # template = loader.get_template('shop/category.html')
     template_render = "shop/category.html"
+
     context = {
-        'products_list': products_list,
+        'products_list': page_obj,
         "last_category": last_category,
         'categories': categories,
+        'pages': paginator.count,
+        "has_next": page_obj.has_next(),
+        "has_previous": page_obj.has_previous(),
     }
     print(last_category)
+    print(paginator.count)
+    print(paginator.num_pages)
     return render(request, template_render, context)
 
 def show_product(request, product_slug, category_slug):
