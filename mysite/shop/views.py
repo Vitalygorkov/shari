@@ -5,7 +5,6 @@ from .models import Category, Product, Balloon
 from django.core.paginator import Paginator
 
 
-
 def index(request):
     # latest_question_list = Question.objects.order_by('-pub_date')[:5]
     products_list = Balloon.objects.all()
