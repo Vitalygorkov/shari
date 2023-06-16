@@ -5,6 +5,19 @@ from PIL import Image as Img
 from io import StringIO, BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
+
+class Post(models.Model):
+    title = models.CharField("Заголовок", max_length=500, unique= True)
+    post_text2 = models.TextField('Текст поста')
+    post_text = models.TextField('Текст поста')
+    image = models.ImageField("Изображение", upload_to="photo/")
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = 'Пост'
+        verbose_name_plural = 'Посты'
+
 class Category(MPTTModel):
     name = models.CharField("Категория",max_length=150)
     description = models.TextField("Описание")

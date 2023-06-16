@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Category, Product, Balloon
+from .models import Category, Product, Balloon, Post
 from django.core.paginator import Paginator
 
 
@@ -47,6 +47,16 @@ def favorites(request):
     template = loader.get_template('shop/favorites.html')
     context = {
         'products_list': products_list,
+        'categories': categories,
+    }
+    return HttpResponse(template.render( context, request))
+
+def blog(request):
+    post_list = Post.objects.all()
+    categories = Category.objects.all()
+    template = loader.get_template('shop/blog.html')
+    context = {
+        'post_list': post_list,
         'categories': categories,
     }
     return HttpResponse(template.render( context, request))

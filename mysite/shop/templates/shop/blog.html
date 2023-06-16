@@ -1,0 +1,67 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Blog</title>-->
+<!--    <link rel="stylesheet" href="./style.css">-->
+<!--    <script src="./script.js" defer></script>-->
+<!--</head>-->
+
+<!--<body>-->
+
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if post_list %}
+
+<div class="magic-list">
+    {% for post in post_list %}
+    <a href="#" class="magic-list__item">
+        <div class="magic-list__header">{{ post.title }}</div>
+        <div class="cursor">
+            <div class="cursor__image" style="background-image: url(/media/{{ post.image }})"></div>
+        </div>
+    </a>
+    {% endfor %}
+<!--    <a href="#" class="magic-list__item">-->
+<!--        <div class="magic-list__header">Как найти подходящий цвет</div>-->
+<!--        <div class="cursor">-->
+<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/2.jpg)"></div>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="magic-list__item">-->
+<!--        <div class="magic-list__header">Как выбрать колличество шаров</div>-->
+<!--        <div class="cursor">-->
+<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/3.jpg)"></div>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="magic-list__item">-->
+<!--        <div class="magic-list__header">Гелий или воздух?</div>-->
+<!--        <div class="cursor">-->
+<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/4.jpg)"></div>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="magic-list__item">-->
+<!--        <div class="magic-list__header">Как увеличить время полета шаров</div>-->
+<!--        <div class="cursor">-->
+<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/5.jpg)"></div>-->
+<!--        </div>-->
+<!--    </a>-->
+
+</div>
+<script src="{% static 'shop/script_blog.js' %}"></script>
+
+
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+<!--</body>-->
+<!--</html>-->
