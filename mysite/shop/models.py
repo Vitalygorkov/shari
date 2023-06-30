@@ -7,6 +7,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
 class Post(models.Model):
+    short_description = models.TextField("Отрывок для показа в блоге", max_length=500)
     title = models.CharField("Заголовок", max_length=500, unique= True)
     post_text = models.TextField('Текст поста')
     image = models.ImageField("Изображение", upload_to="photo/")
