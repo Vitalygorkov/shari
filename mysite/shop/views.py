@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Category, Product, Balloon
+from .models import Category, Product, Balloon, Post
 from django.core.paginator import Paginator
 
 
@@ -51,28 +51,28 @@ def favorites(request):
     }
     return HttpResponse(template.render( context, request))
 
-# def blog(request):
-#     post_list = Post.objects.all()
-#     categories = Category.objects.all()
-#     template = loader.get_template('shop/blog.html')
-#     context = {
-#         'post_list': post_list,
-#         'categories': categories,
-#     }
-#     return HttpResponse(template.render( context, request))
-#
-# def post(request, post_slug):
-#     print('Вьюха постов')
-#     print(post_slug)
-#     post = Post.objects.get(slug=post_slug)
-#     # post_list = Post.objects.all()
-#     categories = Category.objects.all()
-#     template = loader.get_template('shop/post.html')
-#     context = {
-#         'post': post,
-#         'categories': categories,
-#     }
-#     return HttpResponse(template.render( context, request))
+def blog(request):
+    post_list = Post.objects.all()
+    categories = Category.objects.all()
+    template = loader.get_template('shop/blog.html')
+    context = {
+        'post_list': post_list,
+        'categories': categories,
+    }
+    return HttpResponse(template.render( context, request))
+
+def post(request, post_slug):
+    print('Вьюха постов')
+    print(post_slug)
+    post = Post.objects.get(slug=post_slug)
+    # post_list = Post.objects.all()
+    categories = Category.objects.all()
+    template = loader.get_template('shop/post.html')
+    context = {
+        'post': post,
+        'categories': categories,
+    }
+    return HttpResponse(template.render( context, request))
 
 def search(request):
     # def get_queryset(self):
