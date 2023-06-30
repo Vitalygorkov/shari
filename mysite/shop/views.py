@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Category, Product, Balloon, Post
+from .models import Category, Product, Balloon
 from django.core.paginator import Paginator
 
 
