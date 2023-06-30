@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+<br><br>
+{% if post %}
+<div class="post">
+    <div class="post_title">
+        {{ post.title }}
+    </div>
+    <br>
+    <div class="post_text">
+    {{ post.post_text | safe }}
+    </div>
+    <br>
+    <div class="back_blog">
+        <p>НАЗАД В БЛОГ</p>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+{% endif %}
+
+{% endblock %}

@@ -61,6 +61,19 @@ def blog(request):
     }
     return HttpResponse(template.render( context, request))
 
+def post(request, post_slug):
+    print('Вьюха постов')
+    print(post_slug)
+    post = Post.objects.get(slug=post_slug)
+    # post_list = Post.objects.all()
+    categories = Category.objects.all()
+    template = loader.get_template('shop/post.html')
+    context = {
+        'post': post,
+        'categories': categories,
+    }
+    return HttpResponse(template.render( context, request))
+
 def search(request):
     # def get_queryset(self):
     #     query = self.request.GET.get('q')

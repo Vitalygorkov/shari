@@ -8,9 +8,9 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 class Post(models.Model):
     title = models.CharField("Заголовок", max_length=500, unique= True)
-    post_text2 = models.TextField('Текст поста')
     post_text = models.TextField('Текст поста')
     image = models.ImageField("Изображение", upload_to="photo/")
+    slug = models.SlugField()
 
     def __str__(self):
         return self.title

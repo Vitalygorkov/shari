@@ -1,3 +1,23 @@
+
+/* Классы блога */
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%
+}
+.post_title {
+        font-size: 28px;
+}
+.post_text {
+
+}
+.back_blog{
+}
+
+
+/* Классы блога */
+
 /* добавил стили блога вверх */
 
 * {
