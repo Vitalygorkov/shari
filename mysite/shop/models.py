@@ -6,18 +6,18 @@ from io import StringIO, BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
-class Post(models.Model):
-    short_description = models.TextField("Отрывок для показа в блоге", max_length=500)
-    title = models.CharField("Заголовок", max_length=500, unique= True)
-    post_text = models.TextField('Текст поста')
-    image = models.ImageField("Изображение", upload_to="photo/")
-    slug = models.SlugField()
-
-    def __str__(self):
-        return self.title
-    class Meta:
-        verbose_name = 'Пост'
-        verbose_name_plural = 'Посты'
+# class Post(models.Model):
+#     short_description = models.TextField("Отрывок для показа в блоге", max_length=500)
+#     title = models.CharField("Заголовок", max_length=500, unique= True)
+#     post_text = models.TextField('Текст поста')
+#     image = models.ImageField("Изображение", upload_to="photo/")
+#     slug = models.SlugField()
+#
+#     def __str__(self):
+#         return self.title
+#     class Meta:
+#         verbose_name = 'Пост'
+#         verbose_name_plural = 'Посты'
 
 class Category(MPTTModel):
     name = models.CharField("Категория",max_length=150)
