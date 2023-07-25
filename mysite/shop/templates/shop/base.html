@@ -65,59 +65,7 @@
                             </li>
                             {% endrecursetree %}
                             {% endif %}
-                            <!-- <li>
-                                <a href="" class="menu__linka">Готовые наборы</a>
-                                <span class="menu__arrowa"></span>
-                                <ul class="menu__sub-lista">
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Для него</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Для нее</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Для детей</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Фотозоны</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Гендерпати</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Выписка</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li> -->
-                                <!-- <a href="" class="menu__linka">Шары поштучно</a>
-                                <span class="menu__arrowa"></span>
-                                <ul class="menu__sub-lista">
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Фольгированные</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Латексные</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Ходячие</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Аксессуары для праздника</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Латексные</a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="menu__sub-linka">Ходячие</a>
-                                    </li>
-                                </ul>
-                            </li> -->
-                            <li><a href="#bottom" id="top" class="menu__linka">Акции</a></li>
-                            
-<!--                            <li><a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров" class="menu__linka">Мы в WhatsApp</a></li>-->
                             <li><a href="https://vk.com/kikimora.balloon" class="menu__linka">Мы в ВК</a></li>
-                            <li><a href="/favorites" class="menu__linka"><img src="{% static 'shop/foto/mask-izbranoe.png' %}" alt=""></a></li>
                             <li><a href="/cart" class="menu__linka"><img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></a></li>
                         </ul>
                     </nav>
@@ -166,20 +114,36 @@
     </div>
 </div>
 
+<div class="title_discounts _container"><a href="#top" id="bottom"><h3>АКЦИИ :</h3></a></div>
+
+<div class="discounts">
+    <div class="discounts_box element-animation _container">
+        {% for promotion in promotions_list %}
+        <a href="/promotions/{{ promotion.slug }}" class="magic-list__item">
+            <div class="discounts_card">
+                <img src="/media/{{ promotion.image }}" alt="">
+                <div class="discounts_card_title">{{ promotion.title }}</div>
+                <div class="discounts_card_text">{{ promotion.short_description }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
 <div class="Footer">
         <div class="footer _container">
             <div class="footer__body">
                 <div class="info">
                     <div class="name">ИНФОРМАЦИЯ:</div>
                     <a href="">Доставка и оплата</a>
-                    <a href="">Как купить</a>
-                    <a href="">Акции</a>
+<!--                    <a href="">Как купить</a>-->
+<!--                    <a href="">Акции</a>-->
                 </div>
-                <div class="catalog">
-                    <div class="head-button">
-                        <a href="" class="border-button">Главная</a>
-                    </div>
-                </div>
+<!--                <div class="catalog">-->
+<!--                    <div class="head-button">-->
+<!--                        <a href="" class="border-button">Главная</a>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="contact">
                     <div class="we">МЫ В СОЦСЕТЯХ:</div>
                     <div class="icons">

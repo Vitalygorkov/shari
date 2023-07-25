@@ -1,0 +1,40 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<br>
+
+<div class="title_discounts _container"><a href="#top" id="bottom"><h3>АКЦИИ :</h3></a></div>
+
+<div class="discounts">
+    <div class="discounts_box element-animation _container">
+        {% for promotion in promotions_list %}
+        <a href="/promotions/{{ promotion.slug }}" class="magic-list__item">
+            <div class="discounts_card">
+                <img src="/media/{{ promotion.image }}" alt="">
+                <div class="discounts_card_title">{{ promotion.title }}</div>
+                <div class="discounts_card_text">{{ promotion.short_description }}</div>
+            </div>
+        </a>
+        {% endfor %}
+<!--        <div class="discounts_card">-->
+<!--            <img src="{% static 'shop/foto/discount1.png' %}" alt="">-->
+<!--            <div class="discounts_card_title">Бесплатная доставка<br>от 1000 р</div>-->
+<!--            <div class="discounts_card_text">Сосновый бор и Лен область</div>-->
+<!--        </div>-->
+<!--        <div class="discounts_card">-->
+<!--            <img src="{% static 'shop/foto/discount2.png' %}" alt="">-->
+<!--            <div class="discounts_card_title">Скидка</div>-->
+<!--            <div class="discounts_card_text">Получи скидку за отметку</div>-->
+<!--        </div>-->
+<!--        <div class="discounts_card">-->
+<!--            <img src="{% static 'shop/foto/discount3.png' %}" alt="">-->
+<!--            <div class="discounts_card_title">Скидка 3 %<br>на первый заказ</div>-->
+<!--            <div class="discounts_card_text">Для новых клиентов</div>-->
+<!--        </div>-->
+    </div>
+</div>
+
+{% endblock %}

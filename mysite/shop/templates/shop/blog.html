@@ -15,46 +15,34 @@
 {% load static %}
 {% block content %}
 
+<div class="way-box _container">
+    <div class="category_path"><a href="/">Главная</a></div>
+    <div class="categories_path">
+        <div class="category_path">
+            <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+            <a href="/blog">Блог</a>
+        </div>
+    </div>
+    <div class="categories_path">
+    </div>
+</div>
+
 {% if post_list %}
 
 
 
-<div class="magic-list">
-    {% for post in post_list %}
-    <a href="/post/{{ post.slug }}" class="magic-list__item">
-        <div class="magic-list__header">{{ post.title }}</div>
-        <div class="cursor">
-            <div class="cursor__image" style="background-image: url(/media/{{ post.image }})"></div>
-        </div>
-    </a>
-    {% endfor %}
-<!--    <a href="#" class="magic-list__item">-->
-<!--        <div class="magic-list__header">Как найти подходящий цвет</div>-->
-<!--        <div class="cursor">-->
-<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/2.jpg)"></div>-->
-<!--        </div>-->
-<!--    </a>-->
-<!--    <a href="#" class="magic-list__item">-->
-<!--        <div class="magic-list__header">Как выбрать колличество шаров</div>-->
-<!--        <div class="cursor">-->
-<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/3.jpg)"></div>-->
-<!--        </div>-->
-<!--    </a>-->
-<!--    <a href="#" class="magic-list__item">-->
-<!--        <div class="magic-list__header">Гелий или воздух?</div>-->
-<!--        <div class="cursor">-->
-<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/4.jpg)"></div>-->
-<!--        </div>-->
-<!--    </a>-->
-<!--    <a href="#" class="magic-list__item">-->
-<!--        <div class="magic-list__header">Как увеличить время полета шаров</div>-->
-<!--        <div class="cursor">-->
-<!--            <div class="cursor__image" style="background-image: url(./ready-html/img/5.jpg)"></div>-->
-<!--        </div>-->
-<!--    </a>-->
 
+<div class="blog-blog">
+    <div class="mini-blog _container">
+        {% for post in post_list %}
+        <div class="blog-img"><a href="/post/{{ post.slug }}"><img src="{% static 'shop/foto/provercaaaa.jpg' %}" alt=""></a></div>
+        <div class="title-blog"><a href="/post/{{ post.slug }}">{{ post.title }}</a></div>
+        <div class="text-blog"><a href="/post/{{ post.slug }}">вы узнаете как надуть шар... читать</a></div>
+        {% endfor %}
+    </div>
 </div>
-<script src="{% static 'shop/script_blog.js' %}"></script>
+
+<!--<script src="{% static 'shop/script_blog.js' %}"></script>-->
 
 
 {% endif %}

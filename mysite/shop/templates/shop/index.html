@@ -3,29 +3,9 @@
 {% load mptt_tags %}
 {% block content %}
 
-<!--<div class="portfolio-item">-->
-<!--    <div class="portfolio-item-wrap">-->
-<!--    <a href="">-->
-<!--    <img src="{% static 'shop/foto/proverca.jpg' %}">-->
-<!--    <div class="portfolio-item-inner">-->
-<!--    <div class="portfolio-heading">-->
-<!--    <h3>НАШИ ШАРЫ:</h3>-->
-<!--    </div>-->
-<!--    <ul>-->
-<!--    <li><a href="/nabor">Готовые наборы</li></a>-->
-<!--    <li><a href="/poshtychno">Шары поштучно</li></a>-->
-<!--    </ul>-->
-<!--    </div>-->
-<!--    </a>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!-- <section class="head-bloc _container">
-    <div class="title"><h3>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h3></div>
-    <div class="head-button">
-        <a href="" class="border-button">Весь каталог</a>
-    </div>
-</section> -->
+<div class="sections__ava">
+    <img src="{% static 'shop/foto/ava-kiki.png' %}" alt="">
+</div>
 
 <div class="sections__categories"> 
         <div class="categories_bloc-title _container">ГОТОВЫЕ НАБОРЫ:</div>
@@ -52,46 +32,7 @@
                 {% endfor %}
                 {% endif %}
             </div>
-
-
 </div>
 
 
-<div class="individual element-animation _container">
-    <div class="individual-text">ИНДИВИДУАЛЬНАЯ НАДПИСЬ<br><br>НА ШАРЕ И КОРОБКЕ</div>
-    <div class="individual-image"><img src="{% static 'shop/foto/pen.png' %}" alt=""></div>
-</div>
-    
-<div class="title_discounts _container"><a href="#top" id="bottom"><h3>АКЦИИ :</h3></a></div>
-
-<div class="discounts">
-    <div class="discounts_box element-animation _container">
-        <div class="discounts_card">
-            <img src="{% static 'shop/foto/discount1.png' %}" alt="">
-            <div class="discounts_card_title">Бесплатная доставка<br>от 1000 р</div>
-            <div class="discounts_card_text">Сосновый бор и Лен область</div>
-        </div>
-        <div class="discounts_card">
-            <img src="{% static 'shop/foto/discount2.png' %}" alt="">
-            <div class="discounts_card_title">Скидка</div>
-            <div class="discounts_card_text">Получи скидку за отметку</div>
-        </div>
-        <div class="discounts_card">
-            <img src="{% static 'shop/foto/discount3.png' %}" alt="">
-            <div class="discounts_card_title">Скидка 3 %<br>на первый заказ</div>
-            <div class="discounts_card_text">Для новых клиентов</div>
-        </div>
-    </div>
-</div>
-
-<div class="module-pagination _container">
-    <div class="pagination_load"><a href="">Показать еще</a></div>
-    <div class="pagination_box">
-        <div class="flex-prev"><a href=""><img src="{% static 'shop/foto/arrow-l.png' %}" alt=""></a></div>
-        <div class="numb"><a href="">1</a></div>
-        <div class="numb-on"><a href="">2</a></div>
-        <div class="numb"><a href="">3</a></div>
-        <div class="flex-next"><a href=""><img src="{% static 'shop/foto/arrow-r.png' %}" alt=""></a></div>
-    </div>
-</div>
 {% endblock %}

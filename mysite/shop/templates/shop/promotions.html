@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="promotions_block">
+    {{ promotions.title }}
+<br>
+{{ promotions.short_description }}
+<br>
+    {{ promotions.post_text  | safe }}
+
+</div>
+
+
+
+
+{% endblock %}

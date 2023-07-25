@@ -2,10 +2,41 @@
 {% load static %}
 {% block content %}
 
-<br><br>
+<br>
+
+<div class="way-box _container">
+    <div class="category_path"><a href="/">Главная</a></div>
+    <div class="categories_path">
+        <div class="category_path">
+            <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+            <a href="/blog">Блог</a>
+        </div>
+    </div>
+    <div class="category_path">
+            <div class="categories_path">
+                <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+                <a href="/post/{{ post.slug }}">{{ post.title }}</a>
+            </div>
+    </div>
+
+</div>
 {% if post %}
+<!--<div class="post">-->
+<!--    <div class="post_title">-->
+<!--        {{ post.title }}-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <div class="post_text">-->
+<!--    {{ post.post_text | safe }}-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <div class="back_blog">-->
+<!--        <p>НАЗАД В БЛОГ</p>-->
+<!--    </div>-->
+<!--</div>-->
+
 <div class="post">
-    <div class="post_title">
+    <!-- <div class="post_title">
         {{ post.title }}
     </div>
     <br>
@@ -15,13 +46,32 @@
     <br>
     <div class="back_blog">
         <p>НАЗАД В БЛОГ</p>
+    </div> -->
+
+    <div class="post-blog _container">
+        <div class="blog-img"><img src="/media/{{ post.image }}" alt=""></div>
+        <div class="title-blog">{{ post.title }}</div>
+        <div class="text-blog">{{ post.post_text | safe }}</div>
+        <div class="views-post">
+            <div class="views-post-date"></div>
+            <div class="views-post-img"><img src="" alt=""></div>
+        </div>
     </div>
 
 
+</div>
 
-
-
-
+<div class="navig-post _container">
+    <div class="catalog">
+        <div class="head-button">
+            <a href="/blog" class="border-button">В блог</a>
+        </div>
+    </div>
+    <div class="catalog">
+        <div class="head-button">
+            <a href="/" class="border-button">Главная</a>
+        </div>
+    </div>
 </div>
 
 

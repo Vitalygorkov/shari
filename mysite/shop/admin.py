@@ -5,7 +5,7 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
-from .models import Category, Color, Product, Balloon, Photo_product, VideosProducts, Post
+from .models import Category, Color, Product, Balloon, Photo_product, VideosProducts, Post, Promotions
 
 admin.site.register(Category, MPTTModelAdmin)
 admin.site.register(Color)
@@ -80,8 +80,16 @@ class PostAdminForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
+
+class PromotionsAdminForm(forms.ModelForm):
+    post_text = forms.CharField(label="Текст акции", widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Promotions
+        fields = '__all__'
 @admin.register(Post)
 class PostAdmin(ImportExportModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
     form = PostAdminForm
     # prepopulated_fields = {'slug': ('name',), }
     list_display = ("title", "image")
@@ -90,5 +98,14 @@ class PostAdmin(ImportExportModelAdmin):
     # list_filter = ("name")
     # search_fields = ("name")
     # inlines = [VideosInline, Photo_productInline,]
+    save_on_top = True
+    save_as = True
+
+@admin.register(Promotions)
+class PromotionsAdmin(ImportExportModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+    form = PromotionsAdminForm
+    list_display = ("title",)
+    list_display_links = ("title",)
     save_on_top = True
     save_as = True

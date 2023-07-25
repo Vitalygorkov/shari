@@ -4,6 +4,21 @@ import mptt
 from PIL import Image as Img
 from io import StringIO, BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.utils.text import slugify
+
+class Promotions(models.Model):
+    title = models.CharField("Заголовок", max_length=500, unique=True)
+    short_description = models.TextField("Отрывок для показа в карточке", max_length=500)
+    post_text = models.TextField('Текст акции')
+    image = models.ImageField("Изображение", upload_to="photo/")
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = 'Акция'
+        verbose_name_plural = 'Акции'
+
 
 
 class Post(models.Model):
