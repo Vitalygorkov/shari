@@ -35,7 +35,7 @@
 <div class="blog-blog">
     <div class="mini-blog _container">
         {% for post in post_list %}
-        <div class="blog-img"><a href="/post/{{ post.slug }}"><img src="{% static 'shop/foto/provercaaaa.jpg' %}" alt=""></a></div>
+        <div class="blog-img"><a href="/post/{{ post.slug }}"><img src="/media/{{ post.image }}" alt=""></a></div>
         <div class="title-blog"><a href="/post/{{ post.slug }}">{{ post.title }}</a></div>
         <div class="text-blog"><a href="/post/{{ post.slug }}">вы узнаете как надуть шар... читать</a></div>
         {% endfor %}
