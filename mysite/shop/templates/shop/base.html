@@ -68,7 +68,13 @@
 
                             <li><a href="/promotions_page" id="top" class="menu__linka">Акции</a></li>
                             <li><a href="https://vk.com/kikimora.balloon" class="menu__linka">Мы в ВК</a></li>
-                            <li><a href="/cart" class="menu__linka">{{ cart_count }}<img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></a></li>
+                            <li><a href="/cart" class="menu__linka">{{ cart_count }}
+                                    <div class="menu-korzin">
+                                        <div class="menu-korzin-img"><img src="{% static 'shop/foto/Mask-korzina.png' %}" alt=""></div>
+                                        <div class="menu-korzin-numb">3</div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -121,14 +127,15 @@
 <div class="discounts">
     <div class="discounts_box element-animation _container">
         {% for promotion in promotions_list %}
-        <a href="/promotions/{{ promotion.slug }}" class="magic-list__item">
             <div class="discounts_card">
-                <img src="/media/{{ promotion.image }}" alt="">
-                <div class="discounts_card_title">{{ promotion.title }}</div>
-                <div class="discounts_card_text">{{ promotion.short_description }}</div>
+                <a href="/promotions/{{ promotion.slug }}">
+                    <div class="discounts_card-png"><img src="/media/{{ promotion.image }}" alt=""></div>
+                    <div class="discounts_card_title">{{ promotion.title }}</div>
+                    <div class="discounts_card_text">{{ promotion.short_description }}</div>
+                </a>
             </div>
-        </a>
         {% endfor %}
+        
     </div>
 </div>
 
