@@ -34,6 +34,28 @@ def index(request):
 #     return HttpResponse(template.render( context, request))
 
 def cart(request):
+    # cart = request.GET.get("cart", "Undefined")
+    # получаем куки с ключом cart
+    if request.COOKIES.get('cart'):
+        cart_string = request.COOKIES["cart"]
+        cart_count = len(cart_string.split(','))
+        cart_list = [x.strip() for x in cart_string.split(',')]
+        print(cart_list)
+        add_to_cart = request.GET.get("add_to_cart", "Undefined")
+        print(add_to_cart)
+        if add_to_cart != "Undefined":
+            cart_list.append(add_to_cart)
+        print(cart_list)
+        # корзина в итоге в виде объектов
+        # cart = Balloon.objects.filter(pk__in=cart_list)
+
+
+    else:
+        cart = ''
+
+
+
+
     products_list = Balloon.objects.all()
     categories = Category.objects.all()
     template = loader.get_template('shop/cart.html')
@@ -42,8 +64,26 @@ def cart(request):
         'promotions_list': promotions_list,
         'products_list': products_list,
         'categories': categories,
+        'cart': cart,
+        'cart_count': cart_count
     }
-    return HttpResponse(template.render( context, request))
+    html = HttpResponse(template.render( context, request))
+
+    if request.COOKIES.get('cart'):
+        html.set_cookie('cart', ''.join(cart_list))
+        # value = int(request.COOKIES.get('visits'))
+        # html.set_cookie('cart', value + 1)
+    else:
+        html.set_cookie('cart', "1,6")
+        # value = 1
+        # text = "Welcome for the first time"
+        # html.set_cookie('visits', value)
+        # html.set_cookie('dataflair', text)
+
+    # cart = Balloon.objects.filter(pk__in=cart_list)
+
+    return html
+
 
 def favorites(request):
     products_list = Balloon.objects.all()
@@ -58,6 +98,13 @@ def favorites(request):
     return HttpResponse(template.render( context, request))
 
 def blog(request):
+    # получаем куки с ключом cart
+    if request.COOKIES.get('cart'):
+        cart = request.COOKIES["cart"]
+        cart_count = len(cart.split(','))
+    else:
+        cart = ''
+
     post_list = Post.objects.all()
     categories = Category.objects.all()
     template = loader.get_template('shop/blog.html')
@@ -66,6 +113,8 @@ def blog(request):
         'promotions_list': promotions_list,
         'post_list': post_list,
         'categories': categories,
+        'cart': cart,
+        'cart_count': cart_count
     }
     return HttpResponse(template.render( context, request))
 

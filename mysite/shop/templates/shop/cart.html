@@ -3,7 +3,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'shop/style.css' %}" type="text/css"/>
 
-cart
+cart {{ cart }} количество товаров {{ cart_count }}
 <div class="way-box _container">
     <div class="category_path"><a href="/">Главная</a></div>
     <div class="categories_path">
@@ -24,8 +24,8 @@ cart
 <section class="cart">
     <div class="cart-body _container">
         <div class="cart-name"><h3>КОРЗИНА</h3></div> 
-        {% if products_list %}
-        {% for product in products_list %}
+        {% if cart %}
+        {% for product in cart %}
         <div class="cart-blok">
             <div class="cart-image"><a href=""><img src="/media/{{ product.image }}" alt=""></a></div>
             <div class="conteiner-cart">
@@ -35,12 +35,14 @@ cart
             <div class="cart-pcs__calc">
                 <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
                 <div class="pcs__calc-imput">1</div>
-                <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
+                <a href="?add_to_cart={{ product.id }}"><div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div></a>
             </div>
             <div class="cart-sum">4584 руб.</div>
             <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
         </div>
         {% endfor %}
+        {% else %}
+
         {% endif %}
     </div>
 </section>
