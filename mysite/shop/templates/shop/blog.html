@@ -30,18 +30,19 @@
 {% if post_list %}
 
 
-
-
+{% for post in post_list %}
 <div class="blog-blog">
+    
     <div class="mini-blog _container">
-        {% for post in post_list %}
+        
         <div class="blog-img"><a href="/post/{{ post.slug }}"><img src="/media/{{ post.image }}" alt=""></a></div>
         <div class="title-blog"><a href="/post/{{ post.slug }}">{{ post.title }}</a></div>
-        <div class="text-blog"><a href="/post/{{ post.slug }}">вы узнаете как надуть шар... читать</a></div>
-        {% endfor %}
+        <div class="text-blog"><a href="/post/{{ post.slug }}">... читать</a></div>
+        
     </div>
+    
 </div>
-
+{% endfor %}
 <!--<script src="{% static 'shop/script_blog.js' %}"></script>-->
 
 

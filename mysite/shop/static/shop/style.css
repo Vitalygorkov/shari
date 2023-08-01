@@ -19,6 +19,9 @@
   width: 80%;
   background-color: rgb(192, 184, 192);
   transition: box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .mini-blog:hover {
   box-shadow: 0 0 10px #030303;
@@ -128,25 +131,25 @@
 body {
     background-color: #f0f0f0;
 }
-.magic-list {
+/* .magic-list {
     font-family: arsenal_f, sans-serif;
     font-size: calc(var(--index) * 2);
     padding: calc(var(--index) * 2.5);
 }
 .magic-list__item{
     /* cursor: none; */
-    color: var(--black);
+    /* color: var(--black);
     text-decoration: none;
     display: block;
     line-height: .9;
     padding: calc(var(--index) * 3) calc(var(--index) * 7.5);
     border-bottom: 1px solid #a7a7a7;
     counter-increment: my-counter;
-}
-.magic-list__item:hover .magic-list__header{
+} */
+/* .magic-list__item:hover .magic-list__header{
     transform: translate3d(calc(var(--index) * -5), 0, 0);
-}
-.magic-list__header{
+} */
+/* .magic-list__header{
     width: min-content;
     transition: transform var(--transition);
     will-change: transform;
@@ -165,8 +168,8 @@ body {
     transition: transform var(--transition-cursor), height 1s ease;
     z-index: -1;
     will-change: transform;
-}
-.magic-list__item:hover .cursor{
+} */
+/* .magic-list__item:hover .cursor{
     height: var(--height);
 }
 .cursor__image{
@@ -183,7 +186,7 @@ body {
 }
 .magic-list__item:hover .cursor__image{
     transform: var(--cursor-transform) scale(1);
-}
+}  */
 
 /* добавил стили блога вверх */
 
@@ -537,6 +540,10 @@ button:before {
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+.menu-korzin{
+  display: flex;
+  flex-direction: row;
 }
 /*----------------------------------------section head-bloc-------*/
 .head-bloc{
@@ -973,6 +980,8 @@ button:before {
 }
 .categories_card-name1{
   margin-top: 5px;
+  margin-left: 5%;
+  margin-right: 5%;
   color: #000;
 }
 /*----------------------------------------тайтл доставка и скидки-------*/
@@ -1004,7 +1013,7 @@ button:before {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: flex-start;
   width: 250px;
   height: 250px;
   box-shadow: 0 10px 20px rgb(0, 0, 0), 0 10px 10px rgba(0,0,0,0.22);
@@ -1013,11 +1022,25 @@ button:before {
   background-color: rgb(250, 250, 250);
   padding-left: 25px;
 }
+.discounts_card a {
+  color: #000;
+  margin-top: 15px;
+}
 .discounts_card:hover {
   transform: translateY(-10px);
 }
 .discounts_card_title{
   font-size: 20px;
+  margin-bottom: 15%;
+}
+.discounts_card-png{
+ width: 25%;
+margin-bottom: 15%;
+}
+.discounts_card-png img{
+  width: 100%;
+  max-width: 50px;
+  min-width: 35px;
 }
 /*----------------------------------------пагинация-------*/
 .module-pagination{
@@ -1372,6 +1395,9 @@ button:before {
   }
   .icons img {
     width: 20%;
+  }
+  .contact{
+    margin-bottom: 15px;
   }
   @media (max-width: 600px){
   .icons{
@@ -1798,9 +1824,6 @@ button:before {
     }
     .title_discounts {
       font-size: 20px;
-    }
-    .discounts_card img{
-      width: 40%;
     }
     .discounts_card{
       padding-left: 5px;
