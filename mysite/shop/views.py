@@ -64,7 +64,7 @@ def cart(request):
         'promotions_list': promotions_list,
         'products_list': products_list,
         'categories': categories,
-        'cart': cart,
+        'cart': cart_list,
         'cart_count': cart_count
     }
     html = HttpResponse(template.render( context, request))
