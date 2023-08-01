@@ -67,6 +67,7 @@ def cart(request):
         'cart': cart_list,
         'cart_count': cart_count
     }
+
     html = HttpResponse(template.render( context, request))
 
     if request.COOKIES.get('cart'):
