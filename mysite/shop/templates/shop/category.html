@@ -26,7 +26,7 @@
 
 {% if categories %}
 <div class="footer__back">
-    {% for category in categories %}
+    {% for category in branch_categories %}
     <a href="/{{ category.url }}" class="footer-button">{{ category.name }}</a>
     {% endfor %}
 </div>

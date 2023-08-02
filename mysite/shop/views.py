@@ -202,7 +202,7 @@ def category(request, category_slug):
     except Exception as e:
         print(e)
         print('Ошибка поиска текущей категории ')
-
+    print(branch_categories)
     products_list = Balloon.objects.filter(category__in=branch_categories)
     paginator = Paginator(products_list, 30)
     page_number = request.GET.get('page', '1')
@@ -219,6 +219,7 @@ def category(request, category_slug):
         "last_category": last_category,
         'categories': categories,
         'pages': paginator.count,
+        "branch_categories": branch_categories,
         "has_next": page_obj.has_next(),
         "has_previous": page_obj.has_previous(),
         "tags": tags
