@@ -86,6 +86,7 @@ class Product(models.Model):
     price = models.IntegerField('Цена', blank=True, null=True)  # цена
     color = models.ForeignKey(Color, verbose_name="Цвет", on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ManyToManyField('Category', verbose_name="Категории")
+    tag = models.ManyToManyField('TagsProducts', verbose_name="Тег", blank=True)
     slug = models.SlugField(max_length=250,unique=True, db_index=True, verbose_name='URL')
     availability = models.BooleanField("Наличие", default=False, blank=True) # Наличие по дефолту нет.
     # whom = TreeForeignKey(Category, on_delete=models.DO_NOTHING, blank=True,null=True,related_name='cat_product')
@@ -174,3 +175,14 @@ class VideosProducts(models.Model):
     class Meta:
         verbose_name = "Видео"
         verbose_name_plural = "Видео"
+
+class TagsProducts(models.Model):
+    tag_name = models.CharField("название тега:", max_length=30)
+    slug = models.SlugField(max_length=30, unique=True, db_index=True, verbose_name='URL')
+
+    class Meta:
+        verbose_name = "Тег"
+        verbose_name_plural = "Теги"
+
+    def __str__(self):
+        return self.slug

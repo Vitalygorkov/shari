@@ -5,7 +5,7 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
-from .models import Category, Color, Product, Balloon, Photo_product, VideosProducts, Post, Promotions
+from .models import Category, Color, Product, Balloon, Photo_product, VideosProducts, Post, Promotions, TagsProducts
 
 admin.site.register(Category, MPTTModelAdmin)
 admin.site.register(Color)
@@ -109,3 +109,8 @@ class PromotionsAdmin(ImportExportModelAdmin):
     list_display_links = ("title",)
     save_on_top = True
     save_as = True
+
+@admin.register(TagsProducts)
+class TagsProductsAdmin(ImportExportModelAdmin):
+    prepopulated_fields = {'slug': ('tag_name',)}
+    list_display = ("tag_name",)

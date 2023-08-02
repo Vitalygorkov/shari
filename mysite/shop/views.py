@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Category, Product, Balloon, Post, Promotions
+from .models import Category, Product, Balloon, Post, Promotions, TagsProducts
 from django.core.paginator import Paginator
 
 
@@ -209,6 +209,7 @@ def category(request, category_slug):
     page_obj = paginator.get_page(page_number)
 
     categories = Category.objects.all()
+    tags = TagsProducts.objects.all()
     # template = loader.get_template('shop/category.html')
     template_render = "shop/category.html"
     promotions_list = Promotions.objects.all()
@@ -220,6 +221,48 @@ def category(request, category_slug):
         'pages': paginator.count,
         "has_next": page_obj.has_next(),
         "has_previous": page_obj.has_previous(),
+        "tags": tags
+    }
+    print(last_category)
+    print(paginator.count)
+    print(paginator.num_pages)
+    return render(request, template_render, context)
+
+def tags_view(request, tag_slug):
+    # Category.objects.filter(url=category_slug)
+    # branch_categories = Category.objects.filter(slug=category_slug).get_descendants(include_self=True)
+    # print(branch_categories)
+    last_category = ''
+    # try:
+    #     if category_slug:
+    #         print(category_slug)
+    #         last_category = Category.objects.get(url=category_slug)
+    # except Exception as e:
+    #     print(e)
+    #     print('Ошибка поиска текущей категории ')
+
+    tag_obj = TagsProducts.objects.filter(slug=tag_slug)
+    print(tag_obj)
+    print(tag_obj[0].id)
+    products_list = Balloon.objects.filter(tag=tag_obj[0].id)
+    paginator = Paginator(products_list, 30)
+    page_number = request.GET.get('page', '1')
+    page_obj = paginator.get_page(page_number)
+
+    categories = Category.objects.all()
+    tags = TagsProducts.objects.all()
+    # template = loader.get_template('shop/category.html')
+    template_render = "shop/category.html"
+    promotions_list = Promotions.objects.all()
+    context = {
+        'promotions_list': promotions_list,
+        'products_list': page_obj,
+        "last_category": last_category,
+        'categories': categories,
+        'pages': paginator.count,
+        "has_next": page_obj.has_next(),
+        "has_previous": page_obj.has_previous(),
+        "tags": tags
     }
     print(last_category)
     print(paginator.count)
