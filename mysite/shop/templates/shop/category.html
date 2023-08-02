@@ -24,6 +24,14 @@
     </div>
 </div>
 
+{% if categories %}
+<div class="footer__back">
+    {% for category in categories %}
+    <a href="/{{ category.url }}" class="footer-button">{{ category.name }}</a>
+    {% endfor %}
+</div>
+{% endif %}
+
 
 {% if products_list %}
 {% for product in products_list %}

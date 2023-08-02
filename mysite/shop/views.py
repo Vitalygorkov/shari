@@ -34,9 +34,20 @@ def index(request):
 #     return HttpResponse(template.render( context, request))
 
 def cart(request):
+    categories = Category.objects.all()
+    products_list = Balloon.objects.all()
+    promotions_list = Promotions.objects.all()
+    template = loader.get_template('shop/cart.html')
+
+
+    # html = HttpResponse(template.render(context, request))
     # cart = request.GET.get("cart", "Undefined")
     # получаем куки с ключом cart
+
+
+
     if request.COOKIES.get('cart'):
+
         cart_string = request.COOKIES["cart"]
         cart_count = len(cart_string.split(','))
         cart_list = [x.strip() for x in cart_string.split(',')]
@@ -45,43 +56,34 @@ def cart(request):
         print(add_to_cart)
         if add_to_cart != "Undefined":
             cart_list.append(add_to_cart)
+            print(cart_list)
         print(cart_list)
+        print(cart_count)
+
+        # html.set_cookie('cart', ','.join(cart_list))
         # корзина в итоге в виде объектов
-        # cart = Balloon.objects.filter(pk__in=cart_list)
+        cart = Balloon.objects.filter(pk__in=cart_list).distinct("pk")
 
 
     else:
+        # html.set_cookie('cart', "")
         cart = ''
+        cart_list = ''
+        cart_count = ''
 
 
-
-
-    products_list = Balloon.objects.all()
-    categories = Category.objects.all()
-    template = loader.get_template('shop/cart.html')
-    promotions_list = Promotions.objects.all()
     context = {
+        'categories': categories,
         'promotions_list': promotions_list,
         'products_list': products_list,
         'categories': categories,
-        'cart': cart_list,
+        'cart': cart,
         'cart_count': cart_count
     }
 
+
     html = HttpResponse(template.render( context, request))
-
-    if request.COOKIES.get('cart'):
-        html.set_cookie('cart', ''.join(cart_list))
-        # value = int(request.COOKIES.get('visits'))
-        # html.set_cookie('cart', value + 1)
-    else:
-        html.set_cookie('cart', "1,6")
-        # value = 1
-        # text = "Welcome for the first time"
-        # html.set_cookie('visits', value)
-        # html.set_cookie('dataflair', text)
-
-    # cart = Balloon.objects.filter(pk__in=cart_list)
+    html.set_cookie('cart', ','.join(cart_list))
 
     return html
 
