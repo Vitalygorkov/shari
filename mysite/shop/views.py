@@ -107,6 +107,8 @@ def blog(request):
         cart_count = len(cart.split(','))
     else:
         cart = ''
+        cart_list = ''
+        cart_count = ''
 
     post_list = Post.objects.all()
     categories = Category.objects.all()
