@@ -5,6 +5,7 @@ from PIL import Image as Img
 from io import StringIO, BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.utils.text import slugify
+import django_filters
 
 class Promotions(models.Model):
     title = models.CharField("Заголовок", max_length=500, unique=True)
@@ -186,3 +187,18 @@ class TagsProducts(models.Model):
 
     def __str__(self):
         return self.slug
+
+class CharFilterInFilter(django_filters.BaseInFilter, django_filters.CharFilter):
+    pass
+
+class ProductFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr='iexact')
+    # price = django_filters.NumberFilter()
+    price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt')
+    price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
+    # color__name = django_filters.CharFilter(lookup_expr='icontains')
+    # color__name = django_filters.CharFilter(lookup_expr='in')
+    color__name = CharFilterInFilter(field_name='color__name',lookup_expr='in')
+    class Meta:
+        model = Product
+        fields = ['color__name']

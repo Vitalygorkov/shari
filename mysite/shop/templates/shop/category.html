@@ -11,6 +11,14 @@
 <div class="way-box _container">
     <div class="category_path"><a href="/">Главная</a></div>
     <div class="categories_path">
+        {% if parents %}
+            {% for category in parents %}
+            <div class="category_path">
+                <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
+                <a href="/{{ category.url }}">{{ category.name }} </a>
+            </div>
+            {% endfor %}
+        {% endif %}
         <div class="category_path">
             <img src="{% static 'shop/foto/right-arrow.png' %}" alt="">
             <a href="/{{ last_category.url }}">{{ last_category.name }} </a>
@@ -26,7 +34,7 @@
 
 {% if categories %}
 <div class="footer__back">
-    {% for category in branch_categories %}
+    {% for category in categories %}
     <a href="/{{ category.url }}" class="footer-button">{{ category.name }}</a>
     {% endfor %}
 </div>
@@ -41,8 +49,66 @@
 <!--{% endif %}-->
 
 
+<!--<div>-->
+<!--    {% if products_list %}-->
+<!--<select>-->
+<!--    {% for color in colors %}-->
+<!--    <option>{{ color.name }}</option>-->
+<!--        {% endfor %}-->
+<!--</select>-->
+<!--    {% endif %}-->
+<!--</div>-->
+
+<div>
+<!--    основной блок фильтра-->
+
+
+<!--<form method = "get" id="my-form">-->
+<!--&lt;!&ndash;    цена от {{ filter.form.price__gt}}&ndash;&gt;-->
+<!--&lt;!&ndash;    цена до {{ filter.form.price__lt }}&ndash;&gt;-->
+<!--    -->
+<!--<label for="form1">цена от:</label>-->
+<!--<input type="number" id="form1" name="price__gt" />-->
+
+<!--<label for="form1">цена до:</label>-->
+<!--<input type="number" id="form1" name="price__lt" />-->
+
+
+<!--    <select >-->
+<!--        <ul>-->
+<!--        {% for color in colors %}-->
+<!--            <li>-->
+<!--            <input type="checkbox" value="{{ color.name }}" id="form1">-->
+<!--            <span>{{ color.name }}{{form.color__name.css_classes}}</span>-->
+<!--            </li>-->
+<!--        {% endfor %}-->
+<!--        </ul>-->
+<!--    </select>-->
+
+<!--    <p><input type="submit" value="Send" id="my-button"></p>-->
+<!--</form>-->
+
+
+
+    <!--    основной блок фильтра-->
+</div>
+
+<!--    вторая форма Рабочая-->
+<!--<form method="get">-->
+<!--        {{ filter.form.as_p }}-->
+<!--        <input type="submit" />-->
+<!--</form>-->
+
+
+<!--<form method="get">-->
+<!--    {{ filter.form.as_p }}-->
+<!--    <input type="submit" />-->
+<!--</form>-->
+
+
+
 {% if products_list %}
-{% for product in products_list %}
+{% for product in filter.qs %}
 
 <div class="card element-animation">
     <div class="card__header"><a href="{{ product.slug }}">
@@ -121,6 +187,73 @@
 
 </div>
 <!-- Закончился блок с карточками -->
+
+
+<!--Скрипт вставки значений чекбоксов-->
+<script>
+console.log('LOGGGG')
+var prices = document.querySelectorAll("input[type=number][id=form1]");
+var checkboxes = document.querySelectorAll("input[type=checkbox][id=form1]");
+let enabledSettings = []
+var inputs = document.querySelectorAll("input[id=form1]");
+
+<!--хендлер инпутов-->
+inputs.forEach(function(my_checkbox) {
+  my_checkbox.addEventListener('change', function() {
+    console.log(inputs)
+
+   })
+});
+
+
+//дальше ненужное
+<!--Хендлер чекбоксов-->
+// Use Array.forEach to add an event listener to each checkbox.
+//checkboxes.forEach(function(checkbox) {
+//  checkbox.addEventListener('change', function() {
+//    enabledSettings =
+//      Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
+//      .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
+//      .map(i => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
+//
+//   console.log(enabledSettings)
+
+//<!--    ?price__gt=&price__lt=&color__name=оранжевый-->
+//    var enabledSettings_string = 'color__name=' + enabledSettings.join() ;
+//    const currentUrl = window.location.href;
+//    console.log(currentUrl)
+//    console.log(currentUrl.split('/')[3])
+//    console.log(currentUrl.split('/')[0]+'/'+currentUrl.split('/')[1]+'/'+currentUrl.split('/')[2]+'/')
+//    const filter_string = currentUrl.split('?')[1]
+//    console.log(filter_string)
+//    var filter_set = filter_string.split('&')
+
+//<!--    document.location.replace(currentUrl.split('/')[0]+'/'+currentUrl.split('/')[1]+'/'+currentUrl.split('/')[2]+'/'+currentUrl.split('/')[3]+'/'+'?'+enabledSettings_string);-->
+//  })
+//});
+
+<!--хендлер цены-->
+// Use Array.forEach to add an event listener to each checkbox.
+//prices.forEach(function(my_checkbox) {
+//  my_checkbox.addEventListener('change', function() {
+//    console.log(prices[0].value)
+//    console.log(prices[1].value)
+//
+//   })
+//});
+
+
+<!--обработка кнопки-->
+<!--document.getElementById("my-button").addEventListener("click", function(event){-->
+<!--  event.preventDefault()-->
+<!--});-->
+
+<!--текущий адрес-->
+const currentUrl = window.location.href;
+console.log(currentUrl);
+
+</script>
+
 <script>
 setTimeout(() => {
 

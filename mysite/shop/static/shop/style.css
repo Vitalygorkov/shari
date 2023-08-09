@@ -937,6 +937,11 @@ button:before {
     box-shadow: 0 0 5px #4b4b4b;
 }
 /*----------------------------------------категории карточки-------*/
+.categories_path{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
 .categories_bloc-title{
   margin-bottom: 20px;
 }

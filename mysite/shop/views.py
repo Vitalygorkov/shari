@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Category, Product, Balloon, Post, Promotions, TagsProducts
+from .models import Category, Product, ProductFilter, Balloon, Post, Promotions, TagsProducts, Color
 from django.core.paginator import Paginator
 
 
@@ -193,12 +193,22 @@ def search(request):
     return HttpResponse(template.render( context, request))
 
 def category(request, category_slug):
+    parents = Category.objects.filter(url=category_slug).get_ancestors(include_self=False)
+    # parents_categories = Category.objects.filter(url=category_slug).get_ancestors(ascending=False, include_self=False)
+    print('запрос:')
+    if request.method == 'GET':
+        color_filter_leist = request.GET.getlist('color__name')
+    elif request.method == 'POST':
+        qd = request.POST
+    print(color_filter_leist)
     # Category.objects.filter(url=category_slug)
-    branch_categories = Category.objects.filter(url=category_slug).get_descendants(include_self=True)
+    colors = Color.objects.all()
+    branch_categories = Category.objects.filter(url=category_slug).get_descendants(include_self=False)
     print(branch_categories)
     last_category = ''
     try:
         if category_slug:
+
             print(category_slug)
             last_category = Category.objects.get(url=category_slug)
     except Exception as e:
@@ -206,16 +216,18 @@ def category(request, category_slug):
         print('Ошибка поиска текущей категории ')
     print(branch_categories)
     products_list = Balloon.objects.filter(category__in=branch_categories)
+    filter = ProductFilter(request.GET, queryset=products_list)
+    products_list = filter.qs
     paginator = Paginator(products_list, 30)
     page_number = request.GET.get('page', '1')
     page_obj = paginator.get_page(page_number)
-
     categories = Category.objects.all()
     tags = TagsProducts.objects.all()
     # template = loader.get_template('shop/category.html')
     template_render = "shop/category.html"
     promotions_list = Promotions.objects.all()
     context = {
+        'parents': parents,
         'promotions_list': promotions_list,
         'products_list': page_obj,
         "last_category": last_category,
@@ -224,7 +236,9 @@ def category(request, category_slug):
         "branch_categories": branch_categories,
         "has_next": page_obj.has_next(),
         "has_previous": page_obj.has_previous(),
-        "tags": tags
+        "tags": tags,
+        'colors': colors,
+        'filter': filter
     }
     print(last_category)
     print(paginator.count)
@@ -282,13 +296,17 @@ def show_product(request, product_slug, category_slug):
     template_render = "shop/baloon.html"
     # print(categories.filter(name=product.category).get_ancestors(include_self=True)[0].name)
 
-    # if categories.filter(name=product.category).get_ancestors(include_self=True)[0].name == 'Лодки':
-    #     product = Boat.objects.get(slug=product_slug)
-    #     template_render = "shop/product.html"
-    # print("show_product")
     promotions_list = Promotions.objects.all()
+    print(promotions_list)
+    context = {
+        'product_balloon': product_balloon,
+        'promotions_list': promotions_list,
+        "last_category": last_category,
+        'categories': categories,
+    }
 
-    return render(request, template_render, {"product_balloon": product_balloon,
-                                             'promotions_list': promotions_list,
-                                             "last_category": last_category,
-                                            'categories': categories, })
+    # return render(request, template_render, {"product_balloon": product_balloon,
+    #                                          'promotions_list': promotions_list,
+    #                                          "last_category": last_category,
+    #                                         'categories': categories, })
+    return render(request, template_render, context)
