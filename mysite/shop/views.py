@@ -203,7 +203,7 @@ def category(request, category_slug):
     print(color_filter_leist)
     # Category.objects.filter(url=category_slug)
     colors = Color.objects.all()
-    branch_categories = Category.objects.filter(url=category_slug).get_descendants(include_self=False)
+    branch_categories = Category.objects.filter(url=category_slug).get_descendants(include_self=True)
     print(branch_categories)
     last_category = ''
     try:
