@@ -218,7 +218,7 @@ def category(request, category_slug):
     products_list = Balloon.objects.filter(category__in=branch_categories)
     filter = ProductFilter(request.GET, queryset=products_list)
     products_list = filter.qs
-    paginator = Paginator(products_list, 20)
+    paginator = Paginator(products_list, 30)
     page_number = request.GET.get('page', '1')
     page_obj = paginator.get_page(page_number)
     categories = Category.objects.all()
