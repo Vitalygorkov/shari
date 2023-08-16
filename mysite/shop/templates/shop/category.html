@@ -91,18 +91,7 @@
     <br>
 <div id="slider2"></div>
     <br>
-				<div class="filters-price__inputs">
-					<label class="filters-price__label">
-					<span class="filters-price__text1">от</span>
-						{% render_field filter.form.size__gt class="filters-price__input" placeholder="2" id="input-size-0" %}
-					<span class="filters-price__text">₽</span>
-					</label>
-					<label class="filters-price__label">
-					<span class="filters-price__text1">до</span>
-						{% render_field filter.form.size__lt class="filters-price__input" placeholder="400" id="input-size-1" %}
-					<span class="filters-price__text">см</span>
-					</label>
-				</div>
+
 
     <br><br>
 
@@ -251,18 +240,15 @@ if (currentUrl.split('?')[1]) {
     }
 else {
     console.log('else filterstring')
-    var filter_string='price__gt=0&price__lt=40000&size__gt=0&size__lt=300'
+    var filter_string='price__gt=0&price__lt=40000'
     console.log(filter_string)
     }
 console.log(filter_string)
 var price_gt=filter_string.split('&')[1].split('=')[1]
 var price_lt=filter_string.split('&')[0].split('=')[1]
-var size_gt=filter_string.split('&')[3].split('=')[1]
-var size_lt=filter_string.split('&')[2].split('=')[1]
 console.log(price_lt)
 console.log(price_gt)
-console.log(size_lt)
-console.log(size_gt)
+
 
 let filterForm = document.getElementById("filter-form");
 <!--обработка кнопки-->
@@ -313,41 +299,7 @@ inputs_price.forEach((el, index) => {
         SendGetReq()
     });
 });
-//слайдер размера
 
-var slider2 = document.getElementById('slider2');
-noUiSlider.create(slider2, {
-    start: [size_lt, size_gt],
-    connect: true,
-    range: {
-        'min': 0,
-        'max': 300
-    }
-});
-
-const input_size_0 = document.getElementById('input-size-0');
-const input_size_1 = document.getElementById('input-size-1');
-const inputs_size = [input_size_0, input_size_1];
-
-slider2.noUiSlider.on('update', function(values, handle){
-    inputs_size[handle].value = Math.round(values[handle]);
-});
-slider2.noUiSlider.on("change", function() {
-    SendGetReq()
-});
-
-const setSsliderSize = (i, value) => {
-    let arr = [null,null];
-    arr[i] = value;
-    slider2.noUiSlider.set(arr);
-};
-
-inputs_size.forEach((el, index) => {
-    el.addEventListener('change', (e) => {
-        setSsliderSize(index, e.currentTarget.value);
-        SendGetReq()
-    });
-});
 
 // nouislider
 

@@ -34,7 +34,8 @@
     <div class="wrapper">
         <header class="headera">
             <div class="headera__container">
-                <a href="/" class="headera__logo"><img src="{% static 'shop/foto/logo-kikimora.jpg' %}" alt=""></a>
+                <a href="/" class="headera__logo"><img src="{% static 'shop/foto/logo-kikimora.jpg' %}" alt="">
+                    <div class="kikimora-black"><img src="{% static 'shop/foto/KIKIMORA-white.png' %}" alt=""></div></a>
                 <div class="header__menu menua">
                     <div class="menu__icona">
                         <span></span>
@@ -113,10 +114,10 @@
 
 <div class="watsap">
     <div class="watsap-form _container">
-        <section class="head-bloc _container">
+        <section class="head-bloc-watsap _container">
             <div class="title"><h3>СВЯЗАТЬСЯ С НАМИ</h3></div>
             <div class="head-button">
-                <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров" class="border-button">WhatsApp</a>
+                <a href="https://wa.me/+79668674747?text=Здравствуйте, хочу оформить заказ!" class="border-button">WhatsApp</a>
             </div>
         </section>
     </div>
@@ -125,7 +126,7 @@
 <div class="title_discounts _container"><a href="#top" id="bottom"><h3>АКЦИИ :</h3></a></div>
 
 <div class="discounts">
-    <div class="discounts_box element-animation _container">
+    <div class="discounts_box _container">
         {% for promotion in promotions_list %}
             <div class="discounts_card">
                 <a href="/promotions/{{ promotion.slug }}">
@@ -145,8 +146,10 @@
                 <div class="info">
                     <div class="name">ИНФОРМАЦИЯ:</div>
                     <a href="">Доставка и оплата</a>
-<!--                    <a href="">Как купить</a>-->
-<!--                    <a href="">Акции</a>-->
+                    <a href="">Как сделать заказ</a>
+                    <a href="">Возврат товара</a>
+                    <a href="">Оставить отзыв</a>
+                    <a href="">Вакансии</a>
                 </div>
 <!--                <div class="catalog">-->
 <!--                    <div class="head-button">-->
@@ -154,11 +157,12 @@
 <!--                    </div>-->
 <!--                </div>-->
                 <div class="contact">
+                    <div class="we">О НАС</div>
                     <div class="we">МЫ В СОЦСЕТЯХ:</div>
                     <div class="icons">
 <!--                        <a href="https://instagram.com/kikimora.balloon?igshid=YmMyMTA2M2Y="><img src="{% static 'shop/foto/instagram.png' %}" alt="instagram"></img></a>-->
-                        <a href="https://vk.com/kikimora.balloon"><img src="{% static 'shop/foto/vk.png' %}" alt="vk"></img></a>
-                        <a href="https://wa.me/+79668674747?text=Хочу сделать заказ шаров"><img src="{% static 'shop/foto/whatsapp.png' %}" alt="whatsapp"></img></a>
+                        <div class="vk"><a href="https://vk.com/kikimora.balloon"><img src="{% static 'shop/foto/vk.png' %}" alt="vk"></img></a></div>
+                        <div class="wa"><a href="https://wa.me/+79668674747?text=Здравствуйте, хочу оформить заказ!"><img src="{% static 'shop/foto/whatsapp.png' %}" alt="whatsapp"></img></a></div>
                     </div>
                 </div>
             </div>

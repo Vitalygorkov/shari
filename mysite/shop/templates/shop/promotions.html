@@ -5,15 +5,18 @@
 <br>
 <br>
 <br>
-<div class="promotions_block">
-    {{ promotions.title }}
-<br>
-{{ promotions.short_description }}
-<br>
-    {{ promotions.post_text  | safe }}
+<div class="title_discounts _container"><a href="#top" id="bottom"><h3>ВСЕ АКЦИИ :</h3></a></div>
 
+{% for promotions in promotions_list %}
+<div class="promotions_block _container">
+    <div class="promotions-title">{{ promotions.title }}</div>
+    <br>
+    <div class="promotions-short-description">{{ promotions.short_description }}</div>
+    <br>
+    <div class="promotions-post-text">{{ promotions.post_text  | safe }}</div>
+    <br>
 </div>
-
+{% endfor %}
 
 
 
