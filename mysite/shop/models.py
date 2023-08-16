@@ -196,6 +196,8 @@ class ProductFilter(django_filters.FilterSet):
     # price = django_filters.NumberFilter()
     price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt')
     price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
+    size__gt = django_filters.NumberFilter(field_name='size', lookup_expr='gt')
+    size__lt = django_filters.NumberFilter(field_name='size', lookup_expr='lt')
     # color__name = django_filters.CharFilter(lookup_expr='icontains')
     # color__name = django_filters.CharFilter(lookup_expr='in')
     color__name = CharFilterInFilter(field_name='color__name',lookup_expr='in')

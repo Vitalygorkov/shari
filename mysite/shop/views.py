@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Category, Product, ProductFilter, Balloon, Post, Promotions, TagsProducts, Color
 from django.core.paginator import Paginator
+from django.db.models import Max
 
 
 def index(request):
@@ -193,6 +194,12 @@ def search(request):
     return HttpResponse(template.render( context, request))
 
 def category(request, category_slug):
+    max_price = Balloon.objects.aggregate(Max('price'))['price__max']
+    min_price = Balloon.objects.aggregate(Max('price'))['price__max']
+
+    # print(max_price['price__max'])
+    print(max_price)
+    print(min_price)
     parents = Category.objects.filter(url=category_slug).get_ancestors(include_self=False)
     # parents_categories = Category.objects.filter(url=category_slug).get_ancestors(ascending=False, include_self=False)
     print('запрос:')

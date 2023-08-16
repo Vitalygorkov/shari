@@ -1,7 +1,8 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
-
+{% load widget_tweaks %}
+<link href="{% static 'shop/nouislider.min.css' %}" rel="stylesheet">
 
 
 <!-- блок с карточками -->
@@ -63,17 +64,64 @@
 <!--    основной блок фильтра-->
 
 
-<!--<form method = "get" id="my-form">-->
-<!--&lt;!&ndash;    цена от {{ filter.form.price__gt}}&ndash;&gt;-->
-<!--&lt;!&ndash;    цена до {{ filter.form.price__lt }}&ndash;&gt;-->
-<!--    -->
+<form method = "get" id="filter-form">
+<!--    цена от {{ filter.form.price__gt}}-->
+<!--    цена до {{ filter.form.price__lt }}-->
+    <br>
+    <br>
+    <br>
+<div id="slider"></div>
+    <br>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.price__gt class="filters-price__input" placeholder="500" id="input-price-0" %}
+					<span class="filters-price__text">₽</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.price__lt class="filters-price__input" placeholder="299999" id="input-price-1" %}
+					<span class="filters-price__text">₽</span>
+					</label>
+				</div>
+
+
+    <br>
+    <br>
+    <br>
+<div id="slider2"></div>
+    <br>
+				<div class="filters-price__inputs">
+					<label class="filters-price__label">
+					<span class="filters-price__text1">от</span>
+						{% render_field filter.form.size__gt class="filters-price__input" placeholder="2" id="input-size-0" %}
+					<span class="filters-price__text">₽</span>
+					</label>
+					<label class="filters-price__label">
+					<span class="filters-price__text1">до</span>
+						{% render_field filter.form.size__lt class="filters-price__input" placeholder="400" id="input-size-1" %}
+					<span class="filters-price__text">см</span>
+					</label>
+				</div>
+
+    <br><br>
+
+<!--<input type="range" min="0" max="100" step="1" value="50">-->
 <!--<label for="form1">цена от:</label>-->
 <!--<input type="number" id="form1" name="price__gt" />-->
 
 <!--<label for="form1">цена до:</label>-->
 <!--<input type="number" id="form1" name="price__lt" />-->
 
+<!--<input type="range" min="0" max="100" step="1" value="50">-->
 
+<!--<label for="form1">Размер от:</label>-->
+<!--<input type="number" id="form1" name="price__gt" />-->
+
+<!--<label for="form1">Размер до:</label>-->
+<!--<input type="number" id="form1" name="price__lt" />-->
+
+<!--Цвет-->
 <!--    <select >-->
 <!--        <ul>-->
 <!--        {% for color in colors %}-->
@@ -85,8 +133,8 @@
 <!--        </ul>-->
 <!--    </select>-->
 
-<!--    <p><input type="submit" value="Send" id="my-button"></p>-->
-<!--</form>-->
+    <p><input type="submit" value="Показать" id="my-button"></p>
+</form>
 
 
 
@@ -190,20 +238,131 @@
 
 
 <!--Скрипт вставки значений чекбоксов-->
+<script src="{% static 'shop/nouislider.min.js' %}"></script>
+
 <script>
+const currentUrl = window.location.href;
+<!--const filter_string = currentUrl.split('?')[1]-->
+if (currentUrl.split('?')[1]) {
+<!--    console.log(currentUrl.split('?')[1])-->
+    var filter_string=currentUrl.split('?')[1]
+    console.log('if filterstring')
+    console.log(filter_string)
+    }
+else {
+    console.log('else filterstring')
+    var filter_string='price__gt=0&price__lt=40000&size__gt=0&size__lt=300'
+    console.log(filter_string)
+    }
+console.log(filter_string)
+var price_gt=filter_string.split('&')[1].split('=')[1]
+var price_lt=filter_string.split('&')[0].split('=')[1]
+var size_gt=filter_string.split('&')[3].split('=')[1]
+var size_lt=filter_string.split('&')[2].split('=')[1]
+console.log(price_lt)
+console.log(price_gt)
+console.log(size_lt)
+console.log(size_gt)
+
+let filterForm = document.getElementById("filter-form");
+<!--обработка кнопки-->
+<!--document.getElementById("filter-form").addEventListener("click", function(event){-->
+<!--  event.preventDefault()-->
+<!--});-->
+
+
+
+function SendGetReq() {
+  filterForm.submit()
+}
+
+// nouislider
+//слайдер цены
+var slider = document.getElementById('slider');
+
+noUiSlider.create(slider, {
+    start: [price_lt, price_gt],
+    connect: true,
+    range: {
+        'min': 0,
+        'max': 40000
+    }
+});
+
+const input_price_0 = document.getElementById('input-price-0');
+const input_price_1 = document.getElementById('input-price-1');
+const inputs_price = [input_price_0, input_price_1];
+
+slider.noUiSlider.on('update', function(values, handle){
+    inputs_price[handle].value = Math.round(values[handle]);
+});
+slider.noUiSlider.on("change", function() {
+    SendGetReq()
+});
+
+const setSslider = (i, value) => {
+    let arr = [null,null];
+    arr[i] = value;
+    slider.noUiSlider.set(arr);
+
+};
+
+inputs_price.forEach((el, index) => {
+    el.addEventListener('change', (e) => {
+        setSslider(index, e.currentTarget.value);
+        SendGetReq()
+    });
+});
+//слайдер размера
+
+var slider2 = document.getElementById('slider2');
+noUiSlider.create(slider2, {
+    start: [size_lt, size_gt],
+    connect: true,
+    range: {
+        'min': 0,
+        'max': 300
+    }
+});
+
+const input_size_0 = document.getElementById('input-size-0');
+const input_size_1 = document.getElementById('input-size-1');
+const inputs_size = [input_size_0, input_size_1];
+
+slider2.noUiSlider.on('update', function(values, handle){
+    inputs_size[handle].value = Math.round(values[handle]);
+});
+slider2.noUiSlider.on("change", function() {
+    SendGetReq()
+});
+
+const setSsliderSize = (i, value) => {
+    let arr = [null,null];
+    arr[i] = value;
+    slider2.noUiSlider.set(arr);
+};
+
+inputs_size.forEach((el, index) => {
+    el.addEventListener('change', (e) => {
+        setSsliderSize(index, e.currentTarget.value);
+        SendGetReq()
+    });
+});
+
+// nouislider
+
 console.log('LOGGGG')
 var prices = document.querySelectorAll("input[type=number][id=form1]");
 var checkboxes = document.querySelectorAll("input[type=checkbox][id=form1]");
 let enabledSettings = []
 var inputs = document.querySelectorAll("input[id=form1]");
 
-<!--хендлер инпутов-->
-inputs.forEach(function(my_checkbox) {
-  my_checkbox.addEventListener('change', function() {
-    console.log(inputs)
-
-   })
-});
+//<!--хендлер инпутов-->
+//inputs.forEach(function(my_checkbox) {
+//  my_checkbox.addEventListener('change', function() {
+//    console.log(inputs)
+//   })
+//});
 
 
 //дальше ненужное
@@ -243,14 +402,8 @@ inputs.forEach(function(my_checkbox) {
 //});
 
 
-<!--обработка кнопки-->
-<!--document.getElementById("my-button").addEventListener("click", function(event){-->
-<!--  event.preventDefault()-->
-<!--});-->
 
-<!--текущий адрес-->
-const currentUrl = window.location.href;
-console.log(currentUrl);
+
 
 </script>
 
@@ -265,5 +418,6 @@ window.scrollBy({
 }, 300);
 
 </script>
+<script src="{% static 'shop/nouislider.min.js' %}"></script>
 
 {% endblock %}

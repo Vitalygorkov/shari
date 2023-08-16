@@ -61,8 +61,9 @@ class ProductAdmin(ImportExportModelAdmin):
     form = DescriptionAdminForm
     prepopulated_fields = {'slug': ('name',), }
     list_display = ("name", "price")
+    search_fields = ('name',)
     # list_editable = ("price")
-    list_display_links = ("name",)
+    list_display_links = ("name","price")
     # list_filter = ("name")
     # search_fields = ("name")
     inlines = [VideosInline, Photo_productInline,]
