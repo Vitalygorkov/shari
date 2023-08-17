@@ -35,7 +35,7 @@
 
 {% if categories %}
 <div class="footer__back">
-    {% for category in categories %}
+    {% for category in branch_categories %}
     <a href="/{{ category.url }}" class="footer-button">{{ category.name }}</a>
     {% endfor %}
 </div>
@@ -75,12 +75,12 @@
 				<div class="filters-price__inputs">
 					<label class="filters-price__label">
 					<span class="filters-price__text1">от</span>
-						{% render_field filter.form.price__gt class="filters-price__input" placeholder="500" id="input-price-0" %}
+						{% render_field filter.form.price__gt class="filters-price__input" min="{{ min_price }}" max="{{ max_price }}" placeholder="500" id="input-price-0" %}
 					<span class="filters-price__text">₽</span>
 					</label>
 					<label class="filters-price__label">
 					<span class="filters-price__text1">до</span>
-						{% render_field filter.form.price__lt class="filters-price__input" placeholder="299999" id="input-price-1" %}
+						{% render_field filter.form.price__lt class="filters-price__input" min="{{ min_price }}" max="{{ max_price }}" placeholder="299999" id="input-price-1" %}
 					<span class="filters-price__text">₽</span>
 					</label>
 				</div>
@@ -122,7 +122,7 @@
 <!--        </ul>-->
 <!--    </select>-->
 
-    <p><input type="submit" value="Показать" id="my-button"></p>
+<input type="submit" value="Показать" id="my-button"></p>
 </form>
 
 
@@ -230,10 +230,12 @@
 <script src="{% static 'shop/nouislider.min.js' %}"></script>
 
 <script>
+let max_price = {{ max_price }}
+let min_price = {{ min_price }}
 const currentUrl = window.location.href;
-<!--const filter_string = currentUrl.split('?')[1]-->
+<!--const filter_string = <!--  -->urrentUrl.split('?')[1]-->
 if (currentUrl.split('?')[1]) {
-<!--    console.log(currentUrl.split('?')[1])-->
+
     var filter_string=currentUrl.split('?')[1]
     console.log('if filterstring')
     console.log(filter_string)
@@ -270,8 +272,8 @@ noUiSlider.create(slider, {
     start: [price_lt, price_gt],
     connect: true,
     range: {
-        'min': 0,
-        'max': 40000
+        'min': min_price,
+        'max': max_price
     }
 });
 

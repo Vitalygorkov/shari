@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Category, Product, ProductFilter, Balloon, Post, Promotions, TagsProducts, Color
 from django.core.paginator import Paginator
-from django.db.models import Max
+from django.db.models import Max,Min
 
 
 def index(request):
@@ -194,12 +194,6 @@ def search(request):
     return HttpResponse(template.render( context, request))
 
 def category(request, category_slug):
-    max_price = Balloon.objects.aggregate(Max('price'))['price__max']
-    min_price = Balloon.objects.aggregate(Max('price'))['price__max']
-
-    # print(max_price['price__max'])
-    print(max_price)
-    print(min_price)
     parents = Category.objects.filter(url=category_slug).get_ancestors(include_self=False)
     # parents_categories = Category.objects.filter(url=category_slug).get_ancestors(ascending=False, include_self=False)
     print('запрос:')
@@ -223,6 +217,8 @@ def category(request, category_slug):
         print('Ошибка поиска текущей категории ')
     print(branch_categories)
     products_list = Balloon.objects.filter(category__in=branch_categories)
+    max_price = Balloon.objects.filter(category__in=branch_categories).aggregate(Max('price'))['price__max']
+    min_price = Balloon.objects.filter(category__in=branch_categories).aggregate(Min('price'))['price__min']
     filter = ProductFilter(request.GET, queryset=products_list)
     products_list = filter.qs
     paginator = Paginator(products_list, 30)
@@ -245,7 +241,9 @@ def category(request, category_slug):
         "has_previous": page_obj.has_previous(),
         "tags": tags,
         'colors': colors,
-        'filter': filter
+        'filter': filter,
+        'max_price': max_price,
+        'min_price': min_price,
     }
     print(last_category)
     print(paginator.count)

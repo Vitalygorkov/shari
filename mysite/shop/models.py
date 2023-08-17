@@ -186,7 +186,7 @@ class TagsProducts(models.Model):
         verbose_name_plural = "Теги"
 
     def __str__(self):
-        return self.slug
+        return self.tag_name
 
 class CharFilterInFilter(django_filters.BaseInFilter, django_filters.CharFilter):
     pass
