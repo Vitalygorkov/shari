@@ -12,10 +12,11 @@
             <div class="categories_bloc _container">
                 {% if categories1 %}
                 {% for category in categories1 %}
-                            <div class="categories_card element-animation">
-                                <a href="/{{ category.url }}"><div class="categories_card-name1">{{ category.name }}</div>
-                                     </a>
-                            </div>
+                            <a href="/{{ category.url }}">
+                                <div class="categories_card element-animation">
+                                    <div class="categories_card-name1">{{ category.name }}</div>
+                                </div>
+                            </a>
                 {% endfor %}
                 {% endif %}
             </div>
@@ -26,10 +27,11 @@
                 <div class="categories_bloc _container">
                 {% if categories2 %}
                 {% for category in categories2 %}
-                            <div class="categories_card element-animation">
-                                <a href="/{{ category.url }}"><div class="categories_card-name1">{{ category.name }}</div>
-                                     </a>
-                            </div>
+                            <a href="/{{ category.url }}">
+                                <div class="categories_card element-animation">
+                                    <div class="categories_card-name1">{{ category.name }}</div>
+                                </div>
+                            </a>
                 {% endfor %}
                 {% endif %}
             </div>

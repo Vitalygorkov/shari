@@ -59,77 +59,122 @@
 <!--</select>-->
 <!--    {% endif %}-->
 <!--</div>-->
-
-<div>
-<!--    основной блок фильтра-->
-
-
-<form method = "get" id="filter-form">
-<!--    цена от {{ filter.form.price__gt}}-->
-<!--    цена до {{ filter.form.price__lt }}-->
-    <br>
-    <br>
-    <br>
-<div id="slider"></div>
-    <br>
-				<div class="filters-price__inputs">
-					<label class="filters-price__label">
-					<span class="filters-price__text1">от</span>
-						{% render_field filter.form.price__gt class="filters-price__input" min="{{ min_price }}" max="{{ max_price }}" placeholder="500" id="input-price-0" %}
-					<span class="filters-price__text">₽</span>
-					</label>
-					<label class="filters-price__label">
-					<span class="filters-price__text1">до</span>
-						{% render_field filter.form.price__lt class="filters-price__input" min="{{ min_price }}" max="{{ max_price }}" placeholder="299999" id="input-price-1" %}
-					<span class="filters-price__text">₽</span>
-					</label>
-				</div>
-
-
-    <br>
-    <br>
-    <br>
-<div id="slider2"></div>
-    <br>
-
-
-    <br><br>
-
-<!--<input type="range" min="0" max="100" step="1" value="50">-->
-<!--<label for="form1">цена от:</label>-->
-<!--<input type="number" id="form1" name="price__gt" />-->
-
-<!--<label for="form1">цена до:</label>-->
-<!--<input type="number" id="form1" name="price__lt" />-->
-
-<!--<input type="range" min="0" max="100" step="1" value="50">-->
-
-<!--<label for="form1">Размер от:</label>-->
-<!--<input type="number" id="form1" name="price__gt" />-->
-
-<!--<label for="form1">Размер до:</label>-->
-<!--<input type="number" id="form1" name="price__lt" />-->
-
-<!--Цвет-->
-<!--    <select >-->
-<!--        <ul>-->
-<!--        {% for color in colors %}-->
-<!--            <li>-->
-<!--            <input type="checkbox" value="{{ color.name }}" id="form1">-->
-<!--            <span>{{ color.name }}{{form.color__name.css_classes}}</span>-->
-<!--            </li>-->
-<!--        {% endfor %}-->
-<!--        </ul>-->
-<!--    </select>-->
-
-<input type="submit" value="Показать" id="my-button"></p>
-</form>
-
-
-
+<div class="filter">
+    <div>
     <!--    основной блок фильтра-->
-</div>
 
+
+    <form method = "get" id="filter-form">
+    <!--    цена от {{ filter.form.price__gt}}-->
+    <!--    цена до {{ filter.form.price__lt }}-->
+        <br>
+        <br>
+        <br>
+    <div id="slider"></div>
+        <br>
+                    <div class="filters-price__inputs">
+                        <label class="filters-price__label">
+                        <span class="filters-price__text1">от</span>
+                            {% render_field filter.form.price__gt class="filters-price__input" min="{{ min_price }}" max="{{ max_price }}" placeholder="500" id="input-price-0" %}
+                        <span class="filters-price__text">₽</span>
+                        </label>
+                        <br>
+                        <label class="filters-price__label">
+                        <span class="filters-price__text1">до</span>
+                            {% render_field filter.form.price__lt class="filters-price__input" min="{{ min_price }}" max="{{ max_price }}" placeholder="299999" id="input-price-1" %}
+                        <span class="filters-price__text">₽</span>
+                        </label>
+                    </div>
+
+
+        <br>
+        <br>
+        <br>
+    <div id="slider2"></div>
+
+
+    <!--<input type="range" min="0" max="100" step="1" value="50">-->
+    <!--<label for="form1">цена от:</label>-->
+    <!--<input type="number" id="form1" name="price__gt" />-->
+
+    <!--<label for="form1">цена до:</label>-->
+    <!--<input type="number" id="form1" name="price__lt" />-->
+
+    <!--<input type="range" min="0" max="100" step="1" value="50">-->
+
+    <!--<label for="form1">Размер от:</label>-->
+    <!--<input type="number" id="form1" name="price__gt" />-->
+
+    <!--<label for="form1">Размер до:</label>-->
+    <!--<input type="number" id="form1" name="price__lt" />-->
+
+    <!--Цвет-->
+    <!--    <select >-->
+    <!--        <ul>-->
+    <!--        {% for color in colors %}-->
+    <!--            <li>-->
+    <!--            <input type="checkbox" value="{{ color.name }}" id="form1">-->
+    <!--            <span>{{ color.name }}{{form.color__name.css_classes}}</span>-->
+    <!--            </li>-->
+    <!--        {% endfor %}-->
+    <!--        </ul>-->
+    <!--    </select>-->
+
+    <input type="submit" value="Показать" id="my-button"></p>
+    </form>
+
+
+
+        <!--    основной блок фильтра-->
+    </div>
+
+    <div class="checkbox-wrapper-39">
+        <label>
+          <input type="checkbox"/>нажать
+          <span class="checkbox"></span>
+        </label>
+      </div>
+      
+      <style>
+        .checkbox-wrapper-39 *,
+        .checkbox-wrapper-39 *::before,
+        .checkbox-wrapper-39 *::after {
+          box-sizing: border-box;
+        }
+      
+        .checkbox-wrapper-39 label {
+          display: block;
+          width: 35px;
+          height: 35px;
+          cursor: pointer;
+        }
+      
+        .checkbox-wrapper-39 input {
+          visibility: hidden;
+          display: none;
+        }
+      
+        .checkbox-wrapper-39 input:checked ~ .checkbox {
+         transform: rotate(45deg);
+         width: 14px;
+         margin-left: 12px;
+         border-color: #24c78e;
+         border-top-color: transparent;
+         border-left-color: transparent;
+         border-radius: 0;
+        }
+      
+        .checkbox-wrapper-39 .checkbox {
+          display: block;
+          width: inherit;
+          height: inherit;
+          border: 3px solid #434343;
+          border-radius: 6px;
+          transition: all 0.375s;
+        }
+      </style>
+      
+</div>
 <!--    вторая форма Рабочая-->
 <!--<form method="get">-->
 <!--        {{ filter.form.as_p }}-->
@@ -154,7 +199,7 @@
     <div class="card__body">
         <a href="{{ product.slug }}"><div class="card__title">{{ product.name }}</div></a>
         <div class="card__price">{{ product.price }} руб.</div>
-        <div class="tooltips">
+        <!-- <div class="tooltips">
             {% if product.processing %}
             <div class="tooltip"><img src="{% static 'shop/foto/h2o 1.png' %}" alt="">
                 <span class="tooltiptext">Обработка для увеличения времени полета</span>
@@ -170,7 +215,7 @@
                 <span class="tooltiptext">Шар наполняется воздухом</span>
             </div>
             {% endif %}
-        </div>    
+        </div>     -->
     </div>
 
     <div class="card-footer-wrapper">

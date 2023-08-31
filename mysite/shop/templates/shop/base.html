@@ -35,7 +35,7 @@
         <header class="headera">
             <div class="headera__container">
                 <a href="/" class="headera__logo"><img src="{% static 'shop/foto/logo-kikimora.jpg' %}" alt="">
-                    <div class="kikimora-black"><img src="{% static 'shop/foto/KIKIMORA-white.png' %}" alt=""></div></a>
+                    <!-- <div class="kikimora-black"><img src="{% static 'shop/foto/KIKIMORA-white.png' %}" alt=""></div>--></a> 
                 <div class="header__menu menua">
                     <div class="menu__icona">
                         <span></span>
@@ -44,7 +44,7 @@
                     <nav class="menu__bodya">
                         <ul class="menu__lista">
                             <li><a href="/" class="menu__linka">Главная</a></li>
-                            <li><a href="/blog" class="menu__linka">Блог</a></li>
+                            <li><a href="/blog" class="menu__linka">Статьи</a></li>
                             {% if categories %}
                             {% recursetree categories %}
                             <li>

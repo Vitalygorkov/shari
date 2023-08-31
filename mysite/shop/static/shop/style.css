@@ -333,7 +333,7 @@ body._lock{
 }
 .headera__logo img{
   width: 50%;
-  /* min-width: 200px; */
+  min-width: 200px;
   max-width: 300px;
 }
 .menu__icona{
@@ -1006,6 +1006,7 @@ button:before {
   height: 155px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   margin: 10px;
+  padding: 5px 5px;
   transition: box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 .categories_card:hover {
@@ -1188,7 +1189,7 @@ margin-bottom: 15%;
   background-color: rgb(253, 240, 255);
 }
 .numb-on{
-  background-color: rgb(253, 240, 255);
+  background-color: rgb(188 188 188);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1412,7 +1413,18 @@ color: #aaa;
 [type="checkbox"]:not(:checked):focus + label:before {
 box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
 }
+/*----------------------------------------фильтр-------*/
+.filter{
+  width: 200px;
+  height: 330px;
+  padding-right: 20px;
+}
 /*----------------------------------------футер-------*/
+.footer__back{
+  display: flex;
+ width: 100%;
+ flex-wrap: wrap;
+}
 .Footer{
     background-color: rgb(192, 184, 192);
 }
@@ -1453,6 +1465,7 @@ box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
     border-top: 1px solid rgb(0, 0, 0);
     transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
   }
+
   .border-button:after {
     top: 0;
     right: 0;
@@ -2061,6 +2074,12 @@ box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
     width: 130px;
     height: 130px;
     margin: 7px;
+  }
+  .categories_card-name1{
+    font-size: 13px;
+  }
+  .categories_card-name2{
+    font-size: 13px;
   }
   .cart-title {
     font-size: 12px;
