@@ -976,12 +976,17 @@ button:before {
     padding: 5px;
     margin-left: 10px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
 .category_path:hover{
     box-shadow: 0 0 5px #4b4b4b;
+}
+.categories_path{
+display: flex;
+flex-wrap: wrap;
 }
 /*----------------------------------------категории карточки-------*/
 .categories_bloc-title{
