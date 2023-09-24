@@ -1,32 +1,3 @@
-<!-- {% extends 'shop/base.html' %}
-{% load static %}
-{% block content %}
-
-<br>
-<br>
-<br>
-
-<div class="title_discounts _container"><a href="#top" id="bottom"><h3>АКЦИИ ВСЕ :</h3></a></div>
-
-<div class="discounts">
-    <div class="discounts_box element-animation _container">
-        {% for promotion in promotions_list %}
-            <div class="discounts_card">
-                <a href="/promotions/{{ promotion.slug }}">
-                    <div class="discounts_card-png"><img src="/media/{{ promotion.image }}" alt=""></div>
-                    <div class="discounts_card_title">{{ promotion.title }}</div>
-                    <div class="discounts_card_text">{{ promotion.short_description }}</div>
-                </a>
-            </div>
-        {% endfor %}
-        
-    </div>
-</div>
-
-{% endblock %} -->
-
-
-
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
