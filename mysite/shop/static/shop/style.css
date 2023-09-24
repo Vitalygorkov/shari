@@ -1419,6 +1419,12 @@ box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
   height: 330px;
   padding-right: 20px;
 }
+.checkbox-wrapper-39{
+  margin-top: 15px;
+}
+.filter-name img{
+  margin-right: 10px;
+}
 /*----------------------------------------футер-------*/
 .footer__back{
   display: flex;
@@ -1543,6 +1549,7 @@ box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 15px;
   }
   .info{
     display: flex;
@@ -1551,7 +1558,7 @@ box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
   }
   .info a{
     color: #000;
-    margin: 8px 0;
+    padding: 5px 0;
   }
   .name{
     color: #000;
@@ -1622,6 +1629,9 @@ box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
     letter-spacing: 1px;
     font-size: 10px;
   }
+}
+.promotions-post-text{
+  margin-top: 20px;
 }
 /*-----------------card-long-------ballon--------карта развернутая----*/
 /* Position the image container (needed to position the left and right arrows) */
@@ -2075,6 +2085,7 @@ box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
     height: 130px;
     margin: 7px;
   }
+
   .categories_card-name1{
     font-size: 13px;
   }

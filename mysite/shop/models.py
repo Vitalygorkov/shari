@@ -20,6 +20,18 @@ class Promotions(models.Model):
         verbose_name = 'Акция'
         verbose_name_plural = 'Акции'
 
+class Footer_pages(models.Model):
+    title = models.CharField("Заголовок", max_length=500, unique=True)
+    page_text = models.TextField('Текст Поста')
+    image = models.ImageField("Изображение", null=True, blank=True, upload_to="photo/")
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = 'Пост в футере'
+        verbose_name_plural = 'Посты в футере'
+
 
 
 class Post(models.Model):

@@ -17,6 +17,7 @@ urlpatterns = [
     path('promotions_page/', views.promotions_page, name='promotions_page'),
     path('post/<slug:post_slug>/', views.post, name="post"),
     path('promotions/<slug:promotions_slug>/', views.promotions, name="promotions"),
+    path('footer_page/<slug:footer_page_slug>/', views.footer_pages, name="promotions"),
     path('tags/<slug:tag_slug>/', views.tags_view, name="tags_view"),
     path('<category_slug>/', views.category, name='category'),
     path('<category_slug>/<product_slug>/', views.show_product, name='product'),

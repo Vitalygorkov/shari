@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Category, Product, ProductFilter, Balloon, Post, Promotions, TagsProducts, Color
+from .models import Category, Product, ProductFilter, Balloon, Post, Promotions, TagsProducts, Color, Footer_pages
 from django.core.paginator import Paginator
 from django.db.models import Max,Min
 
@@ -13,9 +13,11 @@ def index(request):
     categories1 = Category.objects.filter(parent='1')
     categories2 = Category.objects.filter(parent='2')
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     template = loader.get_template('shop/index.html')
     context = {
         'products_list': products_list,
+        'footer_page_list': footer_page_list,
         'categories': categories,
         'categories1': categories1,
         'categories2': categories2,
@@ -39,6 +41,7 @@ def cart(request):
     products_list = Balloon.objects.all()
     promotions_list = Promotions.objects.all()
     template = loader.get_template('shop/cart.html')
+    footer_page_list = Footer_pages.objects.all()
 
 
     # html = HttpResponse(template.render(context, request))
@@ -76,6 +79,7 @@ def cart(request):
     context = {
         'categories': categories,
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'products_list': products_list,
         'categories': categories,
         'cart': cart,
@@ -94,8 +98,10 @@ def favorites(request):
     categories = Category.objects.all()
     template = loader.get_template('shop/favorites.html')
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'products_list': products_list,
         'categories': categories,
     }
@@ -115,8 +121,10 @@ def blog(request):
     categories = Category.objects.all()
     template = loader.get_template('shop/blog.html')
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'post_list': post_list,
         'categories': categories,
         'cart': cart,
@@ -129,7 +137,9 @@ def promotions_page(request):
     categories = Category.objects.all()
     template = loader.get_template('shop/promotions_page.html')
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
+        'footer_page_list': footer_page_list,
         'promotions_list': promotions_list,
         'categories': categories,
     }
@@ -143,8 +153,10 @@ def post(request, post_slug):
     categories = Category.objects.all()
     template = loader.get_template('shop/post.html')
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'post': post,
         'categories': categories,
     }
@@ -157,9 +169,25 @@ def promotions(request, promotions_slug):
     categories = Category.objects.all()
     template = loader.get_template('shop/promotions.html')
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'promotions': promotions,
+        'categories': categories,
+    }
+    return HttpResponse(template.render( context, request))
+
+def footer_pages(request, footer_page_slug):
+    footer_page = Footer_pages.objects.get(slug=footer_page_slug)
+    categories = Category.objects.all()
+    template = loader.get_template('shop/footer_page.html')
+    footer_page_list = Footer_pages.objects.all()
+    promotions_list = Promotions.objects.all()
+    context = {
+        'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
+        'footer_page': footer_page,
         'categories': categories,
     }
     return HttpResponse(template.render( context, request))
@@ -186,8 +214,10 @@ def search(request):
 
     template = loader.get_template('shop/search.html')
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'products_list': page_obj,
         'categories': categories,
     }
@@ -220,7 +250,7 @@ def category(request, category_slug):
     max_price = Balloon.objects.filter(category__in=branch_categories).aggregate(Max('price'))['price__max']
     min_price = Balloon.objects.filter(category__in=branch_categories).aggregate(Min('price'))['price__min']
     filter = ProductFilter(request.GET, queryset=products_list)
-    products_list = filter.qs
+    products_list = filter.qs.distinct()
     paginator = Paginator(products_list, 30)
     page_number = request.GET.get('page', '1')
     page_obj = paginator.get_page(page_number)
@@ -229,9 +259,11 @@ def category(request, category_slug):
     # template = loader.get_template('shop/category.html')
     template_render = "shop/category.html"
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
         'parents': parents,
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'products_list': page_obj,
         "last_category": last_category,
         'categories': categories,
@@ -276,8 +308,10 @@ def tags_view(request, tag_slug):
     # template = loader.get_template('shop/category.html')
     template_render = "shop/category.html"
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     context = {
         'promotions_list': promotions_list,
+        'footer_page_list': footer_page_list,
         'products_list': page_obj,
         "last_category": last_category,
         'categories': categories,
@@ -302,9 +336,11 @@ def show_product(request, product_slug, category_slug):
     # print(categories.filter(name=product.category).get_ancestors(include_self=True)[0].name)
 
     promotions_list = Promotions.objects.all()
+    footer_page_list = Footer_pages.objects.all()
     print(promotions_list)
     context = {
         'product_balloon': product_balloon,
+        'footer_page_list': footer_page_list,
         'promotions_list': promotions_list,
         "last_category": last_category,
         'categories': categories,

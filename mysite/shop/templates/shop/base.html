@@ -145,11 +145,10 @@
             <div class="footer__body">
                 <div class="info">
                     <div class="name">ИНФОРМАЦИЯ:</div>
-                    <a href="">Доставка и оплата</a>
-                    <a href="">Как сделать заказ</a>
-                    <a href="">Возврат товара</a>
-                    <a href="">Оставить отзыв</a>
-                    <a href="">Вакансии</a>
+                    {% for footer_page in footer_page_list %}
+                    <a href="/footer_page/{{ footer_page.slug }}">{{ footer_page.title }}</a>
+
+                    {% endfor %}
                 </div>
 <!--                <div class="catalog">-->
 <!--                    <div class="head-button">-->
