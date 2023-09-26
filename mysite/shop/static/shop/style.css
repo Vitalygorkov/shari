@@ -346,6 +346,7 @@ body._lock{
 .menu__linka{
   color: #ffffff;
   font-size: 15px;
+  max-width: 230px;
 }
 .menu__linka:hover{
   text-decoration: underline;
@@ -360,15 +361,37 @@ body._lock{
 }
 .menu__sub-lista li{
   margin: 0px 0px 10px 0px;
+  position: relative;
 }
-.menu__sub-lista li:last-child {
-  margin: 0;
+
+.menu__sub-lista :hover{
+  text-decoration: underline;
 }
+
+.menu__sub-lista > li > ul {
+    display: none;
+}
+.menu__sub-lista > li:hover > ul {
+    margin: -10% -40% 0px 0px;
+    position: absolute;
+    display: block;
+    padding: 20px;
+    z-index: 1;
+}
+.menu__sub-lista > li {
+    padding: 5px 0;
+}
+
+
 .menu__sub-linka{
   color: #ffffff;
 }
 .menu__sub-linka:hover{
   text-decoration: underline;
+}
+.box_menu__arrowa{
+  padding: 1px;
+  max-width: 10px;
 }
 .menu__arrowa{
   display: none;
@@ -399,7 +422,7 @@ body._touch .menu__arrowa {
 }
 body._touch .menu__lista > li._active .menu__sub-lista {
   opacity: 1;
-  visibility: visible;
+      visibility: visible;
   transform: translate(0px, 0px);
   pointer-events: all;
 }
@@ -499,8 +522,39 @@ body._touch .menu__lista > li._active .menu__arrowa {
       margin-bottom: 0;
   }
   .menu__lista > li._active .menu__sub-lista{
-      display: block;
+     display: block;
   }
+
+  /* Мои попытки нового класса  разворачивания подкатегорий   */
+
+  /*    .menu__lista > li._active .menu__sub-lista{
+     display: block;
+  }*/
+
+   .menu__lista > li._active2 .menu__sub-lista {
+     display: block;
+  }
+   .menu__lista > li._active2 .menu__sub-lista > li > ul{
+     display: none;
+  }
+   .menu__lista > li._active2 > ul > li._active2 > ul {
+     position: relative;
+     margin-top: 15px;
+     display: block;
+  }
+   .box_menu__arrowa{
+   margin-left: 0px;
+   }
+   .menu__lista > li > ul > li > .box_menu__arrowa {
+      margin-left: 220px;
+      margin-top: -16px;
+  }
+/*   .menu__lista > li._active2 .menu__sub-lista > li {
+     display: block;
+  } */
+
+
+    /* Мои попытки нового класса  разворачивания подкатегорий   */
   .menu__linka {
       font-size: 24px;
   }
@@ -516,6 +570,7 @@ body._touch .menu__lista > li._active .menu__arrowa {
       color: #000;
   }
 }
+
 /*---------------------------------------*/
 /*------------------------------heder---------*/
 .header__bloc{

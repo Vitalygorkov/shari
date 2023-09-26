@@ -25,18 +25,27 @@ const isMobile = {
     }
 };
 
+function menArr(id) {
+    console.log("KLICK")
+    console.log(id)
+    const element = document.getElementById(id);
+    element.parentElement.classList.toggle('_active2');
+
+
+}
+
 if(isMobile.any() ) {
   document.body.classList.add('_touch');
 
-  let menuArrows = document.querySelectorAll('.menu__arrowa');
-  if (menuArrows.length > 0) {
-    for (let index = 0; index < menuArrows.length; index++) {
-        const menuArrow = menuArrows[index];
-        menuArrow.addEventListener("click", function (e) {
-            menuArrow.parentElement.classList.toggle('_active');
-        });
-    }
-  }
+//  let menuArrows = document.querySelectorAll('.menu__arrowa');
+//  if (menuArrows.length > 0) {
+//    for (let index = 0; index < menuArrows.length; index++) {
+//        const menuArrow = menuArrows[index];
+//        menuArrow.addEventListener("click", function (e) {
+//            menuArrow.parentElement.classList.toggle('_active');
+//        });
+//    }
+//  }
 
 } else {
     document.body.classList.add('_pc');

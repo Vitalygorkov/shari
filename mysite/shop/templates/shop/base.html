@@ -48,19 +48,17 @@
                             {% if categories %}
                             {% recursetree categories %}
                             <li>
-                                <a href="{{ node.get_absolute_url }}" class="menu__linka">
-<!--                                   <a onclick="window.scrollTo({ top: 500, behavior: 'smooth'});"> -->
+                                    <a href="{{ node.get_absolute_url }}" class="menu__linka">
                                        {{ node.name }}
-<!--                                   </a>-->
-
-                                </a>
+                                    </a>
                                 {% if not node.is_leaf_node %}
-                                <span class="menu__arrowa"></span>
+                                <div class="box_menu__arrowa" id="{{ node.pk }}" onclick="menArr({{ node.pk }})">
+                                    <span class="menu__arrowa"></span>
+                                </div>
                                 {% endif %}
                                 {% if not node.is_leaf_node %}
                                 <ul class="menu__sub-lista">
-                                    {{ children }}
-
+                                        {{ children }}
                                 </ul>
                                 {% endif %}
                             </li>
