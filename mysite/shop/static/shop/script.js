@@ -177,20 +177,31 @@ document.getElementById("cart_numb").textContent = cart_length
 var products_in_cart = document.getElementsByClassName('cart-blok');
  console.log("products_in_cart", products_in_cart)
 function UpdateProductsInCart(){
-    console.log("Функция обновления товаров в корзине")
+    if(products_in_cart.length>=1){
+    console.log('products_in_cart',products_in_cart)
+        console.log("Функция обновления товаров в корзине")
     Array.prototype.forEach.call(products_in_cart, function(el) {
         // Do stuff here
         console.log(el.children[2].children[1].innerHTML);
     });
      console.log("products_in_cart", products_in_cart)
+    }else{
+    console.log("products_in_cart", products_in_cart)
+    }
 }
-UpdateProductsInCart()
+
 
 
 // вручную задать куку корзины
 //setCookie('cart', '1:1,7:1,3:1,12:1,4:1')
 //
 //document.cookie = 'cart=1,1,2,3,4'
+
+//для исправления багов в корзине
+cart = []
+UpdateProductsInCart()
+setCookie('cart', '')
+
 
 console.log("Ваши куки сэр:", document.cookie)
 console.log("кука cart сэр:", decodeURIComponent(cart_cookie))
