@@ -26,8 +26,6 @@ const isMobile = {
 };
 
 function menArr(id) {
-    console.log("KLICK")
-    console.log(id)
     const element = document.getElementById(id);
     element.parentElement.classList.toggle('_active2');
 
@@ -103,5 +101,98 @@ function onEntry(entry) {
   }
 /*появление при скроле карточки товара*/
 
-/*-----------------card-long-------ballon--------карта развернутая----*/
-        
+/*------------корзина---*/
+var cart_cookie = decodeURIComponent(getCookie('cart'))
+var cart = cart_cookie.split(',')
+var cart_length = cart.length
+var cart_list_id = []
+UpdateCartlistID()
+
+function UpdateCartlistID(){
+    cart.forEach((item, i)=>{
+        cart_list_id[i] = cart[i].split(':')[0]
+    })
+}
+
+function getCookie(name) {
+  let match = document.cookie
+     .split('; ')
+     .find(row => row.startsWith(`${name}=`));
+
+  return match ? match.split('=')[1] : undefined;
+}
+
+function setCookie(name, value) {
+    document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`+"; path=/;"
+    console.log("setCookie: ", `${encodeURIComponent(name)}=${encodeURIComponent(value)}`+"; path=/;")
+}
+function AddToCart(card_id){
+        card_id = String(card_id)
+        if (cart_list_id.includes(card_id)) {
+        cart.forEach((item, i)=>{
+                if (cart[i].split(':')[0]==card_id) {
+                    cart[i] = cart[i].split(':')[0]+':'+String(Number(cart[i].split(':')[1])+1)
+                }
+            })
+        setCookie('cart', cart)
+        UpdateCartlistID()
+        console.log('cart', cart)
+        }else{
+        cart.push(card_id+':'+'1')
+        setCookie('cart', cart)
+        console.log('Добавление товара else')
+        console.log('cart', cart)
+        UpdateCartlistID()
+        }
+}
+
+function RemoveToCart(card_id){
+        card_id = String(card_id)
+        if (cart_list_id.includes(card_id)) {
+        cart.forEach((item, i)=>{
+                if (cart[i].split(':')[0]==card_id) {
+                    console.log('удаление, нашли нужный ид')
+                    if (Number(cart[i].split(':')[1])>=2) {
+                        console.log('товаров больше или равно 2 убираем 1')
+                        //делаем на 1 меньше
+                        cart[i] = cart[i].split(':')[0]+':'+String(Number(cart[i].split(':')[1])-1)
+                    }else{console.log('товаров 1 удаляем из списка')}
+                }else{console.log('такого товара вообще нет в списке')}
+            })
+        console.log('cart', cart)
+        UpdateCartlistID()
+        setCookie('cart', cart)
+        }else{
+        console.log('Удаление товара else')
+        console.log('cart', cart)
+        }
+}
+
+// вставляем количество товарова в менюсверху в корзине в элемент корзины
+document.getElementById("cart_numb").textContent = cart_length
+
+// вставляем количество товаров в странице корзины
+//document.getElementById("prod_count").textContent = cart_length
+//pcs__calc-imput
+var products_in_cart = document.getElementsByClassName('cart-blok');
+ console.log("products_in_cart", products_in_cart)
+function UpdateProductsInCart(){
+    console.log("Функция обновления товаров в корзине")
+    Array.prototype.forEach.call(products_in_cart, function(el) {
+        // Do stuff here
+        console.log(el.children[2].children[1].innerHTML);
+    });
+     console.log("products_in_cart", products_in_cart)
+}
+UpdateProductsInCart()
+
+
+// вручную задать куку корзины
+//setCookie('cart', '1:1,7:1,3:1,12:1,4:1')
+//
+//document.cookie = 'cart=1,1,2,3,4'
+
+console.log("Ваши куки сэр:", document.cookie)
+console.log("кука cart сэр:", decodeURIComponent(cart_cookie))
+console.log("ваша корзина сэр: ", cart)
+console.log("cart_list_id сэр: ", cart_list_id)

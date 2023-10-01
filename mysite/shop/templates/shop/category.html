@@ -73,23 +73,30 @@
         <div id="slider2"></div>
 
         <!-- <input type="submit" value="Цвет" id="my-button"></p> -->
-        </form>
+
             <!--    основной блок фильтра-->
         </div>
 
         <!-- будет ли фильтр по возрастанию и убыванию цены -->
 
         <div class="color-det">
-            <details> 
+            <details>
                 <summary>Цвета</summary>
-                <p>Раскрывающийся текст</p>
+<!--                <p>Раскрывающийся текст</p>-->
+                {% for color in colors %}
+
                 <div class="checkbox-wrapper-39">
-                    <label>
-                    <input type="checkbox"/>Красный
-                    <span class="checkbox"></span>
-                    </label>
+<!--                    <label>-->
+<!--                    <input type="checkbox"/>Красный-->
+<!--                    <span class="checkbox"></span>-->
+<!--                    </label>-->
+
+                    <input type="checkbox" class="checkbox_color" value="{{ color.name }}" id="checkbox_color{{ forloop.counter }}">
+                    <label for="checkbox_color{{ forloop.counter }}">{{ color.name }}</label><br>
+
                 </div>
-                
+
+                {% endfor %}
                 <style>
                     .checkbox-wrapper-39 *,
                     .checkbox-wrapper-39 *::before,
@@ -129,13 +136,16 @@
                     }
                 </style>
         
-                <div class="checkbox-wrapper-39">
-                    <label>
-                    <input type="checkbox"/>Красный
-                    <span class="checkbox"></span>
-                    </label>
-                </div>
+<!--                <div class="checkbox-wrapper-39">-->
+<!--                    <label>-->
+<!--                    <input type="checkbox"/>Красный-->
+<!--                    <span class="checkbox"></span>-->
+<!--                    </label>-->
+<!--                </div>-->
             </details>
+<!--            <input type="submit" value="Показать" onclick="SendGetReq()" id="my-button"></p>-->
+            <div onclick="ClickShow()">Показать</div>
+            </form>
         </div>    
     </div>
 <!-- </details> -->
@@ -183,9 +193,9 @@
                     <div class="pcs__calc-imput">1</div>
                     <div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
                 </div> -->
-                <div class="favorites-cart">
+                <div class="favorites-cart" onclick="AddToCart({{ product.id }})">
                     <!-- <a href=""><img src="{% static 'shop/foto/favorites.png' %}" alt="favorites"></img></a> -->
-                    <a href=""><img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img></a>
+                    <img src="{% static 'shop/foto/cart.png' %}" alt="cart"></img>
                 </div>    
             </div>
            
@@ -232,39 +242,109 @@
 <script src="{% static 'shop/nouislider.min.js' %}"></script>
 
 <script>
+
+
+
+var colors = []
 let max_price = {{ max_price }}
 let min_price = {{ min_price }}
-const currentUrl = window.location.href;
-<!--const filter_string = <!--  -->urrentUrl.split('?')[1]-->
+
+
+var currentUrl = window.location.href;
+console.log(currentUrl)
+let last_url = ''
 if (currentUrl.split('?')[1]) {
 
     var filter_string=currentUrl.split('?')[1]
+    var base_url=currentUrl.split('?')[0]
     console.log('if filterstring')
     console.log(filter_string)
+    filter_set = filter_string.split('&')
+        if (filter_set.length==2){
+            console.log('if filterset =2')
+
+        }else if (filter_set.length==3){
+        console.log('if filterset =3')
+
+        }else{
+        console.log('else filterset')
+        filter_string=`price__gt=${min_price}&price__lt=${max_price}`
+        }
+
+
     }
 else {
     console.log('else filterstring')
-    var filter_string='price__gt=0&price__lt=40000'
+    var filter_string=`price__gt=${min_price}&price__lt=${max_price}`
+    var base_url=currentUrl
     console.log(filter_string)
     }
-console.log(filter_string)
 var price_gt=filter_string.split('&')[1].split('=')[1]
 var price_lt=filter_string.split('&')[0].split('=')[1]
 console.log(price_lt)
 console.log(price_gt)
 
+//выставляем нажатые чекбоксы
+if (currentUrl.split('?')[1]){
+    if (currentUrl.split('?')[1].split('&')[2]) {
+        console.log("цена есть, цвета есть")
+        console.log(currentUrl.split('?')[1].split('&')[2])
 
-let filterForm = document.getElementById("filter-form");
-<!--обработка кнопки-->
-<!--document.getElementById("filter-form").addEventListener("click", function(event){-->
-<!--  event.preventDefault()-->
-<!--});-->
+            var arr_colors = currentUrl.split('?')[1].split('&')[2].split('=')[1].split(',')
+            console.log(arr_colors)
+            arr_colors.forEach((item, i)=>{
+                arr_colors[i] = decodeURI(arr_colors[i])
+            })
+            console.log(arr_colors)
+            var checkboxes2 = document.querySelectorAll("input[type=checkbox][class=checkbox_color]");
+
+            //хендлер чекбоксов2
+            checkboxes2.forEach((el, index) => {
+
+                if (arr_colors.includes(el.value)) {
+                    el.checked = true
+                    console.log('это if IFFFF')
+                    console.log(el.value)
+                    console.log(el.checked)
+                    colors.push(el.value)
+                }
+                console.log(el.value)
+            });
+    last_url = base_url+'?'+`price__gt=${min_price}&price__lt=${max_price}`+'&'+'color__name='+colors
+
+    }else{console.log("цена есть, цветов нет")}
+}else{console.log("ни цены ни цветов")}
+
+//выставляем нажатые чекбоксы
 
 
+//нажатие кнопки показать
 
-function SendGetReq() {
-  filterForm.submit()
+let filterForm = document.getElementById("filter-form"  );
+//обработка кнопки
+document.getElementById("filter-form").addEventListener("click", function(event){
+  event.preventDefault()
+});
+
+//нажатие кнопки показать
+
+
+function SendGetReq(link) {
+  console.log("Отправка формы")
+  console.log(link)
+  document.location.replace(link)
+  //filterForm.submit()
 }
+function ClickShow(){
+    //Если last_url пуста то задать только цену
+    if (last_url == '') {console.log("last_url if")
+    last_url = base_url+'?'+`price__gt=${min_price}&price__lt=${max_price}`
+    }
+    console.log("last_url in ClickShow:", last_url)
+    //    console.log("last_url: ",last_url)
+    SendGetReq(last_url)
+}
+
 
 // nouislider
 //слайдер цены
@@ -287,7 +367,7 @@ slider.noUiSlider.on('update', function(values, handle){
     inputs_price[handle].value = Math.round(values[handle]);
 });
 slider.noUiSlider.on("change", function() {
-    SendGetReq()
+    //SendGetReq()
 });
 
 const setSslider = (i, value) => {
@@ -300,7 +380,7 @@ const setSslider = (i, value) => {
 inputs_price.forEach((el, index) => {
     el.addEventListener('change', (e) => {
         setSslider(index, e.currentTarget.value);
-        SendGetReq()
+        //SendGetReq()
     });
 });
 
@@ -308,58 +388,54 @@ inputs_price.forEach((el, index) => {
 // nouislider
 
 console.log('LOGGGG')
-var prices = document.querySelectorAll("input[type=number][id=form1]");
-var checkboxes = document.querySelectorAll("input[type=checkbox][id=form1]");
-let enabledSettings = []
-var inputs = document.querySelectorAll("input[id=form1]");
+var checkboxes = document.querySelectorAll("input[type=checkbox][class=checkbox_color]");
 
-//<!--хендлер инпутов-->
-//inputs.forEach(function(my_checkbox) {
-//  my_checkbox.addEventListener('change', function() {
-//    console.log(inputs)
-//   })
-//});
-
-
-//дальше ненужное
-<!--Хендлер чекбоксов-->
-// Use Array.forEach to add an event listener to each checkbox.
-//checkboxes.forEach(function(checkbox) {
-//  checkbox.addEventListener('change', function() {
-//    enabledSettings =
-//      Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
-//      .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
-//      .map(i => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
-//
-//   console.log(enabledSettings)
-
-//<!--    ?price__gt=&price__lt=&color__name=оранжевый-->
-//    var enabledSettings_string = 'color__name=' + enabledSettings.join() ;
-//    const currentUrl = window.location.href;
-//    console.log(currentUrl)
-//    console.log(currentUrl.split('/')[3])
-//    console.log(currentUrl.split('/')[0]+'/'+currentUrl.split('/')[1]+'/'+currentUrl.split('/')[2]+'/')
-//    const filter_string = currentUrl.split('?')[1]
-//    console.log(filter_string)
-//    var filter_set = filter_string.split('&')
-
-//<!--    document.location.replace(currentUrl.split('/')[0]+'/'+currentUrl.split('/')[1]+'/'+currentUrl.split('/')[2]+'/'+currentUrl.split('/')[3]+'/'+'?'+enabledSettings_string);-->
-//  })
-//});
-
-<!--хендлер цены-->
-// Use Array.forEach to add an event listener to each checkbox.
-//prices.forEach(function(my_checkbox) {
-//  my_checkbox.addEventListener('change', function() {
-//    console.log(prices[0].value)
-//    console.log(prices[1].value)
-//
-//   })
-//});
+//хендлер чекбоксов
+checkboxes.forEach((el, index) => {
+    el.addEventListener('change', (e) => {
+        console.log("нажат чекбокс")
+        console.log(el.value)
+        setColors(el.value)
+        console.log('colors:',colors)
+        //меняем ссылку и делаем запрос включающий чекбоксы
+        console.log(base_url+'?'+filter_string+'&'+'color__name='+colors)
+        //document.location.replace(base_url+'?'+filter_string+'&'+'color__name='+colors)
+        last_url = base_url+'?'+`price__gt=${min_price}&price__lt=${max_price}`+'&'+'color__name='+colors
+        console.log("last_url: ",last_url)
 
 
+        //меняем ссылку и делаем запрос включающий чекбоксы
+    });
+});
+console.log("чекбоксы: ",checkboxes)
+
+//хендлер чекбоксов
+
+//получаем выбранные чекбоксы
+function setColors(new_color){
+console.log('функция проверки цветов')
+    if (colors.length == 0) {
+        colors.push(new_color)
+    } else {
+      var go_exit = false
+      for (var index = 0; index < colors.length; index++) {
+           if (colors[index] == new_color) {
+           colors = colors.filter(i => i != new_color)
+           go_exit = true
+           }
+      }
+      if (go_exit) {
+      }else{
+      colors.push(new_color)
+      }
+    }
+console.log('Текущий список цветов:', colors)
+}
+//let enabledSettings = []
+//var inputs = document.querySelectorAll("input[id=form1]");
 
 
+console.log('js прочитан до конца')
 
 </script>
 

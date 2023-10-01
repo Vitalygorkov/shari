@@ -33,9 +33,9 @@
                 <div class="cart-price">{{ product.price }} руб.</div>
             </div>    
             <div class="cart-pcs__calc">
-                <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
-                <div class="pcs__calc-imput">1</div>
-                <a href="?add_to_cart={{ product.id }}"><div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div></a>
+                <div class="pcs__calc-minus" onclick="RemoveToCart({{ product.id }})"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
+                <div class="pcs__calc-imput" id="prod_count{{ product.name }}">1</div>
+                <div class="pcs__calc-plus" onclick="AddToCart({{ product.id }})"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
             </div>
             <div class="cart-sum">4584 руб.</div>
             <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
@@ -44,44 +44,6 @@
         {% else %}
 
         {% endif %}
-    </div>
-</section>
-
-
-<section class="cart">
-    <div class="cart-body _container">
-        <div class="cart-name"><h3>КОРЗИНА</h3></div> 
-        
-        <div class="cart-blok">
-            <div class="cart-image"><a href=""><img src="{% static 'shop/foto/4 (2).jpg' %}" alt=""></a></div>
-            <div class="conteiner-cart">
-                <div class="cart-title">Шары сердце 5шт</div>
-                <div class="cart-price">1485 руб.</div>
-            </div>    
-            <div class="cart-pcs__calc">
-                <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
-                <div class="pcs__calc-imput">1</div>
-                <a href="?add_to_cart={{ product.id }}"><div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div></a>
-            </div>
-            <div class="cart-sum">4584 руб.</div>
-            <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
-        </div>
-
-        <div class="cart-blok">
-            <div class="cart-image"><a href=""><img src="{% static 'shop/foto/4 (2).jpg' %}" alt=""></a></div>
-            <div class="conteiner-cart">
-                <div class="cart-title">Шары сердце 5шт</div>
-                <div class="cart-price">1485 руб.</div>
-            </div>    
-            <div class="cart-pcs__calc">
-                <div class="pcs__calc-minus"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
-                <div class="pcs__calc-imput">1</div>
-                <a href="?add_to_cart={{ product.id }}"><div class="pcs__calc-plus"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div></a>
-            </div>
-            <div class="cart-sum">4584 руб.</div>
-            <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
-        </div>
-    
     </div>
 </section>
 

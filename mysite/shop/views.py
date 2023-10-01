@@ -4,6 +4,7 @@ from django.template import loader
 from .models import Category, Product, ProductFilter, Balloon, Post, Promotions, TagsProducts, Color, Footer_pages
 from django.core.paginator import Paginator
 from django.db.models import Max,Min
+from urllib.parse import unquote
 
 
 def index(request):
@@ -42,31 +43,31 @@ def cart(request):
     promotions_list = Promotions.objects.all()
     template = loader.get_template('shop/cart.html')
     footer_page_list = Footer_pages.objects.all()
-
-
     # html = HttpResponse(template.render(context, request))
     # cart = request.GET.get("cart", "Undefined")
     # получаем куки с ключом cart
-
-
-
     if request.COOKIES.get('cart'):
 
         cart_string = request.COOKIES["cart"]
-        cart_count = len(cart_string.split(','))
+        cart_string = unquote(cart_string)
         cart_list = [x.strip() for x in cart_string.split(',')]
-        print(cart_list)
-        add_to_cart = request.GET.get("add_to_cart", "Undefined")
-        print(add_to_cart)
-        if add_to_cart != "Undefined":
-            cart_list.append(add_to_cart)
-            print(cart_list)
-        print(cart_list)
-        print(cart_count)
+        cart_list_id = [x.split(':')[0] for x in cart_list]
+        cart_count = len(cart_string.split(','))
+
+        print('cart string  ',cart_string)
+        print('cart list  ', cart_list)
+        print('cart list_id  ', cart_list_id)
+        # add_to_cart = request.GET.get("add_to_cart", "Undefined")
+        # print(add_to_cart)
+        # if add_to_cart != "Undefined":
+            # cart_list.append(add_to_cart)
+            # print(cart_list)
+        # print('cart_list: ',cart_list)
+        # print(cart_count)
 
         # html.set_cookie('cart', ','.join(cart_list))
         # корзина в итоге в виде объектов
-        cart = Balloon.objects.filter(pk__in=cart_list).distinct("pk")
+        cart = Balloon.objects.filter(pk__in=cart_list_id).distinct("pk")
 
 
     else:
@@ -88,7 +89,7 @@ def cart(request):
 
 
     html = HttpResponse(template.render( context, request))
-    html.set_cookie('cart', ','.join(cart_list))
+    # html.set_cookie('cart', ','.join(cart_list), max_age=0)
 
     return html
 
