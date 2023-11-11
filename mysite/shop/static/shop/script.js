@@ -101,6 +101,15 @@ function onEntry(entry) {
   }
 /*появление при скроле карточки товара*/
 
+/*функция показа цветов*/
+function ShowColors(){
+    let element = document.getElementById("color-det-id");
+    element.classList.toggle('active-colors')
+    let element2 = document.getElementById("colors-img-id");
+    element2.classList.toggle('colors-open-img')
+}
+/*функция показа цветов*/
+
 /*------------корзина---*/
 var cart_cookie = decodeURIComponent(getCookie('cart'))
 var cart = cart_cookie.split(',')
