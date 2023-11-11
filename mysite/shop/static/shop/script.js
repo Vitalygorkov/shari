@@ -99,16 +99,7 @@ function onEntry(entry) {
   for (let elm of elements) {
     observer.observe(elm);
   }
-/*появление при скроле карточки товара*/     
-
-/*функция показа цветов*/
-function ShowColors(){
-    let element = document.getElementById("color-det-id");
-    element.classList.toggle('active-colors')
-    let element2 = document.getElementById("colors-img-id");
-    element2.classList.toggle('colors-open-img')
-}
-/*функция показа цветов*/
+/*появление при скроле карточки товара*/
 
 /*------------корзина---*/
 var cart_cookie = decodeURIComponent(getCookie('cart'))
@@ -116,8 +107,52 @@ var cart = cart_cookie.split(',')
 var cart_length = cart.length
 var cart_list_id = []
 UpdateCartlistID()
+CartValid()
+
+//Валидация корзины
+function CartValid(){
+cart.forEach((item, i)=>{
+        if (cart[i].split(':')[1]) {
+            console.log('if в проверке валидности корзины')
+//            cart.splice(i,1)
+        }else{
+        console.log('else в проверке валидности корзины')
+        cart.splice(i,1)
+        }
+    })
+
+}
+
+
+function UpdateHtmlValues(){
+        UpdateCartlistID()
+        UpdateItog()
+        document.getElementById("cart_numb").textContent = cart.length
+//        document.getElementById("total-price-id").textContent = cart.length
+        cart.forEach((item, i)=>{
+//            if (cart[i].split(':')[0]==card_id) {
+//                cart[i] = cart[i].split(':')[0]+':'+String(Number(cart[i].split(':')[1])+1)
+                let prod_id = cart[i].split(':')[0]
+                if (document.getElementById(`prod_count${prod_id}`)) {
+                    document.getElementById(`prod_count${prod_id}`).textContent = cart[i].split(':')[1]
+                }
+                if (document.getElementById(`prod_sum${prod_id}`)) {
+                    let prodprice = document.getElementById(`prod_price${prod_id}`)
+                    console.log("Обновление цен, объект див суммы",prodprice.innerText )
+                    document.getElementById(`prod_sum${prod_id}`).textContent = cart[i].split(':')[1]*prodprice.innerText
+                }
+//                document.getElementById(`prod_count${prod_id}`).textContent = cart[i].split(':')[1]
+//                console.log('prod_id',prod_id, `prod_count${prod_id}`)
+
+//            }
+        })
+
+
+}
 
 function UpdateCartlistID(){
+    console.log('обновление списка ID')
+    cart_list_id = []
     cart.forEach((item, i)=>{
         cart_list_id[i] = cart[i].split(':')[0]
     })
@@ -136,8 +171,11 @@ function setCookie(name, value) {
     console.log("setCookie: ", `${encodeURIComponent(name)}=${encodeURIComponent(value)}`+"; path=/;")
 }
 function AddToCart(card_id){
+        UpdateHtmlValues()
+        console.log("CART_LIST_ID",cart_list_id)
         card_id = String(card_id)
         if (cart_list_id.includes(card_id)) {
+        console.log('Добавление товара if')
         cart.forEach((item, i)=>{
                 if (cart[i].split(':')[0]==card_id) {
                     cart[i] = cart[i].split(':')[0]+':'+String(Number(cart[i].split(':')[1])+1)
@@ -150,9 +188,11 @@ function AddToCart(card_id){
         cart.push(card_id+':'+'1')
         setCookie('cart', cart)
         console.log('Добавление товара else')
-        console.log('cart', cart)
         UpdateCartlistID()
+        UpdateProductsInCart()
+        console.log('cart', cart)
         }
+        UpdateHtmlValues()
 }
 
 function RemoveToCart(card_id){
@@ -165,7 +205,16 @@ function RemoveToCart(card_id){
                         console.log('товаров больше или равно 2 убираем 1')
                         //делаем на 1 меньше
                         cart[i] = cart[i].split(':')[0]+':'+String(Number(cart[i].split(':')[1])-1)
-                    }else{console.log('товаров 1 удаляем из списка')}
+                    }else{console.log('товаров 1 удаляем из списка, убираем элемент')
+                        let index = cart.indexOf(cart[i]);
+                        console.log('index: ',index)
+                        if (index !== -1) {
+                          cart.splice(index, 1);
+                        }
+                        console.log('Удаляем element ', card_id)
+                        document.getElementById(`cart-blok${card_id}`).remove();
+
+                    }
                 }else{console.log('такого товара вообще нет в списке')}
             })
         console.log('cart', cart)
@@ -175,14 +224,24 @@ function RemoveToCart(card_id){
         console.log('Удаление товара else')
         console.log('cart', cart)
         }
+        UpdateHtmlValues()
 }
 
-// вставляем количество товарова в менюсверху в корзине в элемент корзины
-document.getElementById("cart_numb").textContent = cart_length
+function UpdateItog(){
+    let itogsum = 0
+    let elemitog = document.getElementById("total-price-id")
+    let elements_for_sum = document.querySelectorAll(".cart-sum");
+//    console.log('UpdateItog', elements_for_sum)
 
-// вставляем количество товаров в странице корзины
-//document.getElementById("prod_count").textContent = cart_length
-//pcs__calc-imput
+    elements_for_sum.forEach((item, i)=>{
+        console.log('UpdateItog', item.innerText)
+    })
+
+
+
+
+}
+
 var products_in_cart = document.getElementsByClassName('cart-blok');
  console.log("products_in_cart", products_in_cart)
 function UpdateProductsInCart(){
@@ -199,7 +258,12 @@ function UpdateProductsInCart(){
     }
 }
 
-
+// вставляем количество товарова в менюсверху в корзине в элемент корзины
+//document.getElementById("cart_numb").textContent = cart.length
+UpdateHtmlValues()
+// вставляем количество товаров в странице корзины
+//document.getElementById("prod_count").textContent = cart_length
+//pcs__calc-imput
 
 // вручную задать куку корзины
 //setCookie('cart', '1:1,7:1,3:1,12:1,4:1')
@@ -207,13 +271,12 @@ function UpdateProductsInCart(){
 //document.cookie = 'cart=1,1,2,3,4'
 
 //для исправления багов в корзине
-cart = []
-UpdateProductsInCart()
-setCookie('cart', '')
+//cart = []
+//UpdateProductsInCart()
+//setCookie('cart', '')
 
 
 console.log("Ваши куки сэр:", document.cookie)
 console.log("кука cart сэр:", decodeURIComponent(cart_cookie))
 console.log("ваша корзина сэр: ", cart)
 console.log("cart_list_id сэр: ", cart_list_id)
-

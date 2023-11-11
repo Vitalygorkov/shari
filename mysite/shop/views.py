@@ -51,6 +51,21 @@ def cart(request):
         cart_string = request.COOKIES["cart"]
         cart_string = unquote(cart_string)
         cart_list = [x.strip() for x in cart_string.split(',')]
+        # Проверка данных
+        for el in cart_list:
+            print('цикл проверки списка корзины, очередной элемент')
+            if ":" in el:
+                print('строка имеет двоеточие')
+                print(cart_list.index(el))
+            else:
+                print('строка НЕ имеет двоеточие, удаляем')
+                print(cart_list.index(el))
+                cart_list.pop(cart_list.index(el))
+            #     правим куку после исправления
+
+
+
+            # if el.split(':')[0] ==
         cart_list_id = [x.split(':')[0] for x in cart_list]
         cart_count = len(cart_string.split(','))
 

@@ -26,19 +26,19 @@
         <!-- <div class="cart-name"><h3>КОРЗИНА</h3></div>  -->
         {% if cart %}
         {% for product in cart %}
-        <div class="cart-blok">
+        <div class="cart-blok" id="cart-blok{{ product.id }}">
             <div class="cart-image"><a href=""><img src="/media/{{ product.image }}" alt=""></a></div>
             <div class="conteiner-cart">
                 <div class="cart-title">{{ product.name }}</div>
-                <div class="cart-price">{{ product.price }} руб.</div>
+                <div class="cart-price" id="prod_price{{ product.id }}" >{{ product.price }}</div> руб.
             </div>    
             <div class="cart-pcs__calc">
                 <div class="pcs__calc-minus" onclick="RemoveToCart({{ product.id }})"><img src="{% static 'shop/foto/minuss.png' %}" alt=""></img></div>
-                <div class="pcs__calc-imput" id="prod_count{{ product.name }}">1</div>
-                <div class="pcs__calc-plus" onclick="AddToCart({{ product.id }})"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
+                <div class="pcs__calc-imput" id="prod_count{{ product.id }}">1</div>
+                <div class="pcs__calc-plus"  onclick="AddToCart({{ product.id }})"><img src="{% static 'shop/foto/plus.png' %}" alt=""></img></div>
             </div>
-            <div class="cart-sum">4584 руб.</div>
-            <div class="btn-delete"><a href=""><img src="{% static 'shop/foto/delete.png' %}" alt=""></a></div>
+            <div class="cart-sum" id="prod_sum{{ product.id }}">{{ product.price }}</div>
+            <div class="btn-delete"><img src="{% static 'shop/foto/delete.png' %}" alt=""></div>
         </div>
         {% endfor %}
         {% else %}
@@ -51,7 +51,7 @@
 <section class="head-bloc _container">
     <div class="total-price">
         <div class="total-price-name">Итого:</div>
-        <div class="total-price-sum">0 руб.</div>
+        <div id="total-price-id" class="total-price-sum">0 </div> руб.
     </div>
     <div class="head-button">
         <a href="" class="border-button">Оформить заказ</a>
