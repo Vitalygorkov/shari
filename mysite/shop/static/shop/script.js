@@ -99,7 +99,16 @@ function onEntry(entry) {
   for (let elm of elements) {
     observer.observe(elm);
   }
-/*появление при скроле карточки товара*/
+/*появление при скроле карточки товара*/     
+
+/*функция показа цветов*/
+function ShowColors(){
+    let element = document.getElementById("color-det-id");
+    element.classList.toggle('active-colors')
+    let element2 = document.getElementById("colors-img-id");
+    element2.classList.toggle('colors-open-img')
+}
+/*функция показа цветов*/
 
 /*------------корзина---*/
 var cart_cookie = decodeURIComponent(getCookie('cart'))
@@ -207,3 +216,4 @@ console.log("Ваши куки сэр:", document.cookie)
 console.log("кука cart сэр:", decodeURIComponent(cart_cookie))
 console.log("ваша корзина сэр: ", cart)
 console.log("cart_list_id сэр: ", cart_list_id)
+
